@@ -6,6 +6,7 @@ django-el-pagination==3.1.0
 django-mail-queue==3.1.0
 django-registration-redux==1.7
 django-versatileimagefield==1.11
+gunicorn==19.9.0
 idna==2.8
 jet-django==0.7.6
 Pillow==6.2.1
