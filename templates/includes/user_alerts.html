@@ -1,0 +1,103 @@
+{% load static %}
+<aside id="s-user-alerts" class="sidebar">
+    <ul class="tab-nav tn-justified tn-icon m-t-10" data-tab-color="teal">
+        <li><a class="sua-messages" href="#sua-messages" data-toggle="tab"><i class="zmdi zmdi-email"></i></a></li>
+        <li><a class="sua-notifications" href="#sua-notifications" data-toggle="tab"><i class="zmdi zmdi-notifications"></i><span class="notification-count palette-Red-500 bg">{{recent_notifications.count}}</span></a></li>
+        <li><a class="sua-tasks" href="#sua-tasks" data-toggle="tab"><i class="zmdi zmdi-view-list-alt"></i></a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade" id="sua-messages">
+            <ul class="sua-menu list-inline list-unstyled palette-Light-Blue bg">
+                <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Close</a></li>
+            </ul>
+			
+			<div  class="list-group-item media">
+				<div class="pull-left">
+                    <i class="ic yellow zmdi zmdi-lamp"></i>
+                </div>
+                <div class="media-body">
+                	<div class="lgi-heading">Coming Soon</div>
+                    <small class="lgi-text">This feature not implemented yet. Will come soon.</small>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="tab-pane fade" id="sua-notifications">
+            <ul class="sua-menu list-inline list-unstyled palette-Orange bg">
+                <li><a href="{% url 'users:notifications' %}"><i class="zmdi zmdi-long-arrow-tab"></i> View all</a></li>
+                <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Close</a></li>
+            </ul>
+
+            <div class="list-group lg-alt c-overflow">
+            	{% if recent_notifications %}
+            	{% for notification in recent_notifications %}
+	            	{% if notification.subject.code == "low_stock_notification" %}
+		                <div  class="list-group-item media">
+		                    <div class="pull-left">
+		                        <i class="ic red zmdi zmdi-alert-circle-o"></i>
+		                    </div>
+					
+		                    <div class="media-body">
+		                        <div class="lgi-heading">{{notification.subject}}</div>
+		                        <small class="lgi-text">Only {{notification.product.stock}} item in stock of {{notification.product}} remaining ({{notification.product.shop}}).</small>
+		                    </div>
+		                </div>
+	                {% endif %}
+                    {% if notification.subject.code == "expiry_notification" %}
+                            <div  class="list-group-item media">
+                                <div class="pull-left">
+                                    <i class="ic red zmdi zmdi-alert-circle-o"></i>
+                                </div>
+                        
+                                <div class="media-body">
+                                    <div class="lgi-heading">{{notification.subject}}</div>
+                                    <small class="lgi-text">Hello Wrld</small>
+                                </div>
+                            </div>
+                    {% endif %}
+                    {% if notification.subject.code == "task_assigned" %}
+                            <div  class="list-group-item media">
+                                <div class="pull-left">
+                                    <i class="ic red zmdi zmdi-alert-circle-o"></i>
+                                </div>
+                        
+                                <div class="media-body">
+                                    <div class="lgi-heading">{{notification.subject}}</div>
+                                    <small class="lgi-text">New task</small>
+                                </div>
+                            </div>
+                    {% endif %}
+                {% endfor %}
+                {% else %}
+                <div  class="list-group-item media">
+					<div class="pull-left">
+	                    <i class="ic yellow zmdi zmdi-notifications-off"></i>
+	                </div>
+                    <div class="media-body">
+                    	<div class="lgi-heading">No new notification(s)</div>
+                        <small class="lgi-text">Currently you have no notification to show.</small>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="sua-tasks">
+            <ul class="sua-menu list-inline list-unstyled palette-Green-400 bg">
+                <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Close</a></li>
+            </ul>
+
+            <div  class="list-group-item media">
+				<div class="pull-left">
+                    <i class="ic yellow zmdi zmdi-lamp"></i>
+                </div>
+                <div class="media-body">
+                	<div class="lgi-heading">Coming Soon</div>
+                    <small class="lgi-text">This feature not implemented yet. Will come soon.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

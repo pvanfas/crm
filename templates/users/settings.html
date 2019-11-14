@@ -1,0 +1,331 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+	<section id="content">
+        <div class="container">
+             <div class="c-header">
+            	<h2 class="m-t-15">{{title}}</h2>
+            </div>
+
+            <div class="card">
+				<div class="card-body card-padding">
+					<div role="tabpanel">
+                        <ul role="tablist" data-tab-color="green" class="tab-nav">
+                            <li class="active shop"><a data-toggle="tab" role="tab" aria-controls="home11" href="#shop" aria-expanded="false">Shop</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="shop" class="tab-pane active" role="tabpanel">
+                                <form enctype="multipart/form-data" method="post" action="{% url 'users:update_shop' %}">
+				                	{% csrf_token %}
+				                    <div class="card-body card-padding">
+				                        <div class="row">
+				                            <div class="col-sm-6">
+				                                <div class="form-group fg-line">
+					                                <label for="{{ shop_form.name.id_for_label }}">
+					                                	{{ shop_form.name.label }}
+					                                	{% if shop_form.name.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.name.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.name.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.name }}
+
+					                                {% if shop_form.name.errors %}
+					                                	<label class="error">{{ shop_form.name.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.phone.id_for_label }}">
+					                                	{{ shop_form.phone.label }}
+					                                	{% if shop_form.phone.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.phone.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.phone.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.phone }}
+
+					                                {% if shop_form.phone.errors %}
+					                                	<label class="error">{{ shop_form.phone.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.fssai_number.id_for_label }}">
+					                                	{{ shop_form.fssai_number.label }}
+					                                	{% if shop_form.fssai_number.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.fssai_number.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.fssai_number.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.fssai_number }}
+
+					                                {% if shop_form.fssai_number.errors %}
+					                                	<label class="error">{{ shop_form.fssai_number.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.gstin.id_for_label }}">
+					                                	{{ shop_form.gstin.label }}
+					                                	{% if shop_form.gstin.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.gstin.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.gstin.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.gstin }}
+
+					                                {% if shop_form.gstin.errors %}
+					                                	<label class="error">{{ shop_form.gstin.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+												<div class="form-group fg-line">
+					                                <label for="{{ shop_form.commission_per_packet.id_for_label }}">
+					                                	{{ shop_form.commission_per_packet.label }}
+					                                	{% if shop_form.commission_per_packet.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.commission_per_packet.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.commission_per_packet.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.commission_per_packet }}
+
+					                                {% if shop_form.commission_per_packet.errors %}
+					                                	<label class="error">{{ shop_form.commission_per_packet.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.website.id_for_label }}">
+					                                	{{ shop_form.website.label }}
+					                                	{% if shop_form.website.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.website.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.address.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.website }}
+
+					                                {% if shop_form.website.errors %}
+					                                	<label class="error">{{ shop_form.website.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line m-b-0">
+					                                <label for="{{ shop_form.theme.id_for_label }}">
+					                                	{{ shop_form.theme.label }}
+					                                	{% if shop_form.theme.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.theme.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.theme.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.theme }}
+
+					                                {% if shop_form.theme.errors %}
+					                                	<label class="error">{{ shop_form.theme.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+				                            </div>
+
+				                            <div class="col-sm-6">
+				                                 <div class="form-group fg-line">
+					                                <label for="{{ shop_form.email.id_for_label }}">
+					                                	{{ shop_form.email.label }}
+					                                	{% if shop_form.email.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.email.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.email.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.email }}
+
+					                                {% if shop_form.email.errors %}
+					                                	<label class="error">{{ shop_form.email.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+				                                <div class="form-group fg-line">
+					                                <label for="{{ shop_form.address.id_for_label }}">
+					                                	{{ shop_form.address.label }}
+					                                	{% if shop_form.address.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.address.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.address.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.address }}
+
+					                                {% if shop_form.address.errors %}
+					                                	<label class="error">{{ shop_form.address.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.state.id_for_label }}">
+					                                	{{ shop_form.state.label }}
+					                                	{% if shop_form.state.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.state.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.state.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.state }}
+
+					                                {% if shop_form.state.errors %}
+					                                	<label class="error">{{ shop_form.state.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.bill_print_type.id_for_label }}">
+					                                	{{ shop_form.bill_print_type.label }}
+					                                	{% if shop_form.bill_print_type.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.bill_print_type.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.bill_print_type.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                {{ shop_form.bill_print_type }}
+
+					                                {% if shop_form.bill_print_type.errors %}
+					                                	<label class="error">{{ shop_form.bill_print_type.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.block_auto_redirect.id_for_label }}">
+					                                	{{ shop_form.block_auto_redirect.label }}
+					                                	{% if shop_form.block_auto_redirect.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.block_auto_redirect.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.block_auto_redirect.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                <div class="checkbox lgi-checkbox m-t-5">
+							                            <label>
+							                                {{ shop_form.block_auto_redirect }}
+							                                <i class="input-helper"></i>
+							                            </label>
+							                        </div>
+
+					                                {% if shop_form.block_auto_redirect.errors %}
+					                                	<label class="error">{{ shop_form.block_auto_redirect.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+					                            <div class="form-group fg-line">
+					                                <label for="{{ shop_form.remove_previous_balance_from_bill.id_for_label }}">
+					                                	{{ shop_form.remove_previous_balance_from_bill.label }}
+					                                	{% if shop_form.remove_previous_balance_from_bill.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.remove_previous_balance_from_bill.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.remove_previous_balance_from_bill.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+					                                    {% endif %}
+					                                </label>
+					                                <div class="checkbox lgi-checkbox m-t-5">
+							                            <label>
+							                                {{ shop_form.remove_previous_balance_from_bill }}
+							                                <i class="input-helper"></i>
+							                            </label>
+							                        </div>
+
+					                                {% if shop_form.remove_previous_balance_from_bill.errors %}
+					                                	<label class="error">{{ shop_form.remove_previous_balance_from_bill.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+				                                <div class="form-group fg-line m-b-0">
+					                                <label for="{{ shop_form.logo.id_for_label }}">
+					                                	{{ shop_form.logo.label }}
+					                                	{% if shop_form.logo.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+
+											        	{% if shop_form.logo.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ shop_form.logo.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                <br />
+					                                <div class="fileinput fileinput-new" data-provides="fileinput">
+				                                        <span class="btn btn-primary btn-file m-r-10">
+				                                            <span class="fileinput-new">Select file</span>
+				                                            <span class="fileinput-exists">Change</span>
+				                                            <input type="file" name="logo">
+				                                        </span>
+				                                        <span class="fileinput-filename"></span>
+				                                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput">&times;</a>
+				                                    </div>
+
+					                                {% if shop_form.logo.errors %}
+					                                	<label class="error">{{ shop_form.logo.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+
+				                            </div>
+				                         </div>
+
+				                         <div class="m-t-20">
+				                            <button type="submit" class="btn btn-info waves-effect">Submit</button>
+				                        </div>
+				                     </div>
+				                 </form>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+            <input type="hidden" class="active_menu" value="{{active_menu}}" />
+        </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+	<script src="{% static 'vendors/fileinput/fileinput.min.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			var active_class = $('.active_menu').val();
+			$('.tab-nav li').each(function(){
+				$this = $(this);
+				if($this.hasClass(active_class)){
+					$this.find('a').click();
+				}
+			});
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="c-header">
+                <h2>{{title}}</h2>
+            </div>
+
+			<div class="action-header palette-theme {{current_theme}} bg clearfix">
+                <div class="ah-label hidden-xs palette-White text">{{title}}</div>
+
+                <div class="ah-search">
+	            	<form method="get" action="{% url 'customers:customers' %}">
+	                    <input name="q" type="text" placeholder="Start typing..." class="ahs-input">
+
+	                    <i class="ah-search-close zmdi zmdi-long-arrow-left" data-ma-action="ah-search-close"></i>
+	                    <input type="submit" class="hidden" />
+	                </form>
+	            </div>
+
+                <ul class="ah-actions actions a-alt">
+                    <li>
+                        <a title="Search" data-ma-action="ah-search-open" class="ah-search-trigger" href="">
+                            <i class="zmdi zmdi-search"></i>
+                        </a>
+                    </li>
+                    {% if instance %}
+                    <li>
+                        <a title="Create Customer" href="{% url 'customers:create' %}">
+                            <i class="zmdi zmdi-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="View Customer" href="{% url 'customers:customer' pk=instance.pk %}">
+                            <i class="zmdi zmdi-eye"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Delete Customer" data-id="{{instance.pk}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'customers:delete' pk=instance.pk %}" class="action-button redirect">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            
+            <form enctype="multipart/form-data" method="post" action="{{url}}">
+            	{% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body card-padding">
+                                    <div class="form-group fg-line">
+    	                                <label for="{{ form.name.id_for_label }}">
+    	                                	{{ form.name.label }}
+    	                                	{% if form.name.field.required %}
+    							        		<small class="star">*</small>
+    							        	{% endif %}
+
+    							        	{% if form.name.help_text %}
+    							        		<span data-original-title="Field Info" title="" data-content="{{ form.name.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+    	                                    {% endif %}
+    	                                </label>
+    	                                {{ form.name }}
+
+    	                                {% if form.name.errors %}
+    	                                	<label class="error">{{ form.name.errors.as_text }}</label>
+    	                                {% endif %}
+    	                            </div>
+
+                                    <div class="form-group fg-line">
+                                        <label for="{{ form.email.id_for_label }}">
+                                            {{ form.email.label }}
+                                            {% if form.email.field.required %}
+                                                <small class="star">*</small>
+                                            {% endif %}
+
+                                            {% if form.email.help_text %}
+                                                <span data-original-title="Field Info" title="" data-content="{{ form.email.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+                                            {% endif %}
+                                        </label>
+                                        {{ form.email }}
+
+                                        {% if form.email.errors %}
+                                            <label class="error">{{ form.email.errors.as_text }}</label>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group fg-line">
+                                        <label for="{{ form.phone.id_for_label }}">
+                                            {{ form.phone.label }}
+                                            {% if form.phone.field.required %}
+                                                <small class="star">*</small>
+                                            {% endif %}
+
+                                            {% if form.phone.help_text %}
+                                                <span data-original-title="Field Info" title="" data-content="{{ form.phone.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+                                            {% endif %}
+                                        </label>
+                                        {{ form.phone }}
+
+                                        {% if form.phone.errors %}
+                                            <label class="error">{{ form.phone.errors.as_text }}</label>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group fg-line">
+                                        <label for="{{ form.address.id_for_label }}">
+                                            {{ form.address.label }}
+                                            {% if form.address.field.required %}
+                                                <small class="star">*</small>
+                                            {% endif %}
+
+                                            {% if form.address.help_text %}
+                                                <span data-original-title="Field Info" title="" data-content="{{ form.address.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+                                            {% endif %}
+                                        </label>
+                                        {{ form.address }}
+
+                                        {% if form.address.errors %}
+                                            <label class="error">{{ form.address.errors.as_text }}</label>
+                                        {% endif %}
+                                    </div>
+									
+									<div class="form-group fg-line m-b-0">
+								        <label for="{{ form.photo.id_for_label }}">
+								            {{ form.photo.label }}
+								            {% if form.photo.field.required %}
+								                <small class="star">*</small>
+								            {% endif %}
+
+								            {% if form.photo.help_text %}
+								                <span data-original-title="Field Info" title="" data-content="{{ form.photo.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+								            {% endif %}
+								        </label>
+								        {{ form.photo }}
+
+								        {% if form.photo.errors %}
+								            <label class="error">{{ form.photo.errors.as_text }}</label>
+								        {% endif %}
+								    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div>
+                        <button type="submit" class="btn btn-info waves-effect">Submit</button>
+                    </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('input[type=text]').focus(function () {
+	        $(this).select();
+	    		});
+		  });
+	</script>
+{% endblock %}

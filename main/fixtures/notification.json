@@ -1,0 +1,34 @@
+[
+	{
+	    "model": "users.NotificationSubject",
+	    "pk": 1,
+	    "fields": {
+	      "name": "Low stock notification",
+	      "code" : "low_stock_notification"
+	    }
+	},
+	{
+	    "model": "users.NotificationSubject",
+	    "pk": 2,
+	    "fields": {
+	      "name": "Task Assigned",
+	      "code" : "task_assigned"
+	    }
+	},
+	{
+	    "model": "users.NotificationSubject",
+	    "pk": 3,
+	    "fields": {
+	      "name": "Expiry Notification",
+	      "code" : "expiry_notification"
+	    }
+	},
+	{
+	    "model": "users.NotificationSubject",
+	    "pk": 4,
+	    "fields": {
+	      "name": "Sale Payment Remainder",
+	      "code" : "sale_payment_reminder"
+	    }
+	}
+]

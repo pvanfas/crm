@@ -1,0 +1,45 @@
+{% for field in form %}
+	{% if field.is_hidden %}
+		{{ field }}
+	{% elif field.field.is_checkbox %}
+		<div class="form-group fg-line">
+            <label for="{{ field.id_for_label }}">
+            	{{ field.label }} 
+            	{% if field.field.required %}
+	        		<small class="star">*</small>
+	        	{% endif %}
+            </label>
+            
+            <br />
+            
+            <div class="toggle-switch m-t-10">
+                <label class="ts-label"></label>
+                {{ field }}
+                <label class="ts-helper" for="ts1"></label>
+            </div>
+            
+            {% if field.errors %}
+            	<label class="error">{{ field.errors.as_text }}</label>
+            {% endif %}
+        </div>
+ 	
+	{% else %}
+		<div class="form-group fg-line">
+            <label for="{{ field.id_for_label }}">
+            	{{ field.label }}
+            	{% if field.field.required %}
+	        		<small class="star">*</small>
+	        	{% endif %}
+	        	
+	        	{% if field.help_text %}
+	        		<span data-original-title="Field Info" title="" data-content="{{ field.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                {% endif %}
+            </label>
+            {{ field }}
+            
+            {% if field.errors %}
+            	<label class="error">{{ field.errors.as_text }}</label>
+            {% endif %}
+        </div>
+	{% endif %}				    
+{% endfor %}		

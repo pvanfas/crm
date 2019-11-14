@@ -1,0 +1,19 @@
+{% extends "registration/auth_base.html" %}
+{% load i18n %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+<div class="l-block toggled" id="l-login">
+    <div class="lb-header palette-Teal bg">
+        <i class="zmdi zmdi-lock"></i>
+        You're successfully logged out
+    </div>
+
+    <div class="lb-body">
+    	<p class="message center">You are successfully logged out. <br /> <a class="color_link center" href="{% url 'auth_login' %}">Login Again</a>
+    </div>
+</div>
+
+            
+{% endblock %}

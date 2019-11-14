@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="c-header">
+                <h2>{{title}}</h2>
+            </div>
+        	<div class="action-header palette-theme {{current_theme}} bg clearfix">
+                <div class="ah-label hidden-xs palette-White text">{{title}}</div>
+    
+                <div class="ah-search">
+                    <form method="get" action="{% url 'users:users' %}">
+                        <input name="q" type="text" placeholder="Start typing..." class="ahs-input">
+    
+                        <i class="ah-search-close zmdi zmdi-long-arrow-left" data-ma-action="ah-search-close"></i>
+                        <input type="submit" class="hidden" />
+                    </form>
+                </div>
+    
+                <ul class="ah-actions actions a-alt">
+                    <li>
+                        <a href="" class="ah-search-trigger" data-ma-action="ah-search-open">
+                            <i class="zmdi zmdi-search"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="Filter" class="filter_button" href="">
+                            <i class="zmdi zmdi-filter-list"></i>
+                        </a>
+                    </li>
+                       
+                    {% if instances %}
+                    <li>
+                        <a title="Select All" class="check_all" href="">
+                            <i class="zmdi zmdi-select-all"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="Delete selected users" data-id="" href="{% url 'users:delete_selected_users' %}" data-text="{{confirm_delete_selected_message}}" data-title="Are you sure?" class="action-button reload selected-items-button">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+		</div>
+
+        <div class="card">
+			
+			{% if instances %}
+			
+            <div class="table-responsive">
+                <table id="data-table-basic" class="table table-striped table-vmiddle">
+                    <thead>
+                        <tr>
+                        	<th style="width:20px;"></th>
+                            <th data-column-id="user_name">User name</th>
+                            <th data-column-id="email">Email</th>
+                            <th data-column-id="email">Staff</th>
+                            <th data-column-id="action">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% load el_pagination_tags %}
+                        {% paginate 21 instances %}
+                        {% for instance in instances %}
+                            {% if instance.staff.user %}
+                            <tr class="check_items_row">
+    	                    	<td style="width:20px;">
+    	                    		<div class="checkbox lgi-checkbox m-t-5">
+    		                            <label>
+    		                                <input class="check check_item" type="checkbox" value="{{instance.pk}}" name="delete_item">
+    		                                <i class="input-helper"></i>
+    		                            </label>
+    		                        </div>
+    	                    	</td>
+                                <td>{{instance.username}}</td>
+                                <td>{{instance.email}}</td>
+                                <td>{{instance.staff.user}}</td>
+                                <td class="five">
+                                    {% if  is_superuser or 'can_view_user' in user_instance.permissionlist %}
+                            	    <a title="view" href="{% url 'users:view_user' pk=instance.pk %}" class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-eye"></i></a>
+                                    {% endif %}
+                                    {% if  is_superuser or 'can_change_password' in user_instance.permissionlist %}
+                                    <a title="change password" href="{% url 'users:change_password' pk=instance.pk %}" class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-key"></i></a>
+                                    {% endif %}
+                                    {% if  is_superuser or 'can_change_user_permissions' in user_instance.permissionlist %}
+                                    <a title="change permissions" href="{% url 'users:change_permissions' pk=instance.pk %}" class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-layers"></i></a>
+                                    {% endif %}
+                                    {% if  is_superuser or 'can_delete_user' in user_instance.permissionlist %}
+                                    <a title="delete user" data-id="{{instance.pk}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'users:delete_user' pk=instance.pk %}" class="action-button reload btn btn-default btn-icon waves-effect waves-circle waves-float run-function-after" data-function="change_after_delete"><i class="zmdi zmdi-delete"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!--pagination -->
+            <div class="bootgrid-footer container-fluid" id="data-table-selection-footer">
+            	{% get_pages %}
+            	<div class="row">
+            		<div class="col-sm-6">
+            			<div class="pagination">
+            				{% show_pages %}
+            			</div>
+            		</div>
+            		<div class="col-sm-6 infoBar">
+            			<div class="infos">
+            				Showing {{title}} <span class="current_page_index">{{ pages.current_start_index }}</span> - <span class="current_end_status">{{ pages.current_end_index }}</span> of <span class="total_count">{{ pages.total_count }}</span>
+            			</div>
+            		</div>
+            	</div>
+            </div>   
+            <!--pagination-->
+            {% else %}
+            	{% include 'includes/not_found.html' %}
+            {% endif %}            
+        </div>
+    </section>
+{% endblock %}
+{% block filter_box %}
+<div class="filter-box">
+	 <form method="get" action="{% url 'users:users' %}">
+	 	<div class="card">
+			<div class="card-header">
+		        <h2>Filter <small></small></h2>
+		        <span class="back-button-poupup palette-Cyan bg white btn btn-default btn-icon-text waves-effect"><i class="zmdi zmdi-arrow-back"></i> Back</span>
+		    </div>
+		    
+			<div class="card-body card-padding add_item_container sale_item_formset">
+			 	<div class="form-group fg-line">
+		            <label>Query</label>
+		            <input name="q" type="text" class="form-control" placeholder="Enter your query..." />
+		        </div>
+		        
+		         <div class="m-t-20">
+                    <button type="submit" class="btn btn-info waves-effect">Submit</button>
+                </div>
+		    </div>
+		 </div>
+	 </form>
+</div>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+{% endblock %}

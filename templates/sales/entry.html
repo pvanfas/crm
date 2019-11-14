@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="c-header">
+                <h2>{{title}}</h2>
+            </div>
+
+			<div class="action-header palette-theme {{current_theme}} bg clearfix">
+                <div class="ah-label hidden-xs palette-White text">{{title}}</div>
+
+                <div class="ah-search">
+	            	<form method="get" action="{% url 'sales:sales' %}">
+	                    <input name="q" type="text" placeholder="Start typing..." class="ahs-input">
+
+	                    <i class="ah-search-close zmdi zmdi-long-arrow-left" data-ma-action="ah-search-close"></i>
+	                    <input type="submit" class="hidden" />
+	                </form>
+	            </div>
+
+                <ul class="ah-actions actions a-alt">
+                    <li>
+                        <a title="Search" data-ma-action="ah-search-open" class="ah-search-trigger" href="">
+                            <i class="zmdi zmdi-search"></i>
+                        </a>
+                    </li>
+                    {% if instance %}
+                    <li>
+                        <a title="Create Sale" href="{% url 'sales:create' %}">
+                            <i class="zmdi zmdi-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="View Sale" href="{% url 'sales:sale' pk=instance.pk %}">
+                            <i class="zmdi zmdi-eye"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Delete Sale" data-id="{{instance.pk}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'sales:delete' pk=instance.pk %}" class="action-button redirect">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <form class="ajax reset redirect skip_empty_row not_allowed_without_formset " method="post" action="{{url}}">
+            	{% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body card-padding">
+                                    <div class="form-group fg-line">
+    	                                <label for="{{ form.customer.id_for_label }}">
+    	                                	{{ form.customer.label }}
+    	                                	{% if form.customer.field.required %}
+    							        		<small class="star">*</small>
+    							        	{% endif %}
+
+    							        	{% if form.customer.help_text %}
+    							        		<span data-original-title="Field Info" title="" data-content="{{ form.customer.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+    	                                    {% endif %}
+    	                                </label>
+    	                                {{ form.customer }}
+
+    	                                {% if form.customer.errors %}
+    	                                	<label class="error">{{ form.customer.errors.as_text }}</label>
+    	                                {% endif %}
+    	                            </div>
+
+                                    <div class="form-group fg-line">
+                                        <label for="{{ form.date.id_for_label }}">
+                                            {{ form.date.label }}
+                                            {% if form.date.field.required %}
+                                                <small class="star">*</small>
+                                            {% endif %}
+
+                                            {% if form.date.help_text %}
+                                                <span data-original-title="Field Info" title="" data-content="{{ form.date.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+                                            {% endif %}
+                                        </label>
+                                        {% if is_create_page %}
+                                            <input id="{{ form.date.id_for_label }}" type="text" class="required form-control date-picker"  name="{{form.date.html_name}}" placeholder="Enter date" value="{% now "m-d-Y" %}">
+                                        {% else %}
+                                            <input id="{{ form.date.id_for_label }}" type="text" class="required form-control date-picker"  name="{{form.date.html_name}}" placeholder="Enter date" value="{{ form.date.value|date:'m-d-Y' }}">
+                                        {% endif %}
+                                        {% if form.date.errors %}
+                                            <label class="error">{{ form.date.errors.as_text }}</label>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group fg-line">
+                                        <label for="{{ form.discount.id_for_label }}">
+                                            {{ form.discount.label }}
+                                            {% if form.discount.field.required %}
+                                                <small class="star">*</small>
+                                            {% endif %}
+
+                                            {% if form.discount.help_text %}
+                                                <span data-original-title="Field Info" title="" data-content="{{ form.discount.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline"></span>
+                                            {% endif %}
+                                        </label>
+                                        {{ form.discount }}
+
+                                        {% if form.discount.errors %}
+                                            <label class="error">{{ form.discount.errors.as_text }}</label>
+                                        {% endif %}
+                                    </div>
+									<div class="form-group fg-line">
+										<label for="customer_email">Customer Email</label>
+										<input type="text" id="customer_email" class="form-control" placeholder="Customer Email" disabled />
+                                    </div>
+									<div class="form-group fg-line">
+										<label for="customer_phone">Customer Phone</label>
+										<input type="text" id="customer_phone" class="form-control" placeholder="Customer Phone" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card sale-item-card">
+                                <div class="table-responsive card-body add_item_container sale_item_formset">
+                                    <table id="data-table-basic" class="table table-striped table-vmiddle">
+                                        <thead>
+                                            <tr>
+                                                <th data-column-id="product">Product</th>
+                                                <th data-column-id="stock">Stock</th>
+												<th data-column-id="qty">Qty</th>
+                                                <th class="one"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in sale_item_formset.forms %}
+                                            <tr class="form_set_row">
+                                                <td style="width:30%;" >
+                                                    {{ item.id }}
+                                                    <span class="sale_item p-relative">
+                                                        {{ item.product }}
+                                                    </span>
+                                                </td>
+												<td>
+                                                    <span class="sale_item_stock check_empty p-relative">
+                                                        <input type="text" class="form-control" value="0" disabled>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="sale_item_qty check_empty p-relative">
+                                                        {{ item.qty }}
+                                                    </span>
+                                                </td>
+                                                <td class="one">{% if form.instance.pk %}{{ form.DELETE }}{% endif %}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    {{ sale_item_formset.management_form }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                     <div>
+                        <button type="submit" class="btn btn-info waves-effect">Submit</button>
+                    </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+
+	<script type="text/javascript" src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input[type=text]').focus(function () {
+               $(this).select();
+            });
+
+            $('.sale_item_formset table tr.form_set_row').formset({
+                prefix: '{{ sale_item_formset.prefix }}',
+                formCssClass: 'dynamic-formset1',
+                'added' : function (row) {
+					row.find('.sale_item_select').val(null).trigger('change');
+					row.find('.select2-selection').click();
+                }
+            });
+        });
+
+		$('#id_customer').on('change', function(){
+			var $this = $(this);
+			get_customer_data($this);
+		});
+		
+		$('.sale_item select').on('change', function(){
+			var $this = $(this);
+			getProductInfo($this);
+		});
+
+		function get_customer_data(element){
+			var customer_id = element.val();
+
+			if (customer_id != undefined || customer_id != ""){
+				var url = "{% url 'customers:get_customer' %}";
+				$.ajax({
+                   type : "GET",
+                   url : url,
+                   dataType :'json',
+                   data : {
+                       "id" : customer_id,
+                   },
+                   success : function(data){
+                       var status = data['status'];
+					   if(status =='true'){
+						   // assign object key-values into variables
+						   var name = data.name;
+						   var email = data.email;
+						   var phone = data.phone;
+						   var address = data.address;
+
+							// insert var value into input field
+						   $("#customer_name").val(name);
+						   $("#customer_email").val(email);
+						   $("#customer_phone").val(phone);
+						   $("#customer_address").val(address);
+					   }
+                   },
+                   error : function(data){
+                       var status = data['status'];
+                   }
+               });
+			};
+		};
+		
+		function getProductInfo($selector){
+			var url = "{% url 'products:get_product' %}";
+			var product_id = $selector.val();
+			var $parent = $selector.parents('tr.form_set_row');
+			if(product_id != '' && product_id != null){
+				$.ajax({
+                   type : "GET",
+                   url : url,
+                   dataType :'json',
+                   data : {
+                       "id" : product_id,
+                   },
+                   success : function(data){
+                       var status = data['status'];
+					   if(status =='true'){
+						   var stock = data.stock;
+						   $parent.find('.sale_item_stock input').val(stock);
+					   }
+                   },
+                   error : function(data){
+                       var status = data['status'];
+                   }
+               });
+		   }
+		}
+    </script>
+    {{form.media}}
+{% endblock %}

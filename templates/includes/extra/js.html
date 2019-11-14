@@ -1,0 +1,70 @@
+<!-- Javascript Libraries -->
+{% load static %}
+<script src="{% static 'vendors/bower_components/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'vendors/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/functions.js' %}"></script>
+<script src="{% static 'js/actions.js' %}"></script>
+{% if is_need_calender %}
+	<script src="{% static 'vendors/bower_components/fullcalendar/dist/fullcalendar.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_weather %}
+	<script src="{% static 'vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_charts %}
+<script src="{% static 'vendors/bower_components/flot/jquery.flot.js' %}"></script>
+<script src="{% static 'vendors/bower_components/flot/jquery.flot.resize.js' %}"></script>
+<script src="{% static 'vendors/bower_components/flot.curvedlines/curvedLines.js' %}"></script>
+<script src="{% static 'vendors/sparklines/jquery.sparkline.min.js' %}"></script>
+<script src="{% static 'vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js' %}"></script>
+<script src="{% static 'js/flot-charts/curved-line-chart.js' %}"></script>
+<script src="{% static 'js/flot-charts/line-chart.js' %}"></script>
+
+<script src="{% static 'js/charts.js' %}"></script>
+{% endif %}
+
+{% if is_need_select_picker %}
+<!-- Bootstrap select (select picker) -->
+<script src="{% static 'vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js' %}"></script>
+{% endif %}
+
+{% if is_need_popup_box %}
+<!-- alert/popup boxes -->
+<script src="{% static 'vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_custom_scroll_bar %}
+<!-- Customm scroll bars -->
+<script src="{% static 'vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_wave_effect %}
+<!-- Button wave effects and material animations -->
+<script src="{% static 'vendors/bower_components/Waves/dist/waves.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_bootstrap_growl %}
+<!-- bootstrap growl is used for pop up something (eg:welcome user) -->
+<script src="{% static 'vendors/bootstrap-growl/bootstrap-growl.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_grid_system %}
+<!-- Making beautiful grid system -->
+<script src="{% static 'vendors/bower_components/salvattore/dist/salvattore.min.js' %}"></script>
+{% endif %}
+
+{% if is_need_datetime_picker %}
+<!-- Parse, validate, manipulate, and display dates in JavaScript. -->
+<script src="{% static 'vendors/bower_components/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+{% endif %}
+
+{% if is_need_formset %}
+<script type="text/javascript" src="{% static 'js/jquery.formset.js' %}"></script>
+{% endif %}
+
+{% if is_need_fileinput %}
+<script src="{% static 'vendors/fileinput/fileinput.min.js' %}"></script>
+{% endif %}

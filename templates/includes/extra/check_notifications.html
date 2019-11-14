@@ -1,0 +1,20 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		checkNotifications();
+		function checkNotifications(){
+			$.ajax({
+			  	url: "{%url 'users:check_notification' %}"
+		  	}).done(function(data) {
+			  if (parseInt(data) > 0){
+			      $('span.notification-count').show().html(data);
+			  }else{
+			      $('span.notification-count').hide();
+			  }
+			  window.setTimeout(checkNotifications, 3000);
+		  	});                 
+		}
+		window.setTimeout(checkNotifications, 3000);
+
+	});
+</script>

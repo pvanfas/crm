@@ -1,0 +1,25 @@
+<section class="content mainMenu" id="tab2">
+	<div class="menuBox">
+		<h4>Action</h4>
+		<ul>
+			{% if not instance.user %}
+			<li><a href="{% url 'staffs:make_user' pk=instance.pk %}"><small class="icon icon-user"></small><b>Make User</b></a></li>
+			{% endif %}
+			<li><a href=""><small class="icon icon-pencil"></small><b>Edit</b></a></li>
+			<li><a href="javascript:void(0)" data-title="Are you sure?" data-message="This action will delete current staff." class="doit with_alert"><small class="icon icon-trash"></small><b>Delete</b></a></li>
+		</ul>
+	</div>
+						
+	<div class="menuBox">
+		<h4>View</h4>
+		<ul>
+			<li><a href="{% url 'staffs:staffs' %}"><small class="icon icon-calendar"></small><b>Staffs</b></a></li>
+		</ul>
+	</div>
+	<div class="menuBox">
+		<h4>Create</h4>
+		<ul>
+			<li><a href=""><small class="icon icon-calendar"></small><b>Staff</b></a></li>
+		</ul>
+	</div>
+</section>

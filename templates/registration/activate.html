@@ -1,0 +1,31 @@
+{% extends "registration/auth_base.html" %}
+{% load i18n %}
+
+{% block title %} Account activation {% endblock %}
+
+{% block content %}
+<div class="l-block toggled" id="l-login">
+    <div class="lb-header palette-Indigo bg">
+        <i class="zmdi zmdi-block"></i>
+        Account activation
+    </div>
+
+    <div class="lb-body">
+    	{% if account %}
+			<p class="message success">{% trans "Account successfully activated." %} <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a></p>	
+		{% else %}	
+			<p class="message error">{% trans "Account activation failed or already activated." %}</p>	
+		{% endif %}
+    </div>
+</div>
+
+            
+{% endblock %}
+
+{% block static %}
+<script>
+	$(document).ready(function(){
+		$('div.login').attr('data-lbg','indigo');
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+	<section id="content">
+        <div class="container">
+             <div class="c-header">
+            	<h2 class="m-t-15">{{title}}</h2>
+            </div>
+
+            <div class="card">
+				<div class="card-body card-padding">
+					<div role="tabpanel">
+                        <ul role="tablist" data-tab-color="green" class="tab-nav">
+                            <li class="profile"><a data-toggle="tab" role="tab" aria-controls="profile11" href="#profile" aria-expanded="false">Profile</a></li>
+                        </ul>
+                            <div id="profile" class="tab-pane" role="tabpanel">
+                                <form class="ajax reload" method="post" action="{% url 'users:create_profile' %}">
+				                	{% csrf_token %}
+				                    <div class="card-body card-padding">
+				                        <div class="row">
+				                            <div class="col-sm-6">
+				                                <div class="form-group fg-line">
+					                                <label for="{{ profile_form.first_name.id_for_label }}">
+					                                	{{ profile_form.first_name.label }}
+					                                	{% if profile_form.first_name.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.first_name.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.first_name.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.first_name }}
+					                                
+					                                {% if profile_form.first_name.errors %}
+					                                	<label class="error">{{ profile_form.first_name.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+					                            
+					                            <div class="form-group fg-line">
+					                                <label for="{{ profile_form.last_name.id_for_label }}">
+					                                	{{ profile_form.last_name.label }}
+					                                	{% if profile_form.last_name.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.last_name.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.last_name.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.last_name }}
+					                                
+					                                {% if profile_form.last_name.errors %}
+					                                	<label class="error">{{ profile_form.last_name.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+					                            
+					                            <div class="form-group fg-line">
+					                                <label for="{{ profile_form.address.id_for_label }}">
+					                                	{{ profile_form.address.label }}
+					                                	{% if profile_form.address.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.address.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.address.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.address }}
+					                                
+					                                {% if profile_form.address.errors %}
+					                                	<label class="error">{{ profile_form.address.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+					                            
+					                            <div class="form-group fg-line m-b-0">
+					                                <label for="{{ profile_form.city.id_for_label }}">
+					                                	{{ profile_form.city.label }}
+					                                	{% if profile_form.city.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.city.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.city.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.city }}
+					                                
+					                                {% if profile_form.city.errors %}
+					                                	<label class="error">{{ profile_form.city.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+				                            </div>
+				                            
+				                            <div class="col-sm-6">
+				                                 <div class="form-group fg-line">
+					                                <label for="{{ profile_form.state.id_for_label }}">
+					                                	{{ profile_form.state.label }}
+					                                	{% if profile_form.state.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.state.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.state.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.state }}
+					                                
+					                                {% if profile_form.state.errors %}
+					                                	<label class="error">{{ profile_form.state.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+				
+				                                <div class="form-group fg-line">
+					                                <label for="{{ profile_form.country.id_for_label }}">
+					                                	{{ profile_form.country.label }}
+					                                	{% if profile_form.country.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.country.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.country.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.country }}
+					                                
+					                                {% if profile_form.country.errors %}
+					                                	<label class="error">{{ profile_form.country.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>
+					                            
+				                                <div class="form-group fg-line">
+					                                <label for="{{ profile_form.pin.id_for_label }}">
+					                                	{{ profile_form.pin.label }}
+					                                	{% if profile_form.pin.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.pin.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.pin.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.pin }}
+					                                
+					                                {% if profile_form.pin.errors %}
+					                                	<label class="error">{{ profile_form.pin.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>	
+					                            
+					                            <div class="form-group fg-line">
+					                                <label for="{{ profile_form.phone.id_for_label }}">
+					                                	{{ profile_form.phone.label }}
+					                                	{% if profile_form.phone.field.required %}
+											        		<small class="star">*</small>
+											        	{% endif %}
+											        	
+											        	{% if profile_form.phone.help_text %}
+											        		<span data-original-title="Field Info" title="" data-content="{{ profile_form.phone.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+					                                    {% endif %}
+					                                </label>
+					                                {{ profile_form.phone }}
+					                                
+					                                {% if profile_form.phone.errors %}
+					                                	<label class="error">{{ profile_form.phone.errors.as_text }}</label>
+					                                {% endif %}
+					                            </div>	
+				                            </div>
+				                         </div>
+				                         
+				                         <div class="m-t-20">
+				                            <button type="submit" class="btn btn-info waves-effect">Submit</button>
+				                        </div>
+				                     </div>  
+				                 </form>   
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+            <input type="hidden" class="active_menu" value="{{active_menu}}" />
+        </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+	<script src="{% static 'vendors/fileinput/fileinput.min.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			var active_class = $('.active_menu').val();
+			$('.tab-nav li').each(function(){
+				$this = $(this);
+				if($this.hasClass(active_class)){
+					$this.find('a').click();
+				}
+			});
+		});
+	</script>
+{% endblock %}

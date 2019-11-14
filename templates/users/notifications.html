@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load users_template_tags %}
+{% load tz %}
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="c-header">
+                <h2>{{title}}</h2>
+            </div>
+
+            <div class="card">
+            	
+            	<div class="action-header palette-theme {{current_theme}} bg clearfix">
+                    <div class="ah-label hidden-xs palette-White text">Recent Notifications</div>
+
+                    <div class="ah-search">
+                    	<form method="get" action="{% url 'users:notifications' %}">
+	                        <input name="q" type="text" placeholder="Start typing..." class="ahs-input">
+	
+	                        <i class="ah-search-close zmdi zmdi-long-arrow-left" data-ma-action="ah-search-close"></i>
+	                        <input type="submit" class="hidden" />
+                        </form>
+                    </div>
+
+                    <ul class="ah-actions actions a-alt">
+                        <li>
+                            <a href="" class="ah-search-trigger" data-ma-action="ah-search-open">
+                                <i class="zmdi zmdi-search"></i>
+                            </a>
+                        </li>
+                        
+                        {% if instances %}
+
+                        <li>
+                            <a class="check_all" href="">
+                                <i class="zmdi zmdi-select-all"></i>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a title="Delete selected items" data-id="" href="{% url 'users:delete_selected_notifications' %}" data-text="{{confirm_delete_selected_message}}" data-title="Are you sure?" class="action-button reload selected-items-button">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a title="Mark as read" data-id="" href="{% url 'users:read_selected_notifications' %}" data-text="{{confirm_read_selected_message}}" data-title="Are you sure?" class="action-button selected-items-button">
+                                <i class="zmdi zmdi-check-all"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    
+                </div>
+            	
+            	{% if instances %}
+
+                <div class="list-group lg-alt lg-even-black">
+                	
+                	{% load el_pagination_tags %}
+					{% paginate 21 instances %}
+                	{% for notification in instances %}
+                	
+                    <div class="list-group-item check_items_row media">
+                        <div class="checkbox pull-left lgi-checkbox">
+                            <label>
+                                <input class="check check_item" type="checkbox" value="{{notification.pk}}" name="delete_item">
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+
+                        <div class="pull-left">
+                            
+                        	{% if notification.subject.code == "low_stock_notification" %}
+                        	<div class="avatar-char palette-Red bg">
+                        		<i class="zmdi zmdi-alert-circle-o"></i>
+                            </div>
+                        	{% elif notification.subject.code == "task_assigned" %}
+                        	<div class="avatar-char palette-Amber bg">
+                        		<i class="zmdi zmdi-money-off"></i>
+                        	 </div>
+                        	
+                        	{% elif notification.subject.code == "expiry_notification" %}
+                        	<div class="avatar-char palette-Red bg">
+                        		<i class="zmdi zmdi-money-off"></i>
+                        	</div>
+                        	
+                        	{% endif %}
+
+                        </div>
+
+                        <div class="pull-right">
+                            <ul class="actions">
+                                <li class="dropdown">
+                                    <a href="" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a data-id="{{notification.pk}}" href="{% url 'users:delete_notification' pk=notification.pk %}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" class="action-button reload">Delete</a>
+                                        </li>
+                                        <li>
+                                            <a data-id="{{notification.pk}}" href="{% url 'users:read_notification' pk=notification.pk %}" data-text="{{confirm_read_message}}" data-title="Are you sure?" class="action-button reload">Mark as read</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+						{% if notification.subject.code == "low_stock_notification" %}
+                        <div class="media-body">
+                            <div class="lgi-heading">{{notification.subject}}</div>
+                            <small class="lgi-text">Only {{notification.product.stock}} item in stock of {{notification.product}} remaining ({{notification.product.shop}}).</small>
+                        </div>
+                        
+                        {% elif notification.subject.code == "task_assigned" %}
+                        <div class="media-body">
+                            <div class="lgi-heading">{{notification.subject}}</div>
+                            <small class="lgi-text">New Task Assinged to</small>
+                        </div>
+                        
+                        {% elif notification.subject.code == "expiry_notification" %}
+                        <div class="media-body">
+                            <div class="lgi-heading">{{notification.subject}}</div>
+                            <small class="lgi-text"><a href="{% url 'products:product' pk=notification.product.pk %}">{{notification.product.name}}</a> will expire in {{notification.expiry_date.expiry_date|date:'d M Y'|default:""}} </small>
+                        </div>
+                        
+                        {% endif %}
+                        
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+
+                <!--pagination -->
+                <div class="bootgrid-footer container-fluid" id="data-table-selection-footer">
+                	{% get_pages %}
+                	<div class="row">
+                		<div class="col-sm-6">
+                			<div class="pagination">
+                				{% show_pages %}
+                			</div>
+                		</div>
+                		<div class="col-sm-6 infoBar">
+                			<div class="infos">
+                				Showing {{title}} <span class="current_page_index">{{ pages.current_start_index }}</span> - <span class="current_end_status">{{ pages.current_end_index }}</span> of <span class="total_count">{{ pages.total_count }}</span>
+                			</div>
+                		</div>
+                	</div>
+                </div>   
+                <!--pagination-->
+                
+                
+                {% else %}
+                	{% include 'includes/not_found.html' %}
+                {% endif %}   
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+{% endblock %}

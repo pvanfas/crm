@@ -1,0 +1,103 @@
+/*salafinikah.com sprdh.com */
+html,body{
+	padding:0;
+	margin:0;
+}
+a{
+	text-decoration: none;
+}
+#main{
+	width:600px;
+	margin:0 auto;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	border-top: 3px solid #0B3F7A;
+}
+#top{
+	background: url(http://www.tegain.com/static/web/images/spotlight-bg.jpg);
+	background-color:#28233a;
+	background-size:cover;
+}
+br.clear{
+	clear:both;
+}
+#header{
+	background: url(http://www.tegain.com/static/web/images/tr.png) repeat-x bottom left;
+	padding:20px 0 30px;
+}
+#header h1{
+	display: inline-block;
+	padding:0;
+	margin:0;
+	text-align: left;
+}
+#header h1 img{
+	width:100%;
+	height:auto;
+}
+#header div.right{
+	display: inline-block;	
+	margin-top: 30px;
+}
+#header .social a{
+	float: right;
+	margin-left: 8px;
+}
+#header a.website{
+	float: right;
+	color:#fff;
+	margin-top: 8px;
+}
+.center{
+	width:90%;
+	padding:0 5%;
+}
+#spotlight{
+	color: #fff;
+	padding:30px;
+	text-align: center;
+}
+#spotlight h2{
+	font-size: 22px;
+	font-weight: normal;
+}
+#spotlight h2 b{
+	font-size: 30px;
+	display: block;
+	margin-bottom: 15px;
+}
+p{
+	line-height: 1.6em;	
+}
+#content{
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	padding:20px 0;
+}
+.contentInner{
+	width:90%;
+	padding:0 5%;
+}
+#content .bottom p{	
+	margin:0;
+}
+#footer{
+	background: #f6f6f6;
+	color: #aaa;
+	padding:5%;
+	text-align: center;
+}
+#footer a{
+	color:#4683ea;
+}
+#footer p{
+	margin:0;
+	font-size: 12px;
+}
+.td35{
+	width:35%;
+}
+.td65{
+	text-align: right;
+	width:65%;
+}

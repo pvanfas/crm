@@ -1,0 +1,1563 @@
+
+[
+
+	{
+	    "model": "users.Permission",
+	    "pk": 1,
+	    "fields": {
+	      "name": "Manage Customer",
+	      "code" : "can_manage_customer",
+	      "app" : "customers"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 2,
+	    "fields": {
+	      "name": "Create Customer",
+	      "code" : "can_create_customer",
+	      "app" : "customers"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 3,
+	    "fields": {
+	      "name": "Modify Customer",
+	      "code" : "can_modify_customer",
+	      "app" : "customers"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 4,
+	    "fields": {
+	      "name": "View Customer",
+	      "code" : "can_view_customer",
+	      "app" : "customers"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 5,
+	    "fields": {
+	      "name": "Delete Customer",
+	      "code" : "can_delete_customer",
+	      "app" : "customers"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 6,
+	    "fields": {
+	      "name": "Create Category",
+	      "code" : "can_create_category",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 7,
+	    "fields": {
+	      "name": "Modify Category",
+	      "code" : "can_modify_category",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 8,
+	    "fields": {
+	      "name": "View Category",
+	      "code" : "can_view_category",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 9,
+	    "fields": {
+	      "name": "Delete Category",
+	      "code" : "can_delete_category",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 10,
+	    "fields": {
+	      "name": "Create Unit",
+	      "code" : "can_create_unit",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 11,
+	    "fields": {
+	      "name": "Modify Unit",
+	      "code" : "can_modify_unit",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 12,
+	    "fields": {
+	      "name": "View Unit",
+	      "code" : "can_view_unit",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 13,
+	    "fields": {
+	      "name": "Delete Unit",
+	      "code" : "can_delete_unit",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 14,
+	    "fields": {
+	      "name": "Manage Barcode",
+	      "code" : "can_manage_barcode",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 15,
+	    "fields": {
+	      "name": "Manage Vendor",
+	      "code" : "can_manage_vendor",
+	      "app" : "vendors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 16,
+	    "fields": {
+	      "name": "Create vendor",
+	      "code" : "can_create_vendor",
+	      "app" : "vendors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 17,
+	    "fields": {
+	      "name": "Modify Vendor",
+	      "code" : "can_modify_vendor",
+	      "app" : "vendors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 18,
+	    "fields": {
+	      "name": "View Vendor",
+	      "code" : "can_view_vendor",
+	      "app" : "vendors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 19,
+	    "fields": {
+	      "name": "Manage Product",
+	      "code" : "can_manage_product",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 20,
+	    "fields": {
+	      "name": "Create Product",
+	      "code" : "can_create_product",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 21,
+	    "fields": {
+	      "name": "Modify Product",
+	      "code" : "can_modify_product",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 22,
+	    "fields": {
+	      "name": "View Product",
+	      "code" : "can_view_product",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 23,
+	    "fields": {
+	      "name": "Delete Product",
+	      "code" : "can_delete_product",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 24,
+	    "fields": {
+	      "name": "Manage Sale",
+	      "code" : "can_manage_sale",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 25,
+	    "fields": {
+	      "name": "Create Sale",
+	      "code" : "can_create_sale",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 26,
+	    "fields": {
+	      "name": "Modify Sale",
+	      "code" : "can_modify_sale",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 27,
+	    "fields": {
+	      "name": "View Sale",
+	      "code" : "can_view_sale",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 28,
+	    "fields": {
+	      "name": "Delete Sale",
+	      "code" : "can_delete_sale",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 29,
+	    "fields": {
+	      "name": "Create Designation",
+	      "code" : "can_create_designation",
+	      "app" : "staffs"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 30,
+	    "fields": {
+	      "name": "Modify Designation",
+	      "code" : "can_modify_designation",
+	      "app" : "staffs"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 31,
+	    "fields": {
+	      "name": "View Designation",
+	      "code" : "can_view_designation",
+	      "app" : "staffs"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 143,
+	    "fields": {
+	      "name": "Delete Designation",
+	      "code" : "can_delete_designation",
+	      "app" : "staffs"
+	    }
+	},
+	{
+		"model": "users.Permission",
+		"pk": 32,
+		"fields": {
+			"name": "Manage Staff",
+			"code" : "can_manage_staff",
+			"app" : "staffs"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 33,
+		"fields": {
+			"name": "Create Staff",
+			"code" : "can_create_staff",
+			"app" : "staffs"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 34,
+		"fields": {
+			"name": "Modify Staff",
+			"code" : "can_modify_staff",
+			"app" : "staffs"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 35,
+		"fields": {
+			"name": "View Staff",
+			"code" : "can_view_staff",
+			"app" : "staffs"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 36,
+		"fields": {
+			"name": "Delete Staff",
+			"code" : "can_delete_staff",
+			"app" : "staffs"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 37,
+		"fields": {
+			"name": "Manage Purchase",
+			"code" : "can_manage_purchase",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 38,
+		"fields": {
+			"name": "Create Purchase",
+			"code" : "can_create_purchase",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 39,
+		"fields": {
+			"name": "Modify Purchase",
+			"code" : "can_modify_purchase",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 40,
+		"fields": {
+			"name": "View Purchase",
+			"code" : "can_view_purchase",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 41,
+		"fields": {
+			"name": "Delete Purchase",
+			"code" : "can_delete_purchase",
+			"app" : "purchases"
+		}
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 42,
+	    "fields": {
+	      "name": "Delete Vendor",
+	      "code" : "can_delete_vendor",
+	      "app" : "vendors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 43,
+	    "fields": {
+	      "name": " Manage User",
+	      "code" : "can_manage_user",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 45,
+	    "fields": {
+	      "name": "Create User",
+	      "code" : "can_create_user",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 46,
+	    "fields": {
+	      "name": "Modify User",
+	      "code" : "can_modify_user",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 47,
+	    "fields": {
+	      "name": "View User",
+	      "code" : "can_view_user",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 48,
+	    "fields": {
+	      "name": "Delete User",
+	      "code" : "can_delete_user",
+	      "app" : "users"
+	    }
+	},
+
+	{
+	    "model": "users.Permission",
+	    "pk": 49,
+	    "fields": {
+	      "name": "Change User Permissions",
+	      "code" : "can_change_user_permissions",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 50,
+	    "fields": {
+	      "name": "Change Password",
+	      "code" : "can_change_password",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 51,
+	    "fields": {
+	      "name": "Create profile",
+	      "code" : "can_create_profile",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 52,
+	    "fields": {
+	      "name": "Modify profile",
+	      "code" : "can_modify_profile",
+	      "app" : "users"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 53,
+	    "fields": {
+	      "name": "Create Collect Amount",
+	      "code" : "can_create_collect_amount",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 54,
+	    "fields": {
+	      "name": "Modify Collect Amount",
+	      "code" : "can_modify_collect_amount",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 55,
+	    "fields": {
+	      "name": "View Collect Amount",
+	      "code" : "can_view_collect_amount",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 56,
+	    "fields": {
+	      "name": "Delete Collect Amount",
+	      "code" : "can_delete_collect_amount",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 57,
+	    "fields": {
+	      "name": "Create Paid",
+	      "code" : "can_create_paid",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 58,
+	    "fields": {
+	      "name": "Modify Paid",
+	      "code" : "can_modify_paid",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 59,
+	    "fields": {
+	      "name": "View Paid",
+	      "code" : "can_view_paid",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 60,
+	    "fields": {
+	      "name": "Delete Paid",
+	      "code" : "can_delete_paid",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 61,
+	    "fields": {
+	      "name": "Manage Finance",
+	      "code" : "can_manage_finance",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 62,
+	    "fields": {
+	      "name": "Create Bank Account",
+	      "code" : "can_create_bank_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 63,
+	    "fields": {
+	      "name": "Modify Bank Account",
+	      "code" : "can_modify_bank_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 64,
+	    "fields": {
+	      "name": "View Bank Account",
+	      "code" : "can_view_bank_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 65,
+	    "fields": {
+	      "name": "Delete Bank Account",
+	      "code" : "can_delete_bank_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 66,
+	    "fields": {
+	      "name": "Create Cash Account",
+	      "code" : "can_create_cash_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 67,
+	    "fields": {
+	      "name": "Modify Cash Account",
+	      "code" : "can_modify_cash_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 68,
+	    "fields": {
+	      "name": "View Cash Account",
+	      "code" : "can_view_cash_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 69,
+	    "fields": {
+	      "name": "Delete Cash Account",
+	      "code" : "can_delete_cash_account",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 70,
+	    "fields": {
+	      "name": "Create Income",
+	      "code" : "can_create_income",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 71,
+	    "fields": {
+	      "name": "Modify Income",
+	      "code" : "can_modify_income",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 72,
+	    "fields": {
+	      "name": "Delete Income",
+	      "code" : "can_delete_income",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 73,
+	    "fields": {
+	      "name": "Create Expense",
+	      "code" : "can_create_expense",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 74,
+	    "fields": {
+	      "name": "Modify Expense",
+	      "code" : "can_modify_expense",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 75,
+	    "fields": {
+	      "name": "Delete Expense",
+	      "code" : "can_delete_expense",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 76,
+	    "fields": {
+	      "name": "View Transaction",
+	      "code" : "can_view_transaction",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 77,
+	    "fields": {
+	      "name": "Delete Transaction",
+	      "code" : "can_delete_transaction",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 78,
+	    "fields": {
+	      "name": "Create Transaction Category",
+	      "code" : "can_create_transaction_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 79,
+	    "fields": {
+	      "name": "Modify Transaction Category",
+	      "code" : "can_modify_transaction_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 80,
+	    "fields": {
+	      "name": "View Transaction Category",
+	      "code" : "can_view_transaction_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 81,
+	    "fields": {
+	      "name": "Delete Transaction Category",
+	      "code" : "can_delete_transaction_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 82,
+	    "fields": {
+	      "name": "Create Staff Payment",
+	      "code" : "can_create_staff_payment",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 83,
+	    "fields": {
+	      "name": "Modify Staff Paymentt",
+	      "code" : "can_modify_staff_payment",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 84,
+	    "fields": {
+	      "name": "View Staff Payment",
+	      "code" : "can_view_staff_payment",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 85,
+	    "fields": {
+	      "name": "Delete Staff Payment",
+	      "code" : "can_delete_staff_payment",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 86,
+	    "fields": {
+	      "name": "Create Sale Return",
+	      "code" : "can_create_sale_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 87,
+	    "fields": {
+	      "name": "Modify Sale Return",
+	      "code" : "can_modify_sale_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 88,
+	    "fields": {
+	      "name": "View Sale Return",
+	      "code" : "can_view_sale_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 89,
+	    "fields": {
+	      "name": "Delete Sale Return",
+	      "code" : "can_delete_sale_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 90,
+	    "fields": {
+	      "name": "Create Damaged product",
+	      "code" : "can_create_damaged_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 91,
+	    "fields": {
+	      "name": "Modify Damaged product",
+	      "code" : "can_modify_damaged_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 92,
+	    "fields": {
+	      "name": "View Damaged product",
+	      "code" : "can_view_damaged_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 93,
+	    "fields": {
+	      "name": "Delete Damaged product",
+	      "code" : "can_delete_damaged_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 94,
+	    "fields": {
+	      "name": "Create Returnable Product",
+	      "code" : "can_create_returnable_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 95,
+	    "fields": {
+	      "name": "Modify Returnable Product",
+	      "code" : "can_modify_returnable_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 96,
+	    "fields": {
+	      "name": "View Returnable Product",
+	      "code" : "can_view_returnable_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 97,
+	    "fields": {
+	      "name": "Delete Returnable Product",
+	      "code" : "can_delete_returnable_product",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 98,
+	    "fields": {
+	      "name": "Create Customer Payment",
+	      "code" : "can_create_customer_payment",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 99,
+	    "fields": {
+	      "name": "Modify Customer Payment",
+	      "code" : "can_modify_customer_payment",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 100,
+	    "fields": {
+	      "name": "View Customer Payment",
+	      "code" : "can_view_customer_payment",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 101,
+	    "fields": {
+	      "name": "Delete Customer Payment",
+	      "code" : "can_delete_customer_payment",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 102,
+	    "fields": {
+	      "name": "Create Product Return",
+	      "code" : "can_create_product_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 103,
+	    "fields": {
+	      "name": "Modify Product Return",
+	      "code" : "can_modify_product_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 104,
+	    "fields": {
+	      "name": "View Product Return",
+	      "code" : "can_view_product_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 105,
+	    "fields": {
+	      "name": "Delete Product Return",
+	      "code" : "can_delete_product_return",
+	      "app" : "sales"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 106,
+	    "fields": {
+	      "name": "Create Collect Amounts",
+	      "code" : "can_create_collect_amounts",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 107,
+	    "fields": {
+	      "name": "Modify Collect Amounts",
+	      "code" : "can_modify_collect_amounts",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 108,
+	    "fields": {
+	      "name": "View Collect Amounts",
+	      "code" : "can_view_collect_amounts",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 109,
+	    "fields": {
+	      "name": "Delete Collect Amounts",
+	      "code" : "can_delete_collect_amounts",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 110,
+	    "fields": {
+	      "name": "Create Sub Category",
+	      "code" : "can_create_subcategory",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 111,
+	    "fields": {
+	      "name": "Modify Sub Category",
+	      "code" : "can_modify_subcategory",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 112,
+	    "fields": {
+	      "name": "View Sub Category",
+	      "code" : "can_view_subcategory",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 113,
+	    "fields": {
+	      "name": "Delete Sub Category",
+	      "code" : "can_delete_subcategory",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 114,
+	    "fields": {
+	      "name": "Create Brand",
+	      "code" : "can_create_brand",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 115,
+	    "fields": {
+	      "name": "Modify Brand",
+	      "code" : "can_modify_brand",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 116,
+	    "fields": {
+	      "name": "View Brand",
+	      "code" : "can_view_brand",
+	      "app" : "products"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 117,
+	    "fields": {
+	      "name": "Delete Brand",
+	      "code" : "can_delete_brand",
+	      "app" : "products"
+	    }
+	},
+	{
+		"model": "users.Permission",
+		"pk": 118,
+		"fields": {
+			"name": "Create Purchase Invoice",
+			"code" : "can_create_purchase_invoice",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 119,
+		"fields": {
+			"name": "Modify Purchase Invoice",
+			"code" : "can_modify_purchase_invoice",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 120,
+		"fields": {
+			"name": "View Purchase Invoice",
+			"code" : "can_view_purchase_invoice",
+			"app" : "purchases"
+		}
+	},
+	{
+		"model": "users.Permission",
+		"pk": 121,
+		"fields": {
+			"name": "Delete Purchase Invoice",
+			"code" : "can_delete_purchase_invoice",
+			"app" : "purchases"
+		}
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 122,
+	    "fields": {
+	      "name": "Create Tax Category",
+	      "code" : "can_create_tax_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 123,
+	    "fields": {
+	      "name": "Modify Tax Category",
+	      "code" : "can_modify_tax_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 124,
+	    "fields": {
+	      "name": "View Tax Category",
+	      "code" : "can_view_tax_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 125,
+	    "fields": {
+	      "name": "Delete Tax Category",
+	      "code" : "can_delete_tax_category",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 126,
+	    "fields": {
+	      "name": "Manage Web",
+	      "code" : "can_manage_web",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 127,
+	    "fields": {
+	      "name": "Create About",
+	      "code" : "can_create_about",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 128,
+	    "fields": {
+	      "name": "Modify About",
+	      "code" : "can_modify_about",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 129,
+	    "fields": {
+	      "name": "View About",
+	      "code" : "can_view_about",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 130,
+	    "fields": {
+	      "name": "Delete About",
+	      "code" : "can_delete_about",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 131,
+	    "fields": {
+	      "name": "Create Product Category",
+	      "code" : "can_create_product_category",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 132,
+	    "fields": {
+	      "name": "Modify Product Category",
+	      "code" : "can_modify_product_category",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 133,
+	    "fields": {
+	      "name": "View Product Category",
+	      "code" : "can_view_product_category",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 134,
+	    "fields": {
+	      "name": "Delete Product Category",
+	      "code" : "can_delete_product_category",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 135,
+	    "fields": {
+	      "name": "Create Offer",
+	      "code" : "can_create_offer",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 136,
+	    "fields": {
+	      "name": "Modify Offer",
+	      "code" : "can_modify_offer",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 137,
+	    "fields": {
+	      "name": "View Offer",
+	      "code" : "can_view_offer",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 138,
+	    "fields": {
+	      "name": "Delete Offer",
+	      "code" : "can_delete_offer",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 139,
+	    "fields": {
+	      "name": "Create Offer",
+	      "code" : "can_create_web_product",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 140,
+	    "fields": {
+	      "name": "Modify Offer",
+	      "code" : "can_modify_web_product",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 141,
+	    "fields": {
+	      "name": "View Offer",
+	      "code" : "can_view_web_product",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 142,
+	    "fields": {
+	      "name": "Delete Offer",
+	      "code" : "can_delete_web_product",
+	      "app" : "web"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 143,
+	    "fields": {
+	      "name": "Create Asset",
+	      "code" : "can_create_asset_purchase",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 144,
+	    "fields": {
+	      "name": "Modify Asset",
+	      "code" : "can_modify_asset_purchase",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 145,
+	    "fields": {
+	      "name": "View Asset",
+	      "code" : "can_view_asset_purchase",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 146,
+	    "fields": {
+	      "name": "Delete Asset",
+	      "code" : "can_delete_asset_purchase",
+	      "app" : "purchases"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 147,
+	    "fields": {
+	      "name": "Manage Task",
+	      "code" : "can_manage_task",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 148,
+	    "fields": {
+	      "name": "Create Task",
+	      "code" : "can_create_task",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 149,
+	    "fields": {
+	      "name": "Modify Task",
+	      "code" : "can_modify_task",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 150,
+	    "fields": {
+	      "name": "View Task",
+	      "code" : "can_view_task",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 151,
+	    "fields": {
+	      "name": "Delete Task",
+	      "code" : "can_delete_task",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 152,
+	    "fields": {
+	      "name": "Create Reminder",
+	      "code" : "can_create_reminder",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 153,
+	    "fields": {
+	      "name": "Modify Reminder",
+	      "code" : "can_modify_reminder",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 154,
+	    "fields": {
+	      "name": "View Reminder",
+	      "code" : "can_view_reminder",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 155,
+	    "fields": {
+	      "name": "Delete Reminder",
+	      "code" : "can_delete_reminder",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 156,
+	    "fields": {
+	      "name": "Create Anniversary",
+	      "code" : "can_create_anniversary",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 157,
+	    "fields": {
+	      "name": "Modify Anniversary",
+	      "code" : "can_modify_anniversary",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 158,
+	    "fields": {
+	      "name": "View Anniversary",
+	      "code" : "can_view_anniversary",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 159,
+	    "fields": {
+	      "name": "Delete Anniversary",
+	      "code" : "can_delete_anniversary",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 160,
+	    "fields": {
+	      "name": "Create Holiday",
+	      "code" : "can_create_holiday",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 161,
+	    "fields": {
+	      "name": "Modify Holiday",
+	      "code" : "can_modify_holiday",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 162,
+	    "fields": {
+	      "name": "View Holiday",
+	      "code" : "can_view_holiday",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 163,
+	    "fields": {
+	      "name": "Delete Holiday",
+	      "code" : "can_delete_holiday",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 164,
+	    "fields": {
+	      "name": "View Events",
+	      "code" : "can_view_event",
+	      "app" : "tasks"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 165,
+	    "fields": {
+	      "name": "Manage Distributor",
+	      "code" : "can_manage_distributor",
+	      "app" : "distributors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 166,
+	    "fields": {
+	      "name": "Create Distributor",
+	      "code" : "can_create_distributor",
+	      "app" : "distributors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 167,
+	    "fields": {
+	      "name": "Modify Distributor",
+	      "code" : "can_modify_distributor",
+	      "app" : "distributors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 168,
+	    "fields": {
+	      "name": "View Distributor",
+	      "code" : "can_view_distributor",
+	      "app" : "distributors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 169,
+	    "fields": {
+	      "name": "Delete Distributor",
+	      "code" : "can_delete_distributor",
+	      "app" : "distributors"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 170,
+	    "fields": {
+	      "name": "Create Cash Transfer",
+	      "code" : "can_create_cash_transfer",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 171,
+	    "fields": {
+	      "name": "Modify Cash Transfer",
+	      "code" : "can_modify_cash_transfer",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 172,
+	    "fields": {
+	      "name": "View Cash Transfer",
+	      "code" : "can_view_cash_transfer",
+	      "app" : "finance"
+	    }
+	},
+	{
+	    "model": "users.Permission",
+	    "pk": 173,
+	    "fields": {
+	      "name": "Delete Cash Transfer",
+	      "code" : "can_delete_cash_transfer",
+	      "app" : "finance"
+	    }
+	}
+
+]

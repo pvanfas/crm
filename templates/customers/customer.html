@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load users_template_tags %}
+{% load tz %}
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="c-header">
+                <h2>{{title}}</h2>
+            </div>
+
+            <div class="action-header palette-theme {{current_theme}} bg clearfix">
+                <div class="ah-label hidden-xs palette-White text">{{instance.name}} - {{instance.phone}}</div>
+
+                <ul class="ah-actions actions a-alt">
+                    <li>
+                        <a title="Create Customer" href="{% url 'customers:create' %}">
+                            <i class="zmdi zmdi-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Edit Customer" href="{% url 'customers:edit' pk=instance.pk %}">
+                            <i class="zmdi zmdi-edit"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Delete Customer" data-id="{{instance.pk}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'customers:delete' pk=instance.pk %}" class="action-button redirect">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="c-grid" class="clearfix" data-columns="2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Basic Info <small></small></h2>
+                    </div>
+
+                    <div class="card-body">
+						
+						{% if instance.photo %}
+						<div class="list-group-item media">
+							<div class="media-body">
+								<img src="{{instance.photo.crop.200x200}}" alt="{{instance.name}}" class="img-responsive img-circle" style="margin: 0 auto;">
+							</div>
+						</div>
+						{% else %}
+						<p class="text-center">Photo of {{instance.name}} is not Found</p>
+						{% endif %}
+						
+                        <div class="list-group lg-alt c-overflow">
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Name</div>
+                                    <small class="lgi-text">{{instance.name}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Phone</div>
+                                    <small class="lgi-text">{{instance.phone}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Email</div>
+                                    <small class="lgi-text">{{instance.email}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Address</div>
+                                    <small class="lgi-text">{{instance.address}}</small>
+                                </div>
+                            </div>
+							
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+{% endblock %}

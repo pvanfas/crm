@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %} Error 404! {% endblock %}
+
+{% block content %}
+	<section class="content">
+			<div class="card card-body card-padding">
+				<div class="card text-center">
+					<h2>Error <b>403</b></h2>
+						<p>Forbidden. Access to this resource on the server is denied !</p>
+					<img class='img-responsive' src="/static/img/error/oops.png" alt="image" title="image" width= 650 height = 650 />
+				</div>
+			</div>
+		</section><!--(#spotlight)-->
+	</section><!--(#home > .wrapper)-->
+
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+	<style>
+		div.card img {
+			margin: 0 auto !important;
+		}
+		div.card {
+			position: relative;
+		}
+		div.card h2 {
+			position: absolute;
+			top :40px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width:50%;
+		}
+		div.card p {
+			position: absolute;
+			top :90px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width:40%;
+			font-weight: 700;
+			font-size: 16px;
+
+		}
+		@media all and (max-width: 640px) {
+			div.card h2 {
+			position: relative;
+			width:100%;
+			margin-bottom: 20px;
+			top: 0;
+			}
+			div.card p {
+				position: relative;
+				width:100%;
+				top : 0;
+				margin-bottom: 20px;
+
+			}
+		}
+	</style>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}
+
+<ul class="pull-right h-menu">
+            	
+	<li class="hm-search-trigger">
+	    <a href="" data-ma-action="search-open">
+	        <i class="hm-icon zmdi zmdi-search"></i>
+	    </a>
+	</li>
+	
+	<li class="dropdown hidden-xs hidden-sm h-apps">
+	    <a data-toggle="dropdown" href="">
+	        <i class="hm-icon zmdi zmdi-apps"></i>
+	    </a>
+	    
+	    <ul class="dropdown-menu pull-right">
+			<li>
+		        <a href="#">
+		            <i class="palette-Blue bg zmdi zmdi-view-list"></i>
+		            <small>Customers</small>
+		        </a>
+		    </li>		    
+		</ul>
+	    
+	</li>
+	<li class="dropdown hidden-xs">
+	    <a data-toggle="dropdown" href=""><i class="hm-icon zmdi zmdi-more-vert"></i></a>
+	    <ul class="dropdown-menu dm-icon pull-right">
+	        <li class="hidden-xs">
+	            <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
+	        </li>
+	        <li>
+	            <a href="#"><i class="zmdi zmdi-settings"></i> Settings</a>
+	        </li>
+	    </ul>
+	</li>
+	<li class="hm-alerts p-relative" data-user-alert="sua-messages" data-ma-action="sidebar-open" data-ma-target="user-alerts">
+	    <a href=""><i class="hm-icon zmdi zmdi-notifications"></i><span class="notification-count palette-Red-500 bg">0</span></a>
+	</li>
+	<li class="dropdown hm-profile">
+	    <a data-toggle="dropdown" href="">
+	        <img src="{% static 'img/profile-pics/1.jpg' %}" alt="">
+	    </a>
+	    
+	    <ul class="dropdown-menu pull-right dm-icon">
+	        <li>
+	            <a target="_blank" href="{% url 'auth_password_change' %}"><i class="zmdi zmdi-key"></i>Change Password</a>
+	        </li>
+	        <li>
+	            <a href="{% url 'auth_logout' %}"><i class="zmdi zmdi-time-restore"></i> Logout</a>
+	        </li>
+	    </ul>
+	</li>
+	</ul>

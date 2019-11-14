@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{title}} | {{app_title}}</title>
+		{% load static %}
+        <!-- Vendor CSS -->
+
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+        <link rel="manifest" href="/manifest.json">
+
+        <!-- <link href="{% static 'css/style.css' %}" rel="stylesheet"> -->
+
+        {% if is_need_chosen_select %}
+        <link href="{% static 'vendors/bower_components/chosen/chosen.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_datetime_picker %}
+        <link href="{% static 'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_popup_box %}
+        <link href="{% static 'vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_select_picker %}
+        <link href="{% static 'vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_calender %}
+        <link href="{% static 'vendors/bower_components/fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_animations %}
+        <link href="{% static 'vendors/bower_components/animate.css/animate.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_custom_scroll_bar %}
+        <link href="{% static 'vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}" rel="stylesheet">
+        {% endif %}
+        <link href="{% static 'vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendors/bower_components/google-material-color/dist/palette.css' %}" rel="stylesheet">
+
+        <!-- CSS -->
+        <link href="{% static 'css/app.min.1.css' %}" rel="stylesheet">
+        <link href="{% static 'css/app.min.2.css' %}" rel="stylesheet">
+
+    </head>
+    <body data-ma-header="{{current_theme}}">
+        <header id="header" class="media">
+            <div class="pull-left h-logo">
+                <a href="{% url 'app' %}" class="hidden-xs">
+                    CRM
+                    <small>For Tutorial</small>
+                </a>
+
+                <div class="menu-collapse" data-ma-action="sidebar-open" data-ma-target="main-menu">
+                    <div class="mc-wrap">
+                        <div class="mcw-line top palette-White bg"></div>
+                        <div class="mcw-line center palette-White bg"></div>
+                        <div class="mcw-line bottom palette-White bg"></div>
+                    </div>
+                </div>
+            </div>
+
+            {% include 'includes/top_menu.html' %}
+
+            {% include 'includes/search.html' %}
+
+        </header>
+
+        <section id="main">
+
+            {% include 'includes/user_alerts.html' %}
+
+            {% include 'includes/menu.html' %}
+
+			{% block content %}
+            <section id="content">
+                <div class="action-header palette-theme {{current_theme}} bg clearfix">
+                    <div class="ah-label palette-White text">{{title}}</div>
+                </div>
+
+                <div class="container">
+                    {% include 'includes/dashboard/customers.html' %}
+
+
+                </div>
+
+            </section>
+
+            {% endblock %}
+
+            <footer id="footer" class="{{current_theme}}">
+                <p class="text-right">&copy; {% now 'Y' %}. All right reserved | Developed by <a target="_blank" href="https://techpe.talrop.com">Techpe</a></p>
+
+            </footer>
+
+        </section>
+        <!-- Page Loader -->
+        <div class="page-loader palette-Teal bg">
+            <div class="preloader pl-xl pls-white">
+                <svg class="pl-circular" viewBox="25 25 50 50">
+                    <circle class="plc-path" cx="50" cy="50" r="20"/>
+                </svg>
+            </div>
+        </div>
+
+        {% include 'includes/shortcuts.html' %}
+
+        {% include 'includes/extra/ie.html' %}
+
+        {% include 'includes/extra/js.html' %}
+
+
+        {% block static %}
+
+        {% endblock %}
+
+		{% block filter_box %} {% endblock %}
+
+		{% include 'includes/extra/shortcuts.html' %}
+
+		{% include "users/user_timezone_set.html" %}
+
+		<!-- {% include "includes/extra/check_notifications.html" %} -->
+
+		<input type="hidden" value="{{user.username}}" id="username"/>
+        <input type="hidden" value="{{block_auto_redirect|yesno:'yes,no'}}" id="auto_redirect"/>
+        
+        <script type="text/javascript">
+
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                      // Registration was successful
+                      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function(err) {
+                      // registration failed :(
+                      console.log('ServiceWorker registration failed:', err);
+                    });
+                });
+            }
+
+        </script>
+
+    </body>
+  </html>

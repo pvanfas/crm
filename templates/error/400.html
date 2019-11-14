@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %} Error 404! {% endblock %}
+
+{% block content %}
+	<section class="content">
+			<div class="card card-body card-padding text-center">
+				<div class="card text-center">
+					<img class='img-responsive' src="/static/img/error/oops.png" alt="image" title="image" width= 300 height = 300 />
+					<h2>Error <b>400</b></h2>
+					<p>Bad request.Your request contain bad syntax and cannot be fulfilled.</p>
+				</div>
+			</div>
+		</section><!--(#spotlight)-->
+	</section><!--(#home > .wrapper)-->
+
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+	<style>
+		img {
+			margin: 0 auto;
+		}
+	</style>
+{% endblock %}

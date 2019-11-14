@@ -1,0 +1,49 @@
+.select2-container {
+    min-width: 13em;
+    width: 100% !important;
+}
+
+ul li.select2-selection__choice,
+ul li.select2-search {
+    /* Cancel out django's style */
+    list-style-type: none;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered{
+	padding:0;
+}
+.select2-container .select2-selection--single{
+	height:35px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+	top:4px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+	line-height: 35px;
+}
+table .select2-container .select2-selection--single .select2-selection__rendered{
+	padding:0 10px;
+}
+table .select2-container--default .select2-selection--single{
+	border: 1px solid #e7e7e7;
+}
+.select2-container .select2-selection--single .select2-selection__clear {
+    border: 1px solid #f44336;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    color: #f44336;
+    height: 20px;
+    line-height: 18px;
+    margin-right: 5px;
+    margin-top: 6px;
+    position: relative;
+    text-align: center;
+    width: 20px;
+    background: #fff;
+    z-index: 2;
+}
+table .select2-container .select2-selection--single .select2-selection__clear{
+	margin-right: -5px;
+}

@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="card">
+                <form class="ajax reset {% if redirect %}redirect{% endif %}" method="post" action="{{url}}">
+                	{% csrf_token %}
+                    <div class="card-body card-padding">
+						<div class="row">
+                    		<div class="col-sm-6 w-100">
+	                        	<div class="row">
+	                           		<div class="head m-b-25">
+	                           			<h4>
+											<span><i class="zmdi zmdi-account-calendar zmdi-hc-fw"></i>&nbsp;</span>
+											<b>Permissions</b>
+										</h4>
+									</div>
+									<div class="row">
+										<div class="form-group m-b-0 col-sm-6 w-100">
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage staffs</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in staffs_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage customers</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in customers_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage Vendor</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in vendors_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage Purchase</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in purchase_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage User</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in users_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage products</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in products_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										    <div class="toggle-switch check_all_box">
+										    	
+				                            		<input class="list1" type="checkbox">
+											        <label class="ts-helper" for="ts1">&nbsp;</label>
+											        <label for="ts1" class="ts-label m-l-10">
+								        				<span>Manage sales</span>
+											        </label>
+										        
+										        <div class="list5 m-b-0">
+													{% for perm in sales_permissions %}
+													<div class="toggle-switch  m-b-20">
+														<input type="checkbox" name="permission" {% if perm in staff_permissions %}checked="checked"{% endif %} value="{{perm.pk}}" />
+														<label class="ts-helper" for="ts1">&nbsp;</label>
+											        	<label for="ts1" class="ts-label m-l-10">
+															<span>{{perm.name}}</span>
+														</label>								
+													</div>
+													{% endfor %}
+												</div>
+										    </div>
+										</div>
+									</div>
+								</div>
+	                        </div>
+                		</div>
+                		<div class="m-t-20">
+                    		<button type="submit" class="btn btn-info waves-effect">Submit</button>
+                    	</div>
+                	</div>
+                </form>                    
+            </div>  
+        </div>
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+	<style type="text/css">
+		div.list3{
+		 	margin-bottom: 3%;
+		 } 
+		 div.list5{
+		  	float:left;
+		  	width: 80%;
+		  	margin :2% 10%;
+		 }
+		  
+		 .toggle-switch .m-b-20{
+		  	float : left;
+		  	width: 30%;
+		  	margin-right: 5%;
+		  	
+		 }
+		 
+		 .toggle-switch .m-b-20:nth-child(3n){
+		  	margin-right: 0;
+		 }
+		 @media all and (max-width : 960px) {
+		    .toggle-switch .m-b-20{
+		      	float : left;
+		      	width: 47.5%;
+		      	margin-right: 5%;
+		      	
+		     }
+		     .toggle-switch .m-b-20:nth-child(3n){
+		      	margin-right: 5%;
+		     }
+		     .toggle-switch .m-b-20:nth-child(2n){
+		      	margin-right: 0;
+		     }
+		 }
+		 @media all and (max-width : 479px) {
+		    .toggle-switch .m-b-20{
+		      	float : left;
+		      	width: 100%;
+		      	margin-right: 0;
+		      	
+		     }
+		     .toggle-switch .m-b-20:nth-child(3n){
+		      	margin-right: 0;
+		     }
+		     .toggle-switch .m-b-20:nth-child(2n){
+		      	margin-right: 0;
+		     }
+		 }
+	</style>
+	
+{% endblock %}

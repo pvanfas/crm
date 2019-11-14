@@ -1,0 +1,80 @@
+{% extends "registration/auth_base.html" %}
+{% load i18n %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<div class="l-block toggled" id="l-login">
+    <div class="lb-header palette-Blue bg">
+        <i class="zmdi zmdi-account-circle"></i>
+        Hi there! Please Register Here
+    </div>
+
+    <div class="lb-body">
+    	{% if form.non_field_errors %}
+	    	<div class="palette-Red-500 text m-b-20">	    	
+				{{form.non_field_errors}}			
+			</div>
+			<br />
+		{% endif %}
+		
+    	<form action="." method="post">
+    		{% csrf_token %} 
+	        
+	        <div class="form-group fg-float">
+	            <div class="fg-line">
+	                <input name="username" value="{{ form.username.value|default:""}}" type="text" class="input-sm form-control fg-input">
+	                <label class="fg-label">Username</label>
+	            </div>
+	            {% if form.username.errors %}
+		            <span class="error">{{ form.username.errors.as_text }}</span>
+		        {% endif %}
+	        </div>
+	        
+	        <div class="form-group fg-float">
+	            <div class="fg-line">
+	                <input name="email" value="{{ form.email.value|default:""}}" type="email" class="input-sm form-control fg-input">
+	                <label class="fg-label">Email</label>
+	            </div>
+	            {% if form.email.errors %}
+		            <span class="error">{{ form.email.errors.as_text }}</span>
+		        {% endif %}
+	        </div>
+	        
+	        <div class="form-group fg-float">
+	            <div class="fg-line">
+	                <input name="password1" value="{{ form.password1.value|default:""}}" type="password" class="input-sm form-control fg-input">
+	                <label class="fg-label">Password</label>
+	            </div>
+	            {% if form.password1.errors %}
+		            <span class="error">{{ form.password1.errors.as_text }}</span>
+		        {% endif %}
+	        </div>
+	        
+	        <div class="form-group fg-float">
+	            <div class="fg-line">
+	                <input name="password2" value="{{ form.password2.value|default:""}}" type="password" class="input-sm form-control fg-input">
+	                <label class="fg-label">Password Again</label>
+	            </div>
+	            {% if form.password2.errors %}
+		            <span class="error">{{ form.password2.errors.as_text }}</span>
+		        {% endif %}
+	        </div>
+	        <input type="hidden" name="next" value="{{ next }}" />
+	        
+	        <button type="submit" class="btn palette-Blue bg">Register</button>
+		</form>
+        <div class="m-t-20">
+            <a  class="palette-Blue text" href="{% url 'auth_login' %}">Already have an account?</a>
+        </div>
+    </div>
+</div>  
+{% endblock %}
+
+{% block static %}
+<script>
+	$(document).ready(function(){
+		$('div.login').attr('data-lbg','blue');
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load inlinecss %}
+{% inlinecss "css/email.css" %}
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>{{subject}}</title>
+	</head>
+	<body>
+		<div id="main">
+			<div id="top">
+				<div id="header" >
+					<div class="center">
+						<table>
+							<tr>
+								<td class="td35">
+									<h1 id="logo"><a href="http://www.tegain.com/"><img src="http://www.tegain.com/static/web/images/white_logo.png" alt="Logo" /></a></h1>
+								</td>
+								<td class="td65">
+									<div class="right">
+										<div class="social">
+											<a href="https://plus.google.com/102584390926545017258"><img src="http://www.tegain.com/static/web/images/gplus.png" alt="google plus" /></a>
+											<a href="https://www.twitter.com/tegain_tech"><img src="http://www.tegain.com/static/web/images/twitter.png" alt="twitter" /></a>
+											<a href="https://www.facebook.com/tegain"><img src="http://www.tegain.com/static/web/images/facebook.png" alt="facebook" /></a>
+											<br class="clear" />
+										</div>
+										<a href="http://tegain.com" class="website">tegain.com</a>							
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="spotlight">
+					<h2>
+						<b>ARKBOSS</b>
+						<span>The Shop Assistant</span>
+					</h2>
+				</div>
+			</div>
+			<div id="content">
+				<div class="contentInner">
+					<p>Hello <b>{{name}}</b>,</p>
+					<p>{{content|safe}}</p>
+					<div class="bottom">
+						<p>Best Regards,</p>
+						<p><b>The Team Arkboss</b></p>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				{% if not not_automated %}
+					<p>This is an automatically generated email, please do not reply to this message.</p>
+				{% endif %}
+				<p>Please feel free to contact us should you have any questions or concerns regarding <a href="http://tegain.com">tegain.com</a> or your email subscription at <a href="mailto:hello@tegain.com">hello@tegain.com</a>.</p>
+				<p>This email was sent to <a href="mailto:{{email}}" >{{email}}</a></p>
+			</div>
+		</div>
+	</body>
+</html>
+{% endinlinecss %}

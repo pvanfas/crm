@@ -1,0 +1,61 @@
+{% load static %}
+<aside id="s-main-menu" class="sidebar">
+    <div class="smm-header">
+        <i class="zmdi zmdi-long-arrow-left" data-ma-action="sidebar-close"></i>
+    </div>
+
+    <ul class="smm-alerts">
+        <li data-user-alert="sua-messages" data-ma-action="sidebar-open" data-ma-target="user-alerts">
+            <i class="zmdi zmdi-email"></i>
+        </li>
+        <li class="p-relative" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="user-alerts">
+            <i class="zmdi zmdi-notifications"></i>
+            <span class="notification-count palette-Red-500 bg">0</span>
+        </li>
+        <li data-user-alert="sua-tasks" data-ma-action="sidebar-open" data-ma-target="user-alerts">
+            <i class="zmdi zmdi-view-list-alt"></i>
+        </li>
+    </ul>
+
+    <ul class="main-menu">
+        <li class="active">
+            <a href="{% url 'app' %}"><i class="zmdi zmdi-home"></i>Dashboard</a>
+        </li>
+        <li class="sub-menu">
+            <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-accounts-alt"></i>Customers</a>
+            <ul>
+                <li class="{% if active_menu == 'election_create_open' %}active{% endif %} m-b-5">
+                        <a class="pull-left p-r-0" title="Customers" href="{% url 'customers:customers' %}">Customers</a>
+                        <a title="Create Customer " href="{% url 'customers:create' %}">
+                        <span class="pull-right glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-storage"></i>Products</a>
+            <ul>
+                <li class="{% if active_menu == 'election_create_open' %}active{% endif %} m-b-5">
+                        <a class="pull-left p-r-0" title="Products" href="{% url 'products:products' %}">Products</a>
+                        <a title="Create Product " href="{% url 'products:create' %}">
+                        <span class="pull-right glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-layers"></i>Sales</a>
+            <ul>
+                <li class="{% if active_menu == 'election_create_open' %}active{% endif %} m-b-5">
+                        <a class="pull-left p-r-0" title="Sales" href="{% url 'sales:sales' %}">Sales</a>
+                        <a title="Create Sale " href="{% url 'sales:create' %}">
+                        <span class="pull-right glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</aside>

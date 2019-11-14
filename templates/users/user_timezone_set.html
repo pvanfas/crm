@@ -1,0 +1,23 @@
+{% load static %}
+{% if not user_session_ok %}
+	<script type="text/javascript" src="{% static 'js/jstz.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			 var timezone = jstz.determine();
+			 var timezone_name = timezone.name();
+			 $.ajax({
+			 	url : "{% url 'users:set_user_timezone' %}",
+			 	action : "GET",
+			 	data : {
+			 		timezone : timezone_name
+			 	},
+			 	success : function(data){
+			 		
+			 	},
+			 	error : function(data){
+			 		
+			 	}
+			 });
+		});
+	</script>
+{% endif %}

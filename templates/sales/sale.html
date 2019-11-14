@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load main_template_tags %}
+{% load users_template_tags %}
+{% load tz %}
+{% block content %}
+	<section id="content">
+        <div class="container">
+            <div class="c-header">
+                <h2>{{title}}</h2>
+            </div>
+
+            <div class="action-header palette-theme {{current_theme}} bg clearfix">
+                <div class="ah-label hidden-xs palette-White text">{{instance.auto_id}} - {{instance.customer}} - {{instance.total}}</div>
+
+                <ul class="ah-actions actions a-alt">
+                    <li>
+                        <a title="Create Sale" href="{% url 'sales:create' %}">
+                            <i class="zmdi zmdi-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Edit Sale" href="{% url 'sales:edit' pk=instance.pk %}">
+                            <i class="zmdi zmdi-edit"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Delete Sale" data-id="{{instance.pk}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'sales:delete' pk=instance.pk %}" class="action-button redirect">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="c-grid" class="clearfix" data-columns="2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Basic Info <small></small></h2>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="list-group lg-alt c-overflow">
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Customer</div>
+                                    <small class="lgi-text">{{instance.customer}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Date</div>
+                                    <small class="lgi-text">{{instance.date|date:"d/m/Y"}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Subtotal</div>
+                                    <small class="lgi-text">{{instance.subtotal}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Discount</div>
+                                    <small class="lgi-text">{{instance.discount}}</small>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item media">
+                                <div class="media-body">
+                                    <div class="lgi-heading">Total</div>
+                                    <small class="lgi-text">{{instance.total}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {% if sale_items %}
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Items <small></small></h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped table-vmiddle">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in sale_items %}
+                                    <tr>
+                                        <td>{{i.product}}</td>
+                                        <td>{{i.qty}}</td>
+                                        <td>{{i.product.price}}</td>
+                                        <td>{{i.subtotal }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+    </section>
+{% endblock %}
+
+{% block static %}
+	{% load static %}
+{% endblock %}

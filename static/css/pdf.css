@@ -1,0 +1,111 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	background: transparent;
+	font-weight: normal;
+	text-decoration: none;
+	outline: none;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote {
+	quotes: none;
+}
+blockquote:before, blockquote:after {
+	content: '';
+	content: none;
+}
+del {
+	text-decoration: line-through;
+}
+header, div, article, aside, nav, footer, address {
+	display: block;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #555;
+}
+.wrapper {
+	width: 850px;
+	margin: 0 auto 0;
+	background: #fff;
+}
+input, textarea, select {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	color: #555;
+}
+p {
+	line-height: 1.5em;
+}
+.clear {
+	clear: both;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #222;
+}
+table th{
+	font-weight: bold;
+}
+table td,table th{
+	padding:3pt;
+	vertical-align: middle;
+}
+table.tdb{
+	border-right: none;
+	border-bottom: none;
+}
+table.big tr td{
+	font-size: 22px !important;
+	width:100%;
+	color:#000;
+}
+table.tdb td,table.tdb th{
+	border-right: 1px solid #222;
+	border-bottom: 1px solid #222;
+}
+.bdn{
+	border: none !important;
+}
+.tar{
+	text-align: right;
+}
+.tac{
+	text-align: center;
+}
+p.small{
+	font-size: 13px;
+}
+b{
+	font-family: 'robotomedium';
+	font-weight: bold;
+}
+h4{
+	margin-top: 20px;
+}
+.box{
+	margin-top: 20px;
+}
+table.list tr td{
+	padding: 10px;
+}
+table.list tr td ol li{
+	margin-bottom: 10px;
+}
+table.list tr td ol li:last-child{
+	margin-bottom: 10px;
+}

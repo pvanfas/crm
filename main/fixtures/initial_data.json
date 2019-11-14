@@ -1,0 +1,11 @@
+[
+	{
+	    "model": "main.Mode",
+	    "pk": 1,
+	    "fields": {
+	      "down": 0,
+	      "maintenance" : 0,
+	      "readonly" : 0
+	    }
+	}
+]

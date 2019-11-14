@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{title}} | {{app_title}}</title>
+        {% load static %}
+        <!-- Vendor CSS -->
+
+        <!-- <link href="{% static 'css/style.css' %}" rel="stylesheet"> -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+
+        {% if is_need_chosen_select %}
+        <link href="{% static 'vendors/bower_components/chosen/chosen.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_datetime_picker %}
+        <link href="{% static 'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_popup_box %}
+        <link href="{% static 'vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_select_picker %}
+        <link href="{% static 'vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_calender %}
+        <link href="{% static 'vendors/bower_components/fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet">
+        {% endif %}
+        {% if is_need_animations %}
+        <link href="{% static 'vendors/bower_components/animate.css/animate.min.css' %}" rel="stylesheet">
+        {% endif %}               
+        {% if is_need_custom_scroll_bar %}
+        <link href="{% static 'vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}" rel="stylesheet">  
+        {% endif %} 
+        <link href="{% static 'vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css' %}" rel="stylesheet">     
+        <link href="{% static 'vendors/bower_components/google-material-color/dist/palette.css' %}" rel="stylesheet">
+        
+        <!-- CSS -->
+        <link href="{% static 'css/app.min.1.css' %}" rel="stylesheet">
+        <link href="{% static 'css/app.min.2.css' %}" rel="stylesheet"> 
+        
+    </head>
+    <body data-ma-header="{{current_theme}}" class="no-login-popup">
+        
+        {% block content %}
+        {% endblock %}
+
+		{% include 'includes/extra/ie.html' %}
+
+        {% include 'includes/extra/js.html' %}
+
+        {% block static %}
+        {% endblock %}
+        <input type="hidden" value="{{block_auto_redirect|yesno:'yes,no'}}" id="auto_redirect"/>
+    </body>
+  </html>

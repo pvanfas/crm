@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>{{title}} </title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/pdf.css' %}" type="text/css"/>
+		{% load i18n %}
+		<style type="text/css">			
+			@page {
+		        size: a4 portrait;
+		        margin: 120pt 0.25in 0.5in 0.25in;
+            	padding: 0;
+		        
+		        @frame header {
+	                -pdf-frame-content: header_content;
+		           margin-left: 15pt;
+		           margin-right: 15pt;
+		           top:10pt;
+		           height: 10in;
+		           bottom: 4cm;
+	            }
+	            @frame footer {
+	                -pdf-frame-content: footer_content;
+	                bottom: 0in;
+	                margin-left: 15pt;
+		            margin-right: 15pt;
+	                height: 1cm;
+	            }
+		    }
+		</style>
+	</head>
+	<body>		
+		<div id="header_content">
+			<table class="bdn">
+				<tr>
+					<td class="one">
+						<h1>Shop Name</h1>
+						<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h6>
+						<h6>7403115357</h6>
+					</td>
+					<td class="tar">
+						<p><img src="{% static 'img/logo.png' %}" alt="image" width="74" height="75" /></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		 <keepinframe>
+			<div id="main_content">
+				
+				{% block content %} 
+					
+				{% endblock %}		
+				
+			</div>
+ 		</keepinframe>
+ 		
+ 		<div id="footer_content" class="tac">
+ 			<hr />
+ 			<span class="left">page <pdf:pagenumber></span> | 
+ 			<span class="tar">www.arkboss.com</span>
+ 		</div>
+	</body>
+</html>
