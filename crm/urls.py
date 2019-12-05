@@ -12,6 +12,10 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^api/v1/customers/', include('api.v1.customers.urls',namespace="api_v1_customers")),
+    url(r'^api/v1/sales/', include('api.v1.sales.urls',namespace="api_v1_sales")),
+    
     url(r'^manifest\.json$',TemplateView.as_view(template_name="manifest.json",content_type="text/javascript"),name='manifest'),
     url(r'^sw\.js$',TemplateView.as_view(template_name="sw.js",content_type="text/javascript"),name='sw'),
 
