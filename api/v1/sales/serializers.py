@@ -23,18 +23,25 @@ class SaleSerializer(serializers.ModelSerializer):
 
 class SaleItemSerializer(serializers.ModelSerializer):
     product_name = serializers.SerializerMethodField()
+    product_price = serializers.SerializerMethodField()
     subtotal = serializers.SerializerMethodField()
     
     class Meta:
         model = SaleItem
-        fields = ['id','product','product_name','qty','subtotal',]
+        fields = ['id','product','product_name','product_price','qty','subtotal',]
     
     def get_product_name(self,instance):
         if instance.product:
             return instance.product.name
         else:
             return ""
-            
+    
+    def get_product_price(self,instance):
+        if instance.product:
+            return instance.product.price
+        else:
+            return ""
+                
     def get_subtotal(self,instance):
         if instance.product:
             return instance.product.price * instance.qty
