@@ -12,6 +12,9 @@ from rest_framework import status
 @renderer_classes((JSONRenderer,))
 def customers(request):
     instances = Customer.objects.filter(is_deleted = False)
+    query = Customer.objects.filter(is_deleted=False)
+    if query:
+        instances = instances.filter(name__icontains=query)
     serialized = CustomerSerializer(instances,many=True, context={"request":request})
     
     response_data = {

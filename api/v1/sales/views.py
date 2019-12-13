@@ -8,7 +8,7 @@ from rest_framework import status
 
 
 @api_view(['GET'])
-@permission_classes((AllowAny,))
+@permission_classes((IsAuthenticated,))
 @renderer_classes((JSONRenderer,))
 def sales(request):
     instances = Sale.objects.filter(is_deleted = False)
@@ -22,7 +22,7 @@ def sales(request):
     return Response(response_data, status=status.HTTP_200_OK)
     
 @api_view(['GET'])
-@permission_classes((AllowAny,))
+@permission_classes((IsAuthenticated,))
 @renderer_classes((JSONRenderer,))
 def sale(request,pk):
     instance = None
