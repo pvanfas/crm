@@ -196,6 +196,11 @@
   background-color: #ff9800;
 }
 
+[data-ma-header="orange"] .smm-alerts > li.active,
+[data-ma-header="orange"] .main-menu li.active > a {
+  color: #ff9800;
+}
+
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {

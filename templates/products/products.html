@@ -37,7 +37,12 @@
                             <i class="zmdi zmdi-plus"></i>
                         </a>
                     </li>
-	                {% if instances %}
+					<li class="delete_list_item">
+						<a title="Delete selected product" class="action-button reload selected-items-button" data-id="" href="{% url 'products:delete_selected_products' %}">
+							<i class="zmdi zmdi-delete"></i>
+						</a>
+					</li>
+					{% if instances %}
     	                <li>
     	                    <a title="Select All" class="check_all" href="">
     	                        <i class="zmdi zmdi-select-all"></i>

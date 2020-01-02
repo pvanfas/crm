@@ -5,14 +5,15 @@ from products.models import Product
 
 
 class ProductForm(forms.ModelForm):
+
     class Meta:
         model = Product
-        exclude = ['auto_id','creator','updater','is_deleted']
+        exclude = ['creator','updater','auto_id','is_deleted']
         widgets = {
             'name': TextInput(attrs={'class': 'required form-control','placeholder' : 'Name'}),
-            'cost': TextInput(attrs={'class': 'required form-control','placeholder' : 'Cost'}),
+            'cost': TextInput(attrs={'class': 'required form-control ','placeholder' : 'Cost'}),
+            'stock': TextInput(attrs={'class': 'required form-control','placeholder' : 'Stoke'}),
             'price': TextInput(attrs={'class': 'required form-control','placeholder' : 'Price'}),
-            'stock': TextInput(attrs={'class': 'required form-control','placeholder' : 'Stock'}),
         }
         error_messages = {
             'name' : {
@@ -24,7 +25,7 @@ class ProductForm(forms.ModelForm):
             'price' : {
                 'required' : _("Price field is required."),
             },
-            'stock' : {
-                'required' : _("Stock field is required."),
+            'stoke' : {
+                'required' : _("Stoke field is required."),
             },
         }

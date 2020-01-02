@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{title}} | {{app_title}}</title>
-        {% load static %}
+		{% load static %}
         <!-- Vendor CSS -->
 
         <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
-        <link rel="manifest" href="/manifest.json">
+
+        <!-- <link href="{% static 'css/style.css' %}" rel="stylesheet"> -->
 
         {% if is_need_chosen_select %}
         <link href="{% static 'vendors/bower_components/chosen/chosen.min.css' %}" rel="stylesheet">
@@ -41,7 +41,6 @@
         <link href="{% static 'css/app.min.2.css' %}" rel="stylesheet">
 
     </head>
-
     <body data-ma-header="{{current_theme}}">
         <header id="header" class="media">
             <div class="pull-left h-logo">
@@ -71,7 +70,7 @@
 
             {% include 'includes/menu.html' %}
 
-            {% block content %}
+			{% block content %}
             <section id="content">
                 <div class="action-header palette-theme {{current_theme}} bg clearfix">
                     <div class="ah-label palette-White text">{{title}}</div>
@@ -80,7 +79,7 @@
                 <div class="container">
                     {% include 'includes/dashboard/customers.html' %}
 
-
+                
                 </div>
 
             </section>
@@ -97,7 +96,7 @@
         <div class="page-loader palette-Teal bg">
             <div class="preloader pl-xl pls-white">
                 <svg class="pl-circular" viewBox="25 25 50 50">
-                    <circle class="plc-path" cx="50" cy="50" r="20" />
+                    <circle class="plc-path" cx="50" cy="50" r="20"/>
                 </svg>
             </div>
         </div>
@@ -107,37 +106,22 @@
         {% include 'includes/extra/ie.html' %}
 
         {% include 'includes/extra/js.html' %}
-
+        
 
         {% block static %}
 
         {% endblock %}
 
-        {% block filter_box %} {% endblock %}
+		{% block filter_box %} {% endblock %}
 
-            {% include 'includes/extra/shortcuts.html' %}
+		{% include 'includes/extra/shortcuts.html' %}
 
-        {% include "users/user_timezone_set.html" %}
+		{% include "users/user_timezone_set.html" %}
 
-        <!-- {% include "includes/extra/check_notifications.html" %} -->
+		<!-- {% include "includes/extra/check_notifications.html" %} -->
 
-        <input type="hidden" value="{{user.username}}" id="username" />
-        <input type="hidden" value="{{block_auto_redirect|yesno:'yes,no'}}" id="auto_redirect" />
-
-        <script type="text/javascript">
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                        // Registration was successful
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    }, function(err) {
-                        // registration failed :(
-                        console.log('ServiceWorker registration failed:', err);
-                    });
-                });
-            }
-        </script>
+		<input type="hidden" value="{{user.username}}" id="username"/>
+        <input type="hidden" value="{{block_auto_redirect|yesno:'yes,no'}}" id="auto_redirect"/>
 
     </body>
-
-</html>
+  </html>

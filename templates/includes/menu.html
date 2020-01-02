@@ -34,6 +34,18 @@
             </ul>
         </li>
         <li class="sub-menu">
+            <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-accounts-alt"></i>Vendors</a>
+            <ul>
+                <li class="{% if active_menu == 'election_create_open' %}active{% endif %} m-b-5">
+                        <a class="pull-left p-r-0" title="Vendors" href="{% url 'vendors:vendors' %}">Vendors</a>
+                        <a title="Create Vendor " href="{% url 'vendors:create' %}">
+                        <span class="pull-right glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-menu">
             <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-storage"></i>Products</a>
             <ul>
                 <li class="{% if active_menu == 'election_create_open' %}active{% endif %} m-b-5">

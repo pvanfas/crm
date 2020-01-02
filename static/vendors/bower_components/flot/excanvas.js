@@ -662,7 +662,7 @@ if (!document.createElement('canvas').getContext) {
 
   contextPrototype.quadraticCurveTo = function(aCPx, aCPy, aX, aY) {
     // the following is lifted almost directly from
-    // http://developer.mozilla.org/en/docs/Canvas_crm:Drawing_shapes
+    // http://developer.mozilla.org/en/docs/Canvas_tutorial:Drawing_shapes
 
     var cp = getCoords(this, aCPx, aCPy);
     var p = getCoords(this, aX, aY);

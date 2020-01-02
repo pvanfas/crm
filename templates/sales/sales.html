@@ -37,6 +37,11 @@
                             <i class="zmdi zmdi-plus"></i>
                         </a>
                     </li>
+					<li class="delete_list_item">
+						<a title="Delete selected sale" class="action-button reload selected-items-button" data-id="" href="{% url 'sales:delete_selected_sale' %}">
+							<i class="zmdi zmdi-delete"></i>
+						</a>
+					</li>
 	                {% if instances %}
     	                <li>
     	                    <a title="Select All" class="check_all" href="">
@@ -81,7 +86,7 @@
                                 <td><a href="{% url 'sales:sale' pk=instance.pk %}">{{instance.auto_id}}</a></td>
                                 <td>{{instance.customer}}</td>
                                 <td>{{instance.date}}</td>
-                                <td>{{instance.subtotal}}</td>
+                                <td>{{instance.sub_total}}</td>
                                 <td>{{instance.discount}}</td>
                                 <td>{{instance.total}}</td>
                                 <td>

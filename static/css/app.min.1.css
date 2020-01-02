@@ -10195,6 +10195,7 @@ pre {
   position: relative;
   padding: 40px 45px;
   margin-bottom: 20px;
+  z-index: 10;
 }
 
 @media (max-width: 767px) {

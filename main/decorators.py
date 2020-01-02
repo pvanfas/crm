@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from main.models import Mode
 from django.http.response import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 import json
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http.response import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from main.decorators import check_mode, ajax_required
 from main.functions import get_auto_id, generate_form_errors, get_a_id
@@ -15,13 +15,13 @@ from django.utils import timezone
 from decimal import Decimal
 
 
- 
+@check_mode
 @login_required
 def app(request):
     return HttpResponseRedirect(reverse('dashboard'))
 
 
-
+@check_mode
 @login_required
 def dashboard(request):
 

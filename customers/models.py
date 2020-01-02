@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 from main.models import BaseModel
 from versatileimagefield.fields import VersatileImageField
 
-
 class Customer(BaseModel):
     name = models.CharField(max_length=128)
     phone = models.CharField(max_length=128)
@@ -16,8 +15,8 @@ class Customer(BaseModel):
     class Meta:
         db_table = 'customers_customer'
         verbose_name = _('customer')
-        verbose_name_plural = _('customers')
-        ordering = ('name',)
+        verbose_name_plural = _('customers ')
+        ordering = ('-date_added','name',)
 
     def __unicode__(self):
         return str(self.name)

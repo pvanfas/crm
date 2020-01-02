@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 import json
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http.response import HttpResponseRedirect, HttpResponse
 import json
 from users.forms import UserForm
@@ -22,13 +22,13 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.db.models import Q
 
 
- 
+@check_mode
 @login_required
 def dashboard(request):
     return HttpResponseRedirect(reverse('app'))
 
 
- 
+@check_mode
 @login_required
 @ajax_required
 @require_GET
@@ -39,7 +39,7 @@ def check_notification(request):
     return HttpResponse(json.dumps(count), content_type='application/javascript')
 
 
- 
+@check_mode
 @login_required
 def notifications(request):
     title = "Notifications"
@@ -70,7 +70,7 @@ def notifications(request):
     return render(request,"users/notifications.html",context)
 
 
- 
+@check_mode
 @login_required
 def delete_notification(request,pk):
     Notification.objects.filter(pk=pk,user=request.user).update(is_deleted=True,is_read=True)
@@ -85,7 +85,7 @@ def delete_notification(request,pk):
     return HttpResponse(json.dumps(response_data), content_type='application/javascript')
 
 
- 
+@check_mode
 @login_required
 def delete_selected_notifications(request):
     pks = request.GET.get('pk')
@@ -113,7 +113,7 @@ def delete_selected_notifications(request):
     return HttpResponse(json.dumps(response_data), content_type='application/javascript')
 
 
- 
+@check_mode
 @login_required
 def read_selected_notifications(request):
     pks = request.GET.get('pk')
@@ -141,7 +141,7 @@ def read_selected_notifications(request):
     return HttpResponse(json.dumps(response_data), content_type='application/javascript')
 
 
- 
+@check_mode
 @login_required
 def read_notification(request,pk):
     Notification.objects.filter(pk=pk,user=request.user).update(is_read=True)
@@ -169,7 +169,7 @@ def set_user_timezone(request):
     return HttpResponse(json.dumps(response_data), content_type='application/javascript')
 
 
- 
+@check_mode
 @login_required
 def change_password(request,pk):
     instance = get_object_or_404(User.objects.filter(pk=pk,is_active=True))

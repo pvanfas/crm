@@ -47,7 +47,7 @@ function doAfterAction(action,data,$selector,$after_selector){
         var total_profit_amount = data['total_profit_amount'];
         var total_income_amount = data['total_income_amount'];
          var product_split_packing_charge = data['product_split_packing_charge'];
-        
+
         var final_making_charge_profit_loss = data['final_making_charge_profit_loss'];
 
         var total_pending_works = data['total_pending_works'];
@@ -83,7 +83,7 @@ function doAfterAction(action,data,$selector,$after_selector){
         $("#id_total_expense").html(total_expense);
         $("#id_total_profit_monthly").html(total_profit_monthly);
         $("#id_total_monthly_profit_amount").html(total_monthly_profit_amount);
-        
+
         $("#id_expense_progress_bar").css('width',expense_percentage+"%");
         $("#id_income_progress_bar").css('width',income_percentage+"%");
         $("#id_total_monthly_balance").html(total_monthly_balance);
@@ -133,8 +133,8 @@ function doAfterAction(action,data,$selector,$after_selector){
         $("#id_total_purchase_balance_amount").html(total_purchase_balance_amount);
         $("#id_total_purchases_count").html(total_purchases_count);
 
-        $("#id_total_vendors_count").html(total_vendors_count);                                
-        
+        $("#id_total_vendors_count").html(total_vendors_count);
+
         var lineData = {
 	        labels: date_list,
 	        datasets: [
@@ -172,16 +172,16 @@ function doAfterAction(action,data,$selector,$after_selector){
 		var selector_id_new = 'id_purchase_item_formset-'+input_row_counter +'-product';
 		var $select_element = $after_selector.find('select');
 		$('#modalNewProduct').modal('toggle');
-		
+
 		var pk = response_data["pk"];
 		var text = response_data["text"];
-		
+
 		var auto_complete_url = $select_element.attr('data-autocomplete-light-url');
 		var data_placeholder = $select_element.attr('data-placeholder');
 		var selector_id_s = $select_element.attr('id');
 		var name = $select_element.attr('name');
 		var select_width = $select_element.parents('td').find('span.select2').width();
-		
+
 		select_element_selector = "#"+selector_id_new;
 		var $select_element = $(select_element_selector);
 
@@ -213,10 +213,10 @@ $(document).ready(function () {
 		}else{
 			$parentDiv.find('input:checkbox').prop('checked', true).change();
 			$parentDiv.find('input:checkbox').addClass('checked');
-					
-		}		
+
+		}
 	});
-	
+
 	$('.filter-icon,.filter_button').click(function(e){
 		e.preventDefault();
 		$('body').append('<span class="popup-bg"></span>');
@@ -225,7 +225,7 @@ $(document).ready(function () {
 		$filter_box.removeClass('animated').removeClass('bounceOutRight');
 		$filter_box.show().addClass('animated '+animation);
 	});
-	
+
 	$(document).on('click','.back-button-poupup,.popup-bg',function(){
 		$('.popup-bg').remove();
 		$filter_box = $('.filter-box');
@@ -234,9 +234,9 @@ $(document).ready(function () {
 		$filter_box.removeClass('bounceInRight').removeClass('animation');
 		$filter_box.addClass('animated '+animation);
 	});
-	
+
 	$('.check_items_row input.check').prop('checked',false).change();
-	
+
 	$('a.check_all').click(function(e){
 		e.preventDefault();
 		var checked = $(this).hasClass('checked');
@@ -246,22 +246,30 @@ $(document).ready(function () {
 			$('.check_items_row input.check').prop('checked',true).change();
 		}
 		$(this).toggleClass('checked');
-		
+
 	});
-	
+
+	$('.delete_list_item').hide();
+
 	$('input.check.check_item').change(function(){
 		var $this = $(this);
 		var checked = $this.prop('checked');
 		var data_ids = $('.selected-items-button').attr('data-id');
 		var pk = $this.val();
-		if(checked){			
+		if(checked){
 			data_ids += pk + ',';
 		}else{
 			data_ids = data_ids.replace(pk+',','');
 		}
 		$('.selected-items-button').attr('data-id',data_ids);
+
+		if(data_ids != '' && data_ids != undefined && data_ids != null){
+			$('.delete_list_item').show();
+		}else {
+			$('.delete_list_item').hide();
+		}
 	});
-	
+
 	$(document).on('click','.action-button',function(e){
     	e.preventDefault();
     	$this = $(this);
@@ -281,7 +289,7 @@ $(document).ready(function () {
 		var isRemove = $this.hasClass('remove');
 		var noResponsePopup = $this.hasClass('no-response-popup');
 		var downloadFile = $this.hasClass('download-file');
-		
+
         swal({
             title: title,
             text: text,
@@ -294,7 +302,7 @@ $(document).ready(function () {
         },function(isConfirm) {
 			if (isConfirm) {
 				show_loader();
-				
+
 				window.setTimeout(function(){
 					jQuery.ajax({
 						type : 'GET',
@@ -309,11 +317,11 @@ $(document).ready(function () {
 							var redirect = data['redirect'];
 							var redirect_url = data['redirect_url'];
 							var stable = data['stable'];
-							var title = data['title'];	
+							var title = data['title'];
 							var file_url = data['file_url']
-							
-							remove_popup();	
-							
+
+							remove_popup();
+
 							if (status == 'true') {
 								if (title){
 									title = title;
@@ -337,14 +345,14 @@ $(document).ready(function () {
 												window.location.reload();
 											}
 										}
-										
-										if (stable != "true"){					
+
+										if (stable != "true"){
 											if (isRedirect && redirect == 'true') {
 												window.location.href = redirect_url;
 											}
 											if (isReload) {
 												window.location.reload();
-											}	
+											}
 										}
 									});
 								}
@@ -352,37 +360,37 @@ $(document).ready(function () {
 								if (downloadFile) {
 									window.location.href = file_url;
 								}
-								
-								
+
+
 							}else{
 								if (title){
 									title = title;
 								}else{
 									title = "An Error Occurred";
-								}	
-								
+								}
+
 								swal(title, message, "error");
-										
-								if (stable != "true"){					
+
+								if (stable != "true"){
 									window.setTimeout(function() {
-									}, 2000);	
-								}	
+									}, 2000);
+								}
 							}
 						},
 						error : function(data) {
-							remove_popup();	
-							
+							remove_popup();
+
 							var title = "An error occurred";
-							var message = "An error occurred. Please try again later."; 
+							var message = "An error occurred. Please try again later.";
 							swal(title, message, "error");
 						}
 					});
-				},100);				
-				
+				},100);
+
 		  	}
 		});
     });
-    
+
     $(document).on('change','.change_select',function(e){
     	e.preventDefault();
     	$this = $(this);
@@ -391,7 +399,7 @@ $(document).ready(function () {
 		var showAlert = $this.hasClass('with_alert');
 		var id = $this.val();
 		var url = $this.attr('data-url');
-		
+
 		show_loader();
 		jQuery.ajax({
 			type : 'GET',
@@ -406,74 +414,74 @@ $(document).ready(function () {
 				var redirect = data['redirect'];
 				var redirect_url = data['redirect_url'];
 				var stable = data['stable'];
-				var title = data['title'];	
-				
-				remove_popup();	
-				
+				var title = data['title'];
+
+				remove_popup();
+
 				if (status == 'true') {
 					if (title){
 						title = title;
 					}else{
 						title = "Success";
 					}
-					
+
 					swal({
 					  title: title,
 					  text: message,
 					  timer: 2000,
 					  type: "success"
 					}, function () {
-						if (stable != "true"){					
+						if (stable != "true"){
 							if (isRedirect && redirect == 'true') {
 								window.location.href = redirect_url;
 							}
 							if (isReload) {
 								window.location.reload();
-							}	
+							}
 						}
 					});
-					
-					
+
+
 				}else{
 					if (title){
 						title = title;
 					}else{
 						title = "An Error Occurred";
-					}	
-					
+					}
+
 					swal(title, message, "error");
-							
-					if (stable != "true"){					
+
+					if (stable != "true"){
 						window.setTimeout(function() {
-						}, 2000);	
-					}	
+						}, 2000);
+					}
 				}
 			},
 			error : function(data) {
-				remove_popup();	
-				
+				remove_popup();
+
 				var title = "An error occurred";
-				var message = "An error occurred. Please try again later."; 
+				var message = "An error occurred. Please try again later.";
 				swal(title, message, "error");
 			}
 		});
     });
-	
+
 	var $s = $('.form_set_row .check_empty input');
 	var e = $s.val();
 	if(e == 0 || e == '0'){
 		$s.val('');
 	}
-	
-	$(document).on('submit', 'form.ajax', function(e){	
+
+	$(document).on('submit', 'form.ajax', function(e){
 		e.preventDefault();
 		var $this = $(this);
 
 		var skip_empty_row = $this.hasClass('skip_empty_row');
 		var not_allowed_without_formset = $this.hasClass('not_allowed_without_formset');
-		
+
 		var row_count = $this.find('tr.form_set_row').length;
-		
+
 		if(skip_empty_row){
 			var er = 0;
 			$this.find('tr.form_set_row').each(function(){
@@ -487,17 +495,17 @@ $(document).ready(function () {
 					$t.addClass('delete_row');
 				}
 			});
-	
-			
+
+
 			$f = $this.find('tr.form_set_row:first-child');
 			if($f.hasClass('first') && not_allowed_without_formset){
 				$('tr.form_set_row.delete_row').not($f).find('a.icon-trash').click();
 			}else{
 				$('tr.form_set_row.delete_row').find('a.icon-trash').click();
-			}	
-					
+			}
+
 		}
-		
+
 		$this.validate({
 			rules : {
 				required_field : "required",
@@ -530,25 +538,28 @@ $(document).ready(function () {
 			}
 
 			var data = $this.serialize();
-			
+
 			if (!noLoader) {
-				show_loader();	
+				show_loader();
 			}
-			
+
 			jQuery.ajax({
 				type : method,
 				url : url,
 				dataType : 'json',
-				data : data,
+				data : new FormData(this),
+			    cache: false,
+			    contentType: false,
+			    processData: false,
 				success : function(data) {
 
 					if (!noLoader) {
-						remove_popup();	
+						remove_popup();
 					}
-					
+
 					var message = data['message'];
 					var status = data['status'];
-					var title = data['title'];	
+					var title = data['title'];
 					var redirect = data['redirect'];
 					var redirect_url = data['redirect_url'];
 					var new_redirect_window = data['new_redirect_window'];
@@ -565,7 +576,7 @@ $(document).ready(function () {
 						}
 
 						function  doAfter() {
-							
+
 							if (auto_redirect == "no"){
 								if (isReset) {
 									$this[0].reset();
@@ -573,30 +584,31 @@ $(document).ready(function () {
 								}
 							}
 
-							
+
 
 							if(isRunFunctionAfter){
 								doAfterAction(function_name,data,$this,$after_selector);
 							}
-							
-							if (stable != "true"){	
-									
+
+							if (stable != "true"){
+
 								if (isRedirect && redirect == 'true') {
 									window.location.href = redirect_url;
 								}
 								if (isReload) {
 									window.location.reload();
-								}	
+								}
+
 							}
 
-							
+
 						}
 						if (new_redirect_window == 'true'){
 							if (new_window_url != "" || new_window_url != null || new_window_url != undefined ){
 							window.open(new_window_url);
 							}
 						}
-						
+
 
 						if(noPopup){
 							doAfter();
@@ -612,72 +624,72 @@ $(document).ready(function () {
 						document.onkeydown = function(evt) {
 						    return true;
 						};
-												
-					}else{			
+
+					}else{
 						if (title){
 							title = title;
 						}else{
 							title = "An Error Occurred";
-						}	
-						
+						}
+
 						swal(title, message, "error");
-								
-						if (stable != "true"){					
+
+						if (stable != "true"){
 							window.setTimeout(function() {
-							}, 2000);	
+							}, 2000);
 						}
 						document.onkeydown = function(evt) {
 						    return true;
-						};	
-					}					
-					
+						};
+					}
+
 				},
 				error : function(data) {
-					remove_popup();	
-							
+					remove_popup();
+
 					var title = "An error occurred";
-					var message = "An error occurred. Please try again later."; 
+					var message = "An error occurred. Please try again later.";
 					document.onkeydown = function(evt) {
 					    return true;
 					};
 					swal(title, message, "error");
 				}
-			});		
+			});
 		}
 
-	});	
+	});
 
 	$('body').on("focus","input.datepickerold", function(){
 	    $(this).datepicker({
 	    	dateFormat : 'mm/dd/yy',
-	    	inline: true,  
-            showOtherMonths: true, 
+	    	inline: true,
+            showOtherMonths: true,
             changeMonth : true,
-			changeYear : true,  
-            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], 
+			changeYear : true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 	    });
 	});
 
     $('body').on('click', '[data-ma-action]', function (e) {
         e.preventDefault();
-        
+
         var action = $(this).data('ma-action');
         var $this = $(this);
-        
+
         switch (action) {
-            
+
             /*-------------------------------------------
                 Mainmenu and Notifications open/close
             ---------------------------------------------*/
-            
+
             /* Open Sidebar */
             case 'sidebar-open':
-                
+
                 var target = $(this).data('ma-target');
 
                 $this.addClass('toggled');
                 $('#main').append('<div data-ma-action="sidebar-close" class="sidebar-backdrop animated fadeIn" />')
-                
+
                 if (target == 'main-menu') {
                     $('#s-main-menu').addClass('toggled');
                 }
@@ -686,57 +698,57 @@ $(document).ready(function () {
                 }
 
                 $('body').addClass('o-hidden');
-                
+
                 break;
-            
+
             /* Close Sidebar */
             case 'sidebar-close':
-                
+
                 $('[data-ma-action="sidebar-open"]').removeClass('toggled');
                 $('.sidebar').removeClass('toggled');
                 $('.sidebar-backdrop').remove();
                 $('body').removeClass('o-hidden');
-                
-                break;
-            
 
-            
+                break;
+
+
+
             /*----------------------------------
                 Header Search
             -----------------------------------*/
-            
+
             /* Clear Search */
             case 'search-clear':
-                
+
                 /* For mobile only */
                 $('.h-search').removeClass('toggled');
-        
+
                 /* For all */
                 $('.hs-input').val('');
                 $('.h-search').removeClass('focused');
-                
+
                 break;
-            
+
             /* Open search */
             case 'search-open':
-                
+
                 $('.h-search').addClass('toggled');
                 $('.hs-input').focus();
-        
-                break;
-            
 
-            
+                break;
+
+
+
             /*----------------------------------
                 Main menu
             -----------------------------------*/
-            
+
             /* Toggle Sub menu */
             case 'submenu-toggle':
 
                 $this.next().slideToggle(200);
                 $this.parent().toggleClass('toggled');
-                
+
                 break;
 
 
@@ -776,7 +788,7 @@ $(document).ready(function () {
                 break;
 
         }
-    }); 
+    });
 });
 
 /* form validation*/

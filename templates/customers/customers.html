@@ -32,11 +32,16 @@
 	                        <i class="zmdi zmdi-filter-list"></i>
 	                    </a>
 	                </li>
-	                <li>
+					<li>
                         <a title="Create Customer" href="{% url 'customers:create' %}">
                             <i class="zmdi zmdi-plus"></i>
                         </a>
                     </li>
+					<li class="delete_list_item">
+						<a title="Delete selected customers" class="action-button reload selected-items-button" data-id="" href="{% url 'customers:delete_selected_customer' %}">
+							<i class="zmdi zmdi-delete"></i>
+						</a>
+					</li>
 	                {% if instances %}
     	                <li>
     	                    <a title="Select All" class="check_all" href="">
@@ -59,14 +64,14 @@
                                 <th data-column-id="id" data-type="numeric">ID</th>
                                 <th>Name</th>
                                 <th>Phone</th>
-                                <th>Email</th>
-                                <th>Address</th>
+								<th>Email</th>
+								<th>Address</th>
                                 <th data-column-id="action">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         	{% load el_pagination_tags %}
-                            {% paginate 10 instances %}
+							{% paginate 21 instances %}
                         	{% for instance in instances %}
                             <tr class="check_items_row">
                             	<td style="width:20px;">
@@ -80,8 +85,8 @@
                                 <td><a href="{% url 'customers:customer' pk=instance.pk %}">{{instance.auto_id}}</a></td>
                                 <td>{{instance.name}}</td>
                                 <td>{{instance.phone}}</td>
-                                <td>{{instance.email}}</td>
-                                <td>{{instance.address}}</td>
+								<td>{{instance.email}}</td>
+								<td>{{instance.address}}</td>
                                 <td>
                                 	<a href="{% url 'customers:customer' pk=instance.pk %}" class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-eye"></i></a>
                                 	<a href="{% url 'customers:edit' pk=instance.pk %}" class="btn btn-default btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-edit"></i></a>

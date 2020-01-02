@@ -109,14 +109,19 @@
                                             <label class="error">{{ form.discount.errors.as_text }}</label>
                                         {% endif %}
                                     </div>
+
 									<div class="form-group fg-line">
-										<label for="customer_email">Customer Email</label>
-										<input type="text" id="customer_email" class="form-control" placeholder="Customer Email" disabled />
-                                    </div>
+										<label for="customer_email">E-mail</label>
+										<input class="form-control"type="text" id="customer_email" placeholder="Customer E-mail" value="" disabled>
+									</div>
 									<div class="form-group fg-line">
-										<label for="customer_phone">Customer Phone</label>
-										<input type="text" id="customer_phone" class="form-control" placeholder="Customer Phone" disabled />
-                                    </div>
+										<label for="customer_phone">Phone</label>
+										<input class="form-control"type="text" id="customer_phone" placeholder="Customer Phone" value="" disabled>
+									</div>
+									<div class="form-group fg-line m-b-0">
+										<label for="customer_address">Addresss</label>
+										<input class="form-control"type="text" id="customer_address" placeholder="Customer Addresss" value="" disabled>
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +134,7 @@
                                             <tr>
                                                 <th data-column-id="product">Product</th>
                                                 <th data-column-id="stock">Stock</th>
-												<th data-column-id="qty">Qty</th>
+                                                <th data-column-id="qty">Quantity</th>
                                                 <th class="one"></th>
                                             </tr>
                                         </thead>
@@ -142,9 +147,9 @@
                                                         {{ item.product }}
                                                     </span>
                                                 </td>
-												<td>
-                                                    <span class="sale_item_stock check_empty p-relative">
-                                                        <input type="text" class="form-control" value="0" disabled>
+                                                <td style="width:30%;" >
+                                                    <span class="sale_item_stock p-relative">
+                                                       <input type="text" class="form-control" disabled value="0"/>
                                                     </span>
                                                 </td>
                                                 <td>
@@ -173,7 +178,6 @@
 
 {% block static %}
 	{% load static %}
-
 	<script type="text/javascript" src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -185,82 +189,83 @@
                 prefix: '{{ sale_item_formset.prefix }}',
                 formCssClass: 'dynamic-formset1',
                 'added' : function (row) {
-					row.find('.sale_item_select').val(null).trigger('change');
-					row.find('.select2-selection').click();
+					row.find('.sale_item select').val(null).trigger('change');
+                    row.find('.seclet2-selection').click();
                 }
             });
-        });
+          });
 
-		$('#id_customer').on('change', function(){
-			var $this = $(this);
-			get_customer_data($this);
-		});
-		
-		$('.sale_item select').on('change', function(){
-			var $this = $(this);
-			getProductInfo($this);
-		});
+		  $('#id_customer').on('change', function(){
+			 let $this = $(this);
+			 get_customer_data($this);
+		  });
 
-		function get_customer_data(element){
-			var customer_id = element.val();
+          $('.sale_item select').on('change', function(){
+			 let $this = $(this);
+			 get_product_data($this);
+		  });          
 
-			if (customer_id != undefined || customer_id != ""){
-				var url = "{% url 'customers:get_customer' %}";
+
+		  function get_customer_data(element){
+			let customer_id = element.val();
+			if (customer_id != undefined && customer_id != null && customer_id !=""){
+
+				let url = "{% url 'customers:get_customer' %}";
 				$.ajax({
-                   type : "GET",
-                   url : url,
-                   dataType :'json',
-                   data : {
-                       "id" : customer_id,
-                   },
-                   success : function(data){
-                       var status = data['status'];
-					   if(status =='true'){
-						   // assign object key-values into variables
-						   var name = data.name;
-						   var email = data.email;
-						   var phone = data.phone;
-						   var address = data.address;
+					type : "GET",
+					url : url,
+					dataType : 'json',
+					data :{
+						id : customer_id,
+					},
+					success : function(data){
+						let status = data['status'];
+						if(status == 'true'){ 
+							$('#customer_email').val(data['email']);
+                            $('#customer_phone').val(data['phone']);
+                            $('#customer_address').val(data['address']);
+						}
+					},
+					error : function(){
 
-							// insert var value into input field
-						   $("#customer_name").val(name);
-						   $("#customer_email").val(email);
-						   $("#customer_phone").val(phone);
-						   $("#customer_address").val(address);
-					   }
-                   },
-                   error : function(data){
-                       var status = data['status'];
-                   }
-               });
-			};
-		};
-		
-		function getProductInfo($selector){
-			var url = "{% url 'products:get_product' %}";
-			var product_id = $selector.val();
-			var $parent = $selector.parents('tr.form_set_row');
-			if(product_id != '' && product_id != null){
-				$.ajax({
-                   type : "GET",
-                   url : url,
-                   dataType :'json',
-                   data : {
-                       "id" : product_id,
-                   },
-                   success : function(data){
-                       var status = data['status'];
-					   if(status =='true'){
-						   var stock = data.stock;
-						   $parent.find('.sale_item_stock input').val(stock);
-					   }
-                   },
-                   error : function(data){
-                       var status = data['status'];
-                   }
-               });
-		   }
-		}
+					}
+				});
+			}else if (customer_id == undefined || customer_id == null || customer_id == ""){
+                $('#customer_email').val('');
+                $('#customer_phone').val('');
+                $('#customer_address').val('');
+            }
+		  }
+
+          function get_product_data($element2){
+            let product_id = $element2.val();
+            let parent = $element2.parents('tr.form_set_row');
+            if (product_id != undefined && product_id != null && product_id !=""){
+
+            let url = "{% url 'products:get_product' %}";
+            $.ajax({
+                type : "GET",
+                url : url,
+                dataType : 'json',
+                data :{
+                    id : product_id,
+                },
+                success : function(data){
+                    let status = data['status'];
+                    if(status == 'true'){ 
+                        let stock = data['stock'];
+                        console.log(stock);
+                        parent.find('.sale_item_stock input').val(stock);
+                    }
+                },
+                error : function(){
+
+                }
+            });
+            }else if (product_id == undefined || product_id == null || product_id == ""){
+                
+            }
+          }
     </script>
-    {{form.media}}
+	{{ form.media }}
 {% endblock %}

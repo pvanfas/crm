@@ -39,18 +39,18 @@
                     </div>
 
                     <div class="card-body">
-						
-						{% if instance.photo %}
-						<div class="list-group-item media">
-							<div class="media-body">
-								<img src="{{instance.photo.crop.200x200}}" alt="{{instance.name}}" class="img-responsive img-circle" style="margin: 0 auto;">
-							</div>
-						</div>
-						{% else %}
-						<p class="text-center">Photo of {{instance.name}} is not Found</p>
-						{% endif %}
-						
                         <div class="list-group lg-alt c-overflow">
+                            {% if instance.photo%}
+						        <div class="list-group-item media">
+						            <div class="media-body">
+						                <!-- <div class="lgi-heading">Photo</div> -->
+						                <img src="{{instance.photo.crop.200x200}}" alt="{{instance.name}}" class="img-responsive img-circle" style="margin: 0 auto;">
+						            </div>
+						        </div>
+						    {% else %}
+						        <p class="text-center">Photo not Found</p>
+						    {% endif %}
+
                             <div class="list-group-item media">
                                 <div class="media-body">
                                     <div class="lgi-heading">Name</div>
@@ -64,21 +64,18 @@
                                     <small class="lgi-text">{{instance.phone}}</small>
                                 </div>
                             </div>
-
-                            <div class="list-group-item media">
+							<div class="list-group-item media">
                                 <div class="media-body">
                                     <div class="lgi-heading">Email</div>
                                     <small class="lgi-text">{{instance.email}}</small>
                                 </div>
                             </div>
-
-                            <div class="list-group-item media">
+							<div class="list-group-item media">
                                 <div class="media-body">
-                                    <div class="lgi-heading">Address</div>
+                                    <div class="lgi-heading">address</div>
                                     <small class="lgi-text">{{instance.address}}</small>
                                 </div>
                             </div>
-							
                         </div>
                     </div>
                 </div>

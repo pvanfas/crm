@@ -29,7 +29,7 @@
                             <i class="zmdi zmdi-delete"></i>
                         </a>
                     </li>
-                </ul>
+                </ul> 
             </div>
 
             <div id="c-grid" class="clearfix" data-columns="2">
@@ -57,7 +57,7 @@
                             <div class="list-group-item media">
                                 <div class="media-body">
                                     <div class="lgi-heading">Subtotal</div>
-                                    <small class="lgi-text">{{instance.subtotal}}</small>
+                                    <small class="lgi-text">{{instance.sub_total}}</small>
                                 </div>
                             </div>
 
@@ -102,7 +102,7 @@
                                         <td>{{i.product}}</td>
                                         <td>{{i.qty}}</td>
                                         <td>{{i.product.price}}</td>
-                                        <td>{{i.subtotal }}</td>
+                                        <td>{{i.sub_total|to_fixed_two}}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

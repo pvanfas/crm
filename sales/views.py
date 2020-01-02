@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from main.decorators import check_mode, ajax_required
 from main.functions import get_auto_id, generate_form_errors, get_a_id
@@ -11,36 +13,21 @@ from django.db.models import Sum, Q
 from django.contrib.auth.models import Group
 import datetime
 from django.utils import timezone
+from django.forms.formsets import formset_factory
+from django.forms.models import inlineformset_factory
+from django.forms.widgets import TextInput, Select
 from decimal import Decimal
 from sales.models import Sale, SaleItem
 from sales.forms import SaleForm, SaleItemForm
-from django.forms.models import inlineformset_factory
-from django.forms.widgets import TextInput,Select
-from django.forms.formsets import formset_factory
+from sales.functions import update_stock
 from products.models import Product
-from customers.models import Customer
-from products.functions import update_stock
 from dal import autocomplete
-
-
-class CustomerAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return Customer.objects.none()
-
-        items = Customer.objects.filter(is_deleted=False)
-
-        if self.q:
-            query = self.q
-            items = items.filter(Q(name__icontains=query) | Q(phone__icontains=query) | Q(email__icontains=query) | Q(address__icontains=query))
-        return items
 
 
 @login_required
 def create(request):
     SaleItemFormset = formset_factory(SaleItemForm,extra=1)
-
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SaleForm(request.POST)
         sale_item_formset = SaleItemFormset(request.POST,prefix="sale_item_formset")
         if form.is_valid() and sale_item_formset.is_valid():
@@ -79,62 +66,63 @@ def create(request):
                 data.auto_id = get_auto_id(Sale)
                 data.save()
 
-                subtotal = 0
+                sub_total = 0
                 for key, value in items.iteritems():
                     product = Product.objects.get(pk=key)
                     qty = value["qty"]
                     price = product.price
                     sub = (qty * price)
-                    subtotal += sub
+                    sub_total += sub
 
                     SaleItem(
-                        sale = data,
                         product = product,
-                        qty = qty
+                        qty = qty,
+                        sale = data
                     ).save()
 
                     update_stock(product.pk,qty,"decrease")
 
-                total = subtotal - discount
+                total = sub_total - discount
 
-                data.subtotal = subtotal
+                data.sub_total = sub_total
                 data.total = total
                 data.save()
 
                 response_data = {
-                    "status" : "true",
-                    "title" : "Successfully Created",
-                    "message" : "Sale Successfully Created.",
+    				"status" : "true",
+    				"title" : "Successfully Created",
+    				"message" : "Sale Successfully Created.",
                     "redirect" : "true",
-                    "redirect_url" : reverse('sales:sale',kwargs={'pk':data.pk})
-                }
+                    "redirect_url" : reverse('sales:sale',kwargs={"pk":data.pk})
+
+            	}
             else:
                 response_data = {
                     "status" : "false",
                     "stable" : "true",
                     "title" : "Out of Stock",
                     "message" : error_message
-                }
+                    }
         else:
             message = generate_form_errors(form,formset=False)
             message += generate_form_errors(sale_item_formset,formset=True)
             response_data = {
-                "status" : "false",
-                "stable" : "true",
-                "title" : "Form validation error",
-                "message" : message
-            }
+				"status" : "false",
+				"stable" : "true",
+				"title" : "Form validation error",
+				"message" : message
+			}
 
         return HttpResponse(json.dumps(response_data), content_type='application/javascript')
     else:
         form = SaleForm()
         sale_item_formset = SaleItemFormset(prefix="sale_item_formset")
         context = {
-            "title" : "Create Sale",
             "form" : form,
             "sale_item_formset" : sale_item_formset,
-            "url" : reverse('sales:create'),
+            "title" : "Create Sale",
             "redirect" : True,
+            "url" : reverse('sales:create'),
             "is_create_page" : True,
 
             "is_need_select_picker" : True,
@@ -145,7 +133,9 @@ def create(request):
             "is_need_chosen_select" : True,
             "is_need_grid_system" : True,
             "is_need_datetime_picker" : True,
+            "is_need_animations": True,
         }
+
         return render(request,'sales/entry.html',context)
 
 
@@ -163,21 +153,19 @@ def edit(request,pk):
         SaleItem,
         can_delete = True,
         extra = extra,
-        exclude=('sale',),
+        exclude = ['creator','updater','auto_id','is_deleted','sale',],
         widgets = {
-            'product': autocomplete.ModelSelect2(url='products:product_autocomplete',attrs={'data-placeholder': 'Product','data-minimum-input-length': 1},),
+            'product' : autocomplete.ModelSelect2(url='products:product_autocomplete',attrs={'data-placeholder': 'Product','data-minimum-input-length': 0},),
             'qty': TextInput(attrs={'class': 'required number form-control','placeholder' : 'Quantity'}),
         }
     )
-
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SaleForm(request.POST,instance=instance)
         sale_item_formset = SaleItemFormset(request.POST,prefix='sale_item_formset',instance=instance)
 
         if form.is_valid() and sale_item_formset.is_valid():
 
             items = {}
-
             for f in sale_item_formset:
                 if f not in sale_item_formset.deleted_forms:
                     product = f.cleaned_data['product']
@@ -191,6 +179,20 @@ def edit(request,pk):
                             "qty" : qty
                         }
                         items[str(product.pk)] = dic
+
+            stock_ok = True
+            error_message = ''
+            for key, value in items.iteritems():
+                product = Product.objects.get(pk=key)
+                prev_qty = 0
+                if SaleItem.objects.filter(sale=instance,product=product).exists():
+                    prev_qty = SaleItem.objects.get(sale=instance,product=product).qty
+                stock = product.stock + prev_qty
+
+                product_qty = value['qty']
+                if product_qty > stock:
+                    stock_ok = False
+                    error_message += "%s has only %s in stock, You entered %s qty" %(product.name,str(stock),str(qty))
 
             stock_ok = True
             error_message = ''
@@ -230,8 +232,8 @@ def edit(request,pk):
                     product = Product.objects.get(pk=key)
                     qty = value["qty"]
                     price = product.price
-                    subtotal = (qty * price)
-                    all_subtotal += subtotal
+                    sub_total = (qty * price)
+                    all_subtotal += sub_total
                     SaleItem(
                         sale = data,
                         product = product,
@@ -242,7 +244,7 @@ def edit(request,pk):
 
                 total = all_subtotal - discount
 
-                data.subtotal = all_subtotal
+                data.sub_total = all_subtotal
                 data.total = total
                 data.save()
 
@@ -261,7 +263,6 @@ def edit(request,pk):
                     "message" : error_message
                 }
         else:
-            print("Error")
             message = generate_form_errors(form,formset=False)
             message += generate_form_errors(sale_item_formset,formset=True)
             response_data = {
@@ -272,17 +273,16 @@ def edit(request,pk):
             }
 
         return HttpResponse(json.dumps(response_data), content_type='application/javascript')
-
     else:
         form = SaleForm(instance=instance)
-        sale_item_formset = SaleItemFormset(prefix="sale_item_formset",instance=instance)
+        sale_item_formset =SaleItemFormset(prefix='sale_item_formset',instance=instance)
         context = {
             "form" : form,
             "title" : "Edit Sale #: " + str(instance.auto_id),
-            'instance': instance,
-            "url" : reverse('sales:edit',kwargs={'pk':instance.pk}),
+            "instance" : instance,
             "sale_item_formset" : sale_item_formset,
             "redirect" : True,
+            "url" : reverse('sales:edit',kwargs={"pk":instance.pk}),
 
             "is_need_select_picker" : True,
             "is_need_popup_box" : True,
@@ -292,15 +292,38 @@ def edit(request,pk):
             "is_need_chosen_select" : True,
             "is_need_grid_system" : True,
             "is_need_datetime_picker" : True,
+            "is_need_animations": True,
         }
-    return render(request,'sales/entry.html',context)
+
+        return render(request,'sales/entry.html',context)
+
+
+@login_required
+def sale(request,pk):
+    instance = get_object_or_404(Sale.objects.filter(pk=pk))
+    sale_items = SaleItem.objects.filter(sale=instance)
+    context = {
+        "title" : "Sale : " + str(instance.auto_id),
+        "instance" : instance,
+        "sale_items" :sale_items,
+
+        "is_need_select_picker" : True,
+        "is_need_popup_box" : True,
+        "is_need_custom_scroll_bar" : True,
+        "is_need_wave_effect" : True,
+        "is_need_bootstrap_growl" : True,
+        "is_need_chosen_select" : True,
+        "is_need_grid_system" : True,
+        "is_need_datetime_picker" : True,
+        "is_need_animations": True,
+    }
+    return render(request,'sales/sale.html',context)
 
 
 @login_required
 def sales(request):
-    instances = Sale.objects.filter(is_deleted = False)
+    instances = Sale.objects.filter(is_deleted=False)
     query = request.GET.get('q')
-
     if query:
         instances = instances.filter(Q(customer__name__icontains=query) | Q(customer__phone__icontains=query) | Q(customer__email__icontains=query) | Q(customer__address__icontains=query))
 
@@ -318,51 +341,57 @@ def sales(request):
         "is_need_datetime_picker" : True,
         "is_need_animations": True,
     }
-
-    return render(request, 'sales/sales.html', context)
-
-
-@login_required
-def sale(request,pk):
-    instance = get_object_or_404(Sale.objects.filter(pk=pk))
-    sale_items = SaleItem.objects.filter(sale=instance)
-    context = {
-        "title" : "sale: " + str(instance.auto_id),
-        "instance" : instance,
-        "sale_items" : sale_items,
-
-        "is_need_select_picker" : True,
-        "is_need_popup_box" : True,
-        "is_need_custom_scroll_bar" : True,
-        "is_need_wave_effect" : True,
-        "is_need_bootstrap_growl" : True,
-        "is_need_chosen_select" : True,
-        "is_need_grid_system" : True,
-        "is_need_datetime_picker" : True,
-        "is_need_animations": True,
-    }
-
-    return render(request, 'sales/sale.html', context)
+    return render(request,'sales/sales.html',context)
 
 
 @login_required
+@ajax_required
 def delete(request,pk):
     instance = get_object_or_404(Sale.objects.filter(pk=pk))
 
     #update stock
-    sale_items =SaleItem.objects.filter(sale=instance)
-    for product in sale_items:
-        qty = product.qty
-        update_stock(product.product.pk,qty,"increase")
+    sale_items = SaleItem.objects.filter(sale=instance)
+    for p in sale_items:
+        qty = p.qty
+        update_stock(p.product.pk,qty,"increase")
 
-        instance.is_deleted = True
-        instance.save()
+    instance.is_deleted = True
+    instance.save()
 
     response_data = {
-         "status" : "true",
-         "title" : "Successfully Deleted",
-         "message" : "Sale successfully Deleted",
-         "redirect" : "true",
-         "redirect_url" : reverse('sales:sales')
+        "status" : "true",
+        "title" : "Successfully Deleted",
+        "message" : "Sale Successfully Deleted.",
+        "redirect" : "true",
+        "redirect_url" : reverse('sales:sales')
     }
+    return HttpResponse(json.dumps(response_data), content_type='application/javascript')
+
+
+@login_required
+def delete_selected_sale(request):
+    pks = request.GET.get('pk')
+    print(pks)
+    if pks:
+        pks = pks[:-1]
+
+        pks = pks.split(',')
+        for pk in pks:
+            instance = get_object_or_404(Sale.objects.filter(pk=pk,is_deleted=False))
+            instance.is_deleted = True
+            instance.save()
+
+        response_data = {
+            "status" : "true",
+            "title" : "Successfully Deleted",
+            "message" : "Selected Sale(s) Successfully Deleted.",
+
+        }
+    else:
+        response_data = {
+            "status" : "false",
+            "title" : "Nothing selected",
+            "message" : "Please select some items first.",
+        }
+
     return HttpResponse(json.dumps(response_data), content_type='application/javascript')

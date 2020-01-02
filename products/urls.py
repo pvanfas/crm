@@ -1,6 +1,8 @@
 from django.conf.urls import url,include
-import views
+from . import views
 from products.views import ProductAutocomplete
+
+app_name = 'products'
 
 urlpatterns = [
     url(r'^product-autocomplete/$',ProductAutocomplete.as_view(),name='product_autocomplete',),
@@ -9,5 +11,9 @@ urlpatterns = [
     url(r'^$', views.products, name='products'),
     url(r'^view/(?P<pk>.*)/$', views.product, name='product'),
     url(r'^delete/(?P<pk>.*)/$', views.delete, name='delete'),
+
     url(r'^get-product/$', views.get_product, name='get_product'),
+    url(r'^delete-selected-products/$', views.delete_selected_products, name='delete_selected_products'),
+
+
 ]
