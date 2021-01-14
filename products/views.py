@@ -1,32 +1,16 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from main.decorators import ajax_required
 from main.functions import get_auto_id, generate_form_errors
-import json
-from django.db.models import Q
-import datetime
 from products.models import Product
 from products.forms import ProductForm
-from dal import autocomplete
+import datetime
+import json
 
-
-class ProductAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return Product.objects.none()
-
-        items = Product.objects.filter(is_deleted=False)
-
-        if self.q:
-            query = self.q
-            items = items.filter(Q(name__icontains=query))
-             #| Q(phone__icontains=query) | Q(email__icontains=query) | Q(address__icontains=query)
-
-        return items
 
 @login_required
 def create(request):

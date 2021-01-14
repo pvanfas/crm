@@ -29,5 +29,5 @@ class Mode(models.Model):
     class Admin:
         list_display = ('id', 'readonly', 'maintenance', 'down')
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.id)

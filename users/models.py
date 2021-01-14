@@ -24,7 +24,7 @@ class Notification(models.Model):
     class Admin:
         list_display = ('subject',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.subject.name
 
 
@@ -41,7 +41,7 @@ class NotificationSubject(models.Model):
     class Admin:
         list_display = ('name',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -59,5 +59,5 @@ class Permission(models.Model):
     class Admin:
         list_display = ('id', 'name', 'code', 'app')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name + ' - ' + self.app

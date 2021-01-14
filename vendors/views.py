@@ -11,22 +11,7 @@ from django.db.models import Q
 import datetime
 from vendors.models import Vendor
 from vendors.forms import VendorForm
-from dal import autocomplete
 
-
-class VendorAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return Vendor.objects.none()
-
-        items = Vendor.objects.filter(is_deleted=False)
-
-        if self.q:
-            query = self.q
-            items = items.filter(Q(name__icontains=query) | Q(phone__icontains=query) | Q(email__icontains=query) | Q(address__icontains=query)
-)
-
-        return items
 
 @login_required
 def create(request):
@@ -58,7 +43,7 @@ def create(request):
 
         return HttpResponse(json.dumps(response_data), content_type='application/javascript')
     else:
-        form = VendorForm(initial={"name" : "Shibil",})
+        form = VendorForm()
         context = {
             "form" : form,
             "title" : "Create Vendor",

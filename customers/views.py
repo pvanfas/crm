@@ -8,24 +8,9 @@ from main.decorators import ajax_required
 from main.functions import get_auto_id, generate_form_errors
 from customers.models import Customer
 from customers.forms import CustomerForm
-from dal import autocomplete
 import json
 import datetime
 
-
-class CustomerAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return Customer.objects.none()
-
-        items = Customer.objects.filter(is_deleted=False)
-
-        if self.q:
-            query = self.q
-            items = items.filter(Q(name__icontains=query) | Q(phone__icontains=query) | Q(email__icontains=query) | Q(address__icontains=query)
-)
-
-        return items
 
 @login_required
 def create(request):
@@ -57,7 +42,7 @@ def create(request):
 
         return HttpResponse(json.dumps(response_data), content_type='application/javascript')
     else:
-        form = CustomerForm(initial={"name" : "Shibil",})
+        form = CustomerForm()
         context = {
             "form" : form,
             "title" : "Create Customer",

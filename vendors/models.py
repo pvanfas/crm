@@ -18,5 +18,5 @@ class Vendor(BaseModel):
         verbose_name_plural = _('vendors ')
         ordering = ('-date_added','name',)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.name)

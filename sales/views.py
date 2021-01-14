@@ -10,12 +10,12 @@ from django.db.models import Q
 import datetime
 from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
-from django.forms.widgets import TextInput
+from django.forms.widgets import TextInput, Select
 from sales.models import Sale, SaleItem
 from sales.forms import SaleForm, SaleItemForm
 from sales.functions import update_stock
 from products.models import Product
-from dal import autocomplete
+
 
 
 @login_required
@@ -43,7 +43,7 @@ def create(request):
             # Checking the stock available for this product
             stock_ok = True
             error_message = ''
-            for key, value in items.iteritems():
+            for key, value in items.items():
                 product = Product.objects.get(pk=key)
                 stock = product.stock
                 qty = value['qty']
@@ -61,7 +61,7 @@ def create(request):
                 data.save()
 
                 sub_total = 0
-                for key, value in items.iteritems():
+                for key, value in items.items():
                     product = Product.objects.get(pk=key)
                     qty = value["qty"]
                     price = product.price
@@ -149,7 +149,7 @@ def edit(request,pk):
         extra = extra,
         exclude = ['creator','updater','auto_id','is_deleted','sale',],
         widgets = {
-            'product' : autocomplete.ModelSelect2(url='products:product_autocomplete',attrs={'data-placeholder': 'Product','data-minimum-input-length': 0},),
+            'product' : Select(attrs={'class': 'required form-control','data-placeholder': 'Product'},),
             'qty': TextInput(attrs={'class': 'required number form-control','placeholder' : 'Quantity'}),
         }
     )
@@ -176,7 +176,7 @@ def edit(request,pk):
 
             stock_ok = True
             error_message = ''
-            for key, value in items.iteritems():
+            for key, value in items.items():
                 product = Product.objects.get(pk=key)
                 prev_qty = 0
                 if SaleItem.objects.filter(sale=instance,product=product).exists():
@@ -190,7 +190,7 @@ def edit(request,pk):
 
             stock_ok = True
             error_message = ''
-            for key, value in items.iteritems():
+            for key, value in items.items():
                 product = Product.objects.get(pk=key)
                 prev_qty = 0
                 if SaleItem.objects.filter(sale=instance,product=product).exists():
@@ -222,7 +222,7 @@ def edit(request,pk):
                 previous_sale_items.delete()
 
                 #save items
-                for key, value in items.iteritems():
+                for key, value in items.items():
                     product = Product.objects.get(pk=key)
                     qty = value["qty"]
                     price = product.price

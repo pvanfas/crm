@@ -18,5 +18,5 @@ class Customer(BaseModel):
         verbose_name_plural = _('customers ')
         ordering = ('-date_added','name',)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.name)

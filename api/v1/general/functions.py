@@ -1,6 +1,6 @@
 def generate_serializer_errors(args):
 	message = ''
-	for key,values in args.iteritems():
+	for key,values in args.items():
 		error_message = ""
 		for value in values:
 			error_message +=value + ","

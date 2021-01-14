@@ -13,9 +13,6 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1']
 INSTALLED_APPS = [
 	'registration',
     'mailqueue',
-    'el_pagination',
-	'dal',
-    'dal_select2',
 	'rest_framework',
 	'versatileimagefield',
 
@@ -151,19 +148,16 @@ REGISTRATION_AUTO_LOGIN = True
 
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.webfaction.com'
-EMAIL_HOST_USER = 'no_reply_talrop'
-EMAIL_HOST_PASSWORD = '**noreplytalrop00'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'no-reply@talrop.com'
-DEFAULT_BCC_EMAIL = 'allemails@talrop.com'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+DEFAULT_BCC_EMAIL = config('DEFAULT_BCC_EMAIL')
 
-DEFAULT_REPLY_TO_EMAIL = 'no-reply@talrop.com'
-SERVER_EMAIL = 'no-reply@talrop.com'
-ADMIN_EMAIL = 'no-reply@talrop.com'
-
-ENDLESS_PAGINATION_PER_PAGE = 20
-
+DEFAULT_REPLY_TO_EMAIL = config('DEFAULT_REPLY_TO_EMAIL')
+SERVER_EMAIL = config('SERVER_EMAIL')
+ADMIN_EMAIL = config('ADMIN_EMAIL')
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'

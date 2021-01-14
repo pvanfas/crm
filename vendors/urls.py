@@ -1,11 +1,9 @@
 from django.urls import path
 from . import views
-from vendors.views import VendorAutocomplete
 
 app_name = 'vendors'
 
 urlpatterns = [
-    path('vendor-autocomplete/',VendorAutocomplete.as_view(),name='vendor_autocomplete',),
     path('create/', views.create, name='create'),
     path('edit/<str:pk>/', views.edit, name='edit'),
     path('', views.vendors, name='vendors'),

@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from main.models import BaseModel
 from django.core.validators import MinValueValidator
 from decimal import Decimal
@@ -16,11 +14,11 @@ class Sale(BaseModel):
 
     class Meta:
         db_table = 'sales_sale'
-        verbose_name = _('sale')
-        verbose_name_plural = _('sales')
+        verbose_name = ('sale')
+        verbose_name_plural = ('sales')
         ordering = ('-date',)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.auto_id)
 
 
@@ -31,12 +29,12 @@ class SaleItem(models.Model):
 
     class Meta:
         db_table = 'sales_sale item'
-        verbose_name = _('sale item')
-        verbose_name_plural = _('sale items')
+        verbose_name = ('sale item')
+        verbose_name_plural = ('sale items')
         ordering = ('sale',)
 
     def sub_total (self):
         return(self.qty * self.product.price)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.sale.auto_id)
