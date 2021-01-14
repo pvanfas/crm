@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n %}{% load static %}
 {% load main_template_tags %}
 {% load users_template_tags %}
 {% load tz %}
@@ -29,7 +29,7 @@
                             <i class="zmdi zmdi-delete"></i>
                         </a>
                     </li>
-                </ul> 
+                </ul>
             </div>
 
             <div id="c-grid" class="clearfix" data-columns="2">
@@ -112,8 +112,4 @@
                 </div>
             {% endif %}
     </section>
-{% endblock %}
-
-{% block static %}
-	{% load static %}
 {% endblock %}

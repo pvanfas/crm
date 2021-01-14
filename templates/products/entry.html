@@ -47,7 +47,7 @@
                 </ul>
             </div>
 
-            
+
             <form class="ajax reset {% if redirect %}redirect{% endif %}" method="post" action="{{url}}">
             	{% csrf_token %}
                     <div class="row">
@@ -137,8 +137,8 @@
     </section>
 {% endblock %}
 
-{% block static %}
-	{% load static %}
+{% block javascript %}
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('input[type=text]').focus(function () {

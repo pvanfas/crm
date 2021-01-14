@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 
 {% block content %}
 	<section id="content">
@@ -141,13 +141,13 @@
                                         <tbody>
                                             {% for item in sale_item_formset.forms %}
                                             <tr class="form_set_row">
-                                                <td style="width:30%;" >
+                                                <td style="width:40%;" >
                                                     {{ item.id }}
                                                     <span class="sale_item p-relative">
                                                         {{ item.product }}
                                                     </span>
                                                 </td>
-                                                <td style="width:30%;" >
+                                                <td style="width:20%;" >
                                                     <span class="sale_item_stock p-relative">
                                                        <input type="text" class="form-control" disabled value="0"/>
                                                     </span>
@@ -176,8 +176,8 @@
     </section>
 {% endblock %}
 
-{% block static %}
-	{% load static %}
+{% block javascript %}
+
 	<script type="text/javascript" src="{% static 'js/jquery.formset.js' %}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -203,7 +203,7 @@
           $('.sale_item select').on('change', function(){
 			 let $this = $(this);
 			 get_product_data($this);
-		  });          
+		  });
 
 
 		  function get_customer_data(element){
@@ -220,7 +220,7 @@
 					},
 					success : function(data){
 						let status = data['status'];
-						if(status == 'true'){ 
+						if(status == 'true'){
 							$('#customer_email').val(data['email']);
                             $('#customer_phone').val(data['phone']);
                             $('#customer_address').val(data['address']);
@@ -252,7 +252,7 @@
                 },
                 success : function(data){
                     let status = data['status'];
-                    if(status == 'true'){ 
+                    if(status == 'true'){
                         let stock = data['stock'];
                         console.log(stock);
                         parent.find('.sale_item_stock input').val(stock);
@@ -263,7 +263,7 @@
                 }
             });
             }else if (product_id == undefined || product_id == null || product_id == ""){
-                
+
             }
           }
     </script>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 
 {% block content %}
 	<section id="content">
@@ -163,8 +163,8 @@
     </section>
 {% endblock %}
 
-{% block static %}
-	{% load static %}
+{% block javascript %}
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('input[type=text]').focus(function () {

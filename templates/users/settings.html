@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 {% block content %}
 	<section id="content">
         <div class="container">
@@ -314,8 +314,8 @@
     </section>
 {% endblock %}
 
-{% block static %}
-	{% load static %}
+{% block javascript %}
+
 	<script src="{% static 'vendors/fileinput/fileinput.min.js' %}"></script>
 	<script>
 		$(document).ready(function(){

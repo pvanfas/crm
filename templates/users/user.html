@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 {% block title %} {{title}} {% endblock %}
 
 {% block content %}
@@ -35,8 +35,8 @@
                 {% if  is_superuser or 'can_delete_user' in user_instance.permissionlist %}
                 <li>
                     <a title="Delete User" data-id="{{instance.pk}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'users:delete_user' pk=instance.pk %}" class="action-button redirect"><i class="zmdi zmdi-delete"></i></a>
-                </li>  
-                {% endif %}    
+                </li>
+                {% endif %}
             </ul>
        	 </div>
         <div id="c-grid" class="clearfix" data-columns="2">
@@ -47,7 +47,7 @@
 
                 <div class="card-body">
                     <div class="list-group lg-alt c-overflow">
-                    	
+
                         <div class="list-group-item media">
 
                             <div class="media-body">
@@ -55,7 +55,7 @@
                                 <small class="lgi-text">{{instance.username}}</small>
                             </div>
                         </div>
-                        
+
                         <div class="list-group-item media">
 
                             <div class="media-body">
@@ -72,16 +72,12 @@
                         </div>
 					</div>
 				</div>
-            </div> 
-        </div>       
+            </div>
+        </div>
    </div>
 </section>
 {% endblock %}
 
 {% block right_menu %}
-	
-{% endblock %}
 
-{% block static %}
-	{% load static %}
 {% endblock %}

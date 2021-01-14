@@ -1,7 +1,6 @@
-
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 {% block title %} Error 404! {% endblock %}
 
 {% block content %}
@@ -18,8 +17,8 @@
 
 {% endblock %}
 
-{% block static %}
-	{% load static %}
+{% block styles %}
+
 	<style>
 		div.card img {
 			margin: 0 auto !important;

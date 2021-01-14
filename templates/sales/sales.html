@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 
 {% block content %}
 	<section id="content">
@@ -71,8 +71,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	{% load el_pagination_tags %}
-							{% paginate 21 instances %}
+
+
                         	{% for instance in instances %}
                             <tr class="check_items_row">
                             	<td style="width:20px;">
@@ -100,23 +100,7 @@
                     </table>
                 </div>
 
-                <!--pagination -->
-                <div class="bootgrid-footer container-fluid" id="data-table-selection-footer">
-                	{% get_pages %}
-                	<div class="row">
-                		<div class="col-sm-6">
-                			<div class="pagination">
-                				{% show_pages %}
-                			</div>
-                		</div>
-                		<div class="col-sm-6 infoBar">
-                			<div class="infos">
-                				Showing {{title}} <span class="current_page_index">{{ pages.current_start_index }}</span> - <span class="current_end_status">{{ pages.current_end_index }}</span> of <span class="total_count">{{ pages.total_count }}</span>
-                			</div>
-                		</div>
-                	</div>
-                </div>
-                <!--pagination-->
+
                 {% else %}
                 	{% include 'includes/not_found.html' %}
                 {% endif %}
@@ -148,8 +132,4 @@
 		 </div>
 	 </form>
 </div>
-{% endblock %}
-
-{% block static %}
-	{% load static %}
 {% endblock %}

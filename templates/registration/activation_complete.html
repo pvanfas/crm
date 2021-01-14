@@ -12,13 +12,13 @@
 
     <div class="lb-body">
     	<p class="message success">
-			<p class="message center">{% trans "Your account is now activated." %} <a  href="{% url 'auth_login' %}">Login now</a></p> 
+			<p class="message center">{% trans "Your account is now activated." %} <a  href="{% url 'auth_login' %}">Login now</a></p>
 		</p>
     </div>
-</div>   
+</div>
 {% endblock %}
 
-{% block static %}
+{% block javascript %}
 <script>
 	$(document).ready(function(){
 		$('div.login').attr('data-lbg','purple');
