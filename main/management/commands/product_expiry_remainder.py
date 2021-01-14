@@ -6,13 +6,11 @@ from users.functions import send_email
 from django.template.loader import render_to_string
 from users.models import NotificationSubject, Notification
 from products.models import Product
-import datetime
 from main.tasks import product_expiry_reminder_task
 
 
 class Command(BaseCommand):
-    
+
     def handle(self, *args, **options):
-        
+
         product_expiry_reminder_task.delay('check expiry')
-                    

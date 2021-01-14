@@ -1,5 +1,4 @@
 from users.models import Notification
-import datetime
 
 
 def main_context(request):
@@ -12,7 +11,7 @@ def main_context(request):
         user_time_zone = "Asia/Kolkata"
 
     current_theme = 'cyan-600'
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         recent_notifications = Notification.objects.filter(user=request.user,is_deleted=False)
     else:
         recent_notifications = []

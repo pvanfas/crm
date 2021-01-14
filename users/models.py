@@ -1,12 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import MinValueValidator
-from decimal import Decimal
 
 
 class Notification(models.Model):
     user = models.ForeignKey("auth.User",blank=True,null=True,related_name="user_%(class)s_objects",on_delete=models.CASCADE)
-    who = models.ForeignKey("auth.User",blank=True,null=True,related_name="who_%(class)s_objects",on_delete=models.CASCADE) 
+    who = models.ForeignKey("auth.User",blank=True,null=True,related_name="who_%(class)s_objects",on_delete=models.CASCADE)
     subject = models.ForeignKey("users.NotificationSubject",on_delete=models.CASCADE)
 
     amount = models.CharField(max_length=128,null=True,blank=True)
