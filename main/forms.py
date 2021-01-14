@@ -1,5 +1,5 @@
 from django import forms
-from django.forms.widgets import TextInput, Textarea, Select
+from django.forms.widgets import TextInput, Select
 from django.utils.translation import ugettext_lazy as _
 from main.models import Shop
 

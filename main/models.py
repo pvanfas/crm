@@ -1,7 +1,5 @@
 import uuid
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.core.validators import MinValueValidator
 
 
 class BaseModel(models.Model):
@@ -24,8 +22,8 @@ class Mode(models.Model):
 
     class Meta:
         db_table = 'mode'
-        verbose_name = _('mode')
-        verbose_name_plural = _('mode')
+        verbose_name = ('mode')
+        verbose_name_plural = ('mode')
         ordering = ('id',)
 
     class Admin:

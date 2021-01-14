@@ -3,12 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_GET
-from django.db.models import Sum,Q
-from django.contrib.auth.models import Group
-from django.utils import timezone
-from main.decorators import check_mode, ajax_required
-from main.functions import get_auto_id, generate_form_errors, get_a_id
+from django.db.models import Q
+from main.decorators import ajax_required
+from main.functions import get_auto_id, generate_form_errors
 from customers.models import Customer
 from customers.forms import CustomerForm
 from dal import autocomplete

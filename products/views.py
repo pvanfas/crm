@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
-from django.http.response import HttpResponseRedirect, HttpResponse
+from django.http.response import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from main.decorators import check_mode, ajax_required
-from main.functions import get_auto_id, generate_form_errors, get_a_id
+from main.decorators import ajax_required
+from main.functions import get_auto_id, generate_form_errors
 import json
-from django.views.decorators.http import require_GET
-from users.models import NotificationSubject, Notification
-from django.db.models import Sum,Q
-from django.contrib.auth.models import Group
+from django.db.models import Q
 import datetime
-from django.utils import timezone
-from decimal import Decimal
 from products.models import Product
 from products.forms import ProductForm
 from dal import autocomplete

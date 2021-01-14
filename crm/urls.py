@@ -2,11 +2,6 @@ from django.urls import path, include
 from django.contrib import admin
 from main import views as general_views
 from django.conf import settings
-from registration.backends.default.views import RegistrationView
-from users.forms import RegForm
-from users.backend import user_created
-from django.views.static import serve
-from django.views.generic import TemplateView
 from django.conf.urls.static import static
 
 

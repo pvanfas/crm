@@ -3,7 +3,6 @@ import datetime
 
 
 def main_context(request):
-    today = datetime.date.today()
     is_superuser = False
     if "set_user_timezone" in request.session:
         user_session_ok = True
@@ -13,7 +12,6 @@ def main_context(request):
         user_time_zone = "Asia/Kolkata"
 
     current_theme = 'cyan-600'
-    current_role = "user"
     if request.user.is_authenticated():
         recent_notifications = Notification.objects.filter(user=request.user,is_deleted=False)
     else:
@@ -21,7 +19,7 @@ def main_context(request):
 
     active_parent = request.GET.get('active_parent')
     active = request.GET.get('active')
-    
+
     return {
         'app_title' : "Default Application",
         "user_session_ok" : user_session_ok,

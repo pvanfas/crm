@@ -19,7 +19,6 @@ def check_mode(function):
     def wrap(request, *args, **kwargs):
         mode = Mode.objects.get(id=1)
         readonly = mode.readonly
-        maintenance = mode.maintenance
         down = mode.down
 
         if down:

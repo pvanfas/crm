@@ -1,14 +1,12 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.http.response import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, get_object_or_404
 import json
-from users.forms import UserForm
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from main.decorators import ajax_required,check_mode
 from users.models import Notification
-from main.functions import get_auto_id,get_a_id,generate_form_errors
-from main.decorators import check_mode,ajax_required
+from main.functions import generate_form_errors
 from django.contrib.auth.forms import PasswordChangeForm
 from django.db.models import Q
 

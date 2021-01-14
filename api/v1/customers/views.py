@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.http.response import HttpResponseRedirect, HttpResponse
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import api_view, permission_classes, renderer_classes
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from customers.models import Customer
 from api.v1.customers.serializers import CustomerSerializer

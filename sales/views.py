@@ -1,22 +1,16 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
-from django.http.response import HttpResponseRedirect, HttpResponse
+from django.http.response import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from main.decorators import check_mode, ajax_required
-from main.functions import get_auto_id, generate_form_errors, get_a_id
+from main.decorators import ajax_required
+from main.functions import get_auto_id, generate_form_errors
 import json
-from django.views.decorators.http import require_GET
-from users.models import NotificationSubject, Notification
-from django.db.models import Sum, Q
-from django.contrib.auth.models import Group
+from django.db.models import Q
 import datetime
-from django.utils import timezone
 from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
-from django.forms.widgets import TextInput, Select
-from decimal import Decimal
+from django.forms.widgets import TextInput
 from sales.models import Sale, SaleItem
 from sales.forms import SaleForm, SaleItemForm
 from sales.functions import update_stock

@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.urls import path
 from . import views
 from products.views import ProductAutocomplete
 
