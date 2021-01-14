@@ -1,19 +1,19 @@
-from django.conf.urls import url,include
+from django.urls import path,include
 from . import views
 
 app_name = 'users'
 
 urlpatterns = [
-    url(r'^$', views.dashboard, name='dashboard'),
+    path('', views.dashboard, name='dashboard'),
 
-    url(r'^check-notification/$', views.check_notification, name='check_notification'),
-    url(r'^notifications/$', views.notifications, name='notifications'),
-    url(r'^notification/delete/(?P<pk>.*)/$', views.delete_notification, name='delete_notification'),
-    url(r'^delete-selected-notifications/$', views.delete_selected_notifications, name='delete_selected_notifications'),
-    url(r'^notification/read/(?P<pk>.*)/$', views.read_notification, name='read_notification'),
-    url(r'^read-selected-notifications/$', views.read_selected_notifications, name='read_selected_notifications'),
+    path('check-notification/', views.check_notification, name='check_notification'),
+    path('notifications/', views.notifications, name='notifications'),
+    path('notification/delete/<str:pk>/', views.delete_notification, name='delete_notification'),
+    path('delete-selected-notifications/', views.delete_selected_notifications, name='delete_selected_notifications'),
+    path('notification/read/<str:pk>/', views.read_notification, name='read_notification'),
+    path('read-selected-notifications/', views.read_selected_notifications, name='read_selected_notifications'),
 
-    url(r'^set-user-timezone/$', views.set_user_timezone, name='set_user_timezone'),
+    path('set-user-timezone/', views.set_user_timezone, name='set_user_timezone'),
 
 
 ]

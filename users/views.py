@@ -1,20 +1,11 @@
 from django.http.response import HttpResponse
-import json
 from django.urls import reverse
 from django.http.response import HttpResponseRedirect, HttpResponse
 import json
 from users.forms import UserForm
-from users.models import Notification, Permission
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from main.decorators import ajax_required,check_mode
-from django.shortcuts import resolve_url, render, get_object_or_404
-from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth.tokens import default_token_generator
-from django.template.response import TemplateResponse
-from django.forms.models import modelformset_factory
-from django.contrib.auth.models import User, Group
-from django.core.mail import send_mail
 from users.models import Notification
 from main.functions import get_auto_id,get_a_id,generate_form_errors
 from main.decorators import check_mode,ajax_required

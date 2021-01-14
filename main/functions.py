@@ -1,7 +1,6 @@
 import string
 import random
 from django.http import HttpResponse
-from decimal import Decimal
 
 
 def get_client_ip(request):

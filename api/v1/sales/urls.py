@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
 app_name = 'sales'
 
 urlpatterns = [
 
-    url(r'^$', views.sales, name='sales'),
-    url(r'^view/(?P<pk>.*)/$', views.sale, name='sale'),
+    path('', views.sales, name='sales'),
+    path('view/<str:pk>/', views.sale, name='sale'),
 ]

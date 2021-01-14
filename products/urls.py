@@ -1,19 +1,19 @@
-from django.conf.urls import url,include
+from django.urls import path,include
 from . import views
 from products.views import ProductAutocomplete
 
 app_name = 'products'
 
 urlpatterns = [
-    url(r'^product-autocomplete/$',ProductAutocomplete.as_view(),name='product_autocomplete',),
-    url(r'^create/$', views.create, name='create'),
-    url(r'^edit/(?P<pk>.*)/$', views.edit, name='edit'),
-    url(r'^$', views.products, name='products'),
-    url(r'^view/(?P<pk>.*)/$', views.product, name='product'),
-    url(r'^delete/(?P<pk>.*)/$', views.delete, name='delete'),
+    path('product-autocomplete/',ProductAutocomplete.as_view(),name='product_autocomplete',),
+    path('create/', views.create, name='create'),
+    path('edit/<str:pk>/', views.edit, name='edit'),
+    path('', views.products, name='products'),
+    path('view/<str:pk>/', views.product, name='product'),
+    path('delete/<str:pk>/', views.delete, name='delete'),
 
-    url(r'^get-product/$', views.get_product, name='get_product'),
-    url(r'^delete-selected-products/$', views.delete_selected_products, name='delete_selected_products'),
+    path('get-product/', views.get_product, name='get_product'),
+    path('delete-selected-products/', views.delete_selected_products, name='delete_selected_products'),
 
 
 ]

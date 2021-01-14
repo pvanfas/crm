@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from django.utils.six import text_type
+from six import text_type
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
