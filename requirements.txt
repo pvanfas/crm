@@ -1,7 +1,7 @@
 Django==3.1.4
 django-el-pagination==3.3.0
 django-mail-queue==3.2.4
-django-registration-redux==2.8
+django-registration-redux==2.9
 django-versatileimagefield==2.0
 djangorestframework==3.12.2
 djangorestframework-simplejwt==4.6.0
