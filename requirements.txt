@@ -1,4 +1,4 @@
-Django==3.1.7
+Django==3.1.8
 django-el-pagination==3.3.0
 django-mail-queue==3.2.4
 django-registration-redux==2.9
