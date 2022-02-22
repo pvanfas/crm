@@ -1,6 +1,7 @@
 from products.models import Product
 
-def update_stock(pk,qty,status):
+
+def update_stock(pk, qty, status):
     product = Product.objects.get(pk=pk)
     stock = product.stock
     if status == "increase":
@@ -11,4 +12,4 @@ def update_stock(pk,qty,status):
     product.stock = balance_stock
     product.save()
 
-    #Product.objects.filter(pk=pk).update(stock=balance_stock) 
+    # Product.objects.filter(pk=pk).update(stock=balance_stock)

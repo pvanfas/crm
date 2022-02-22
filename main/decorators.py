@@ -8,10 +8,11 @@ import json
 def ajax_required(function):
     def wrap(request, *args, **kwargs):
         if not request.is_ajax():
-            return render(request,'error/400.html',{})
+            return render(request, "error/400.html", {})
         return function(request, *args, **kwargs)
-    wrap.__doc__=function.__doc__
-    wrap.__name__=function.__name__
+
+    wrap.__doc__ = function.__doc__
+    wrap.__name__ = function.__name__
     return wrap
 
 
@@ -24,24 +25,32 @@ def check_mode(function):
         if down:
             if request.is_ajax():
                 response_data = {}
-                response_data['status'] = 'false'
-                response_data['message'] = "Application currently down. Please try again later."
-                response_data['static_message'] = "true"
-                return HttpResponse(json.dumps(response_data), content_type='application/javascript')
+                response_data["status"] = "false"
+                response_data[
+                    "message"
+                ] = "Application currently down. Please try again later."
+                response_data["static_message"] = "true"
+                return HttpResponse(
+                    json.dumps(response_data), content_type="application/javascript"
+                )
             else:
-                return HttpResponseRedirect(reverse('down'))
+                return HttpResponseRedirect(reverse("down"))
         elif readonly:
             if request.is_ajax():
                 response_data = {}
-                response_data['status'] = 'false'
-                response_data['message'] = "Application now readonly mode. please try again later."
-                response_data['static_message'] = "true"
-                return HttpResponse(json.dumps(response_data), content_type='application/javascript')
+                response_data["status"] = "false"
+                response_data[
+                    "message"
+                ] = "Application now readonly mode. please try again later."
+                response_data["static_message"] = "true"
+                return HttpResponse(
+                    json.dumps(response_data), content_type="application/javascript"
+                )
             else:
-                return HttpResponseRedirect(reverse('read_only'))
+                return HttpResponseRedirect(reverse("read_only"))
 
         return function(request, *args, **kwargs)
 
-    wrap.__doc__=function.__doc__
-    wrap.__name__=function.__name__
+    wrap.__doc__ = function.__doc__
+    wrap.__name__ = function.__name__
     return wrap

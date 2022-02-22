@@ -8,7 +8,16 @@ class SaleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sale
-        fields = ['id','customer','customer_name','date','sub_total','discount','total','sale_items']
+        fields = [
+            "id",
+            "customer",
+            "customer_name",
+            "date",
+            "sub_total",
+            "discount",
+            "total",
+            "sale_items",
+        ]
 
     def get_customer_name(self, instance):
         if instance.customer:
@@ -18,7 +27,7 @@ class SaleSerializer(serializers.ModelSerializer):
 
     def get_sale_items(self, instance):
         items = SaleItem.objects.filter(sale=instance)
-        serialized = SaleItemSerializer(items,many=True)
+        serialized = SaleItemSerializer(items, many=True)
         return serialized.data
 
 
@@ -29,7 +38,7 @@ class SaleItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SaleItem
-        fields = ['id','product','product_name','qty','sub_total','product_price']
+        fields = ["id", "product", "product_name", "qty", "sub_total", "product_price"]
 
     def get_product_name(self, instance):
         if instance.product:

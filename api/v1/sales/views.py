@@ -9,39 +9,31 @@ from sales.models import Sale
 from api.v1.sales.serializers import SaleSerializer
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes((IsAuthenticated,))
 @renderer_classes((JSONRenderer,))
 def sales(request):
     instances = Sale.objects.filter(is_deleted=False)
-    serialized = SaleSerializer(instances,many=True,context={"request":request})
+    serialized = SaleSerializer(instances, many=True, context={"request": request})
 
-    response_data = {
-    "StatusCodes" : 6000,
-    "data" : serialized.data
-    }
+    response_data = {"StatusCodes": 6000, "data": serialized.data}
     return Response(response_data, status=status.HTTP_200_OK)
 
-#single view by pk
-@api_view(['GET'])
+
+# single view by pk
+@api_view(["GET"])
 @permission_classes((IsAuthenticated,))
 @renderer_classes((JSONRenderer,))
-def sale(request,pk):
+def sale(request, pk):
     instance = None
-    if Sale.objects.filter(is_deleted=False,pk=pk).exists():
-        instance = Sale.objects.get(is_deleted=False,pk=pk)
+    if Sale.objects.filter(is_deleted=False, pk=pk).exists():
+        instance = Sale.objects.get(is_deleted=False, pk=pk)
 
     if instance:
-        serialized = SaleSerializer(instance,context={"request":request})
+        serialized = SaleSerializer(instance, context={"request": request})
 
-        response_data = {
-        "StatusCodes" : 6000,
-        "data" : serialized.data
-        }
+        response_data = {"StatusCodes": 6000, "data": serialized.data}
     else:
-        response_data = {
-        "StatusCodes" : 6001,
-        "messege" : "Not found"
-        }
+        response_data = {"StatusCodes": 6001, "messege": "Not found"}
 
     return Response(response_data, status=status.HTTP_200_OK)
