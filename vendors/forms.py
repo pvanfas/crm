@@ -1,6 +1,7 @@
 from django import forms
-from django.forms.widgets import TextInput, Textarea
+from django.forms.widgets import Textarea, TextInput
 from django.utils.translation import gettext_lazy as _
+
 from vendors.models import Vendor
 
 

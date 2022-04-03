@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render, get_object_or_404
-from django.http.response import HttpResponse
-from django.urls import reverse
-from django.contrib.auth.decorators import login_required
-from main.decorators import ajax_required
-from main.functions import get_auto_id, generate_form_errors
-import json
-from django.db.models import Q
+
 import datetime
-from vendors.models import Vendor
+import json
+
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.http.response import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+
+from main.decorators import ajax_required
+from main.functions import generate_form_errors, get_auto_id
 from vendors.forms import VendorForm
+from vendors.models import Vendor
 
 
 @login_required

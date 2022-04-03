@@ -1,8 +1,11 @@
 from __future__ import unicode_literals
-from django.db import models
-from main.models import BaseModel
-from django.core.validators import MinValueValidator
+
 from decimal import Decimal
+
+from django.core.validators import MinValueValidator
+from django.db import models
+
+from main.models import BaseModel
 
 
 class Sale(BaseModel):

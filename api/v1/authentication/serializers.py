@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 

@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.http.response import HttpResponseRedirect
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+
 from main.decorators import check_mode
 
 

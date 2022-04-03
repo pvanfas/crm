@@ -1,24 +1,25 @@
-from django.shortcuts import render
-from main.models import Mode
-from django.http.response import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
 import json
 
+from django.http.response import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.http import HttpResponseBadRequest
+from main.models import Mode
 
-def ajax_required(function):
+
+def ajax_required(f):
     def wrap(request, *args, **kwargs):
         if not request.is_ajax():
-            return render(request, "error/400.html", {})
-        return function(request, *args, **kwargs)
+            return HttpResponseBadRequest()
+        return f(request, *args, **kwargs)
 
-    wrap.__doc__ = function.__doc__
-    wrap.__name__ = function.__name__
+    wrap.__doc__ = f.__doc__
+    wrap.__name__ = f.__name__
     return wrap
 
 
 def check_mode(function):
     def wrap(request, *args, **kwargs):
-        mode = Mode.objects.get(id=1)
+        mode, created = Mode.objects.get_or_create()
         readonly = mode.readonly
         down = mode.down
 

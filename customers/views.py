@@ -1,15 +1,18 @@
 from __future__ import unicode_literals
-from django.shortcuts import render, get_object_or_404
-from django.http.response import HttpResponse
-from django.urls import reverse
+
+import datetime
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from main.decorators import ajax_required
-from main.functions import get_auto_id, generate_form_errors
-from customers.models import Customer
+from django.http.response import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+
 from customers.forms import CustomerForm
-import json
-import datetime
+from customers.models import Customer
+from main.decorators import ajax_required
+from main.functions import generate_form_errors, get_auto_id
 
 
 @login_required

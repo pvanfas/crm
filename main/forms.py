@@ -1,6 +1,7 @@
 from django import forms
-from django.forms.widgets import TextInput, Select
+from django.forms.widgets import Select, TextInput
 from django.utils.translation import gettext_lazy as _
+
 from main.models import Shop
 
 

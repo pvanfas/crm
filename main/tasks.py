@@ -1,10 +1,13 @@
 from __future__ import absolute_import
-from celery import shared_task
-from products.models import ProductExpiryDate
-from users.models import NotificationSubject, Notification
+
 import datetime
+
+from celery import shared_task
 from django.contrib.auth.models import User
 from staffs.models import Staff
+
+from products.models import ProductExpiryDate
+from users.models import Notification, NotificationSubject
 
 
 @shared_task

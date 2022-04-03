@@ -1,5 +1,5 @@
-import string
 import random
+import string
 
 
 def get_client_ip(request):
@@ -45,8 +45,7 @@ def get_auto_id(model):
 
 def get_a_id(model, request):
     a_id = 1
-    current_shop = get_current_shop(request)
-    latest_a_id = model.objects.filter(shop=current_shop).order_by("-date_added")[:1]
+    latest_a_id = model.objects.filter().order_by("-date_added")[:1]
     if latest_a_id:
         for auto in latest_a_id:
             a_id = auto.a_id + 1

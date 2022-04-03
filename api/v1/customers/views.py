@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from rest_framework.renderers import JSONRenderer
-from rest_framework.decorators import api_view, permission_classes, renderer_classes
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
-from customers.models import Customer
-from api.v1.customers.serializers import CustomerSerializer
+
 from django.db.models import Q
-from main.functions import get_auto_id
+from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes, renderer_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
+
+from api.v1.customers.serializers import CustomerSerializer
 from api.v1.general.functions import generate_serializer_errors
+from customers.models import Customer
+from main.functions import get_auto_id
+
 
 # create customer
 @api_view(["POST"])
