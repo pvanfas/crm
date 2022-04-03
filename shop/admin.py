@@ -10,8 +10,3 @@ class ShopAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Shop, ShopAdmin)
-
-# to change admin header
-admin.site.site_header = "Fresh 8 Admininistration"
-admin.site.site_title = "Fresh 8 Admin Portal"
-admin.site.index_title = "Welcome to Fresh 8 Researcher Portal"

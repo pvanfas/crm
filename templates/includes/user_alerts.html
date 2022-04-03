@@ -11,7 +11,7 @@
             <ul class="sua-menu list-inline list-unstyled palette-Light-Blue bg">
                 <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Close</a></li>
             </ul>
-			
+
 			<div  class="list-group-item media">
 				<div class="pull-left">
                     <i class="ic yellow zmdi zmdi-lamp"></i>
@@ -21,12 +21,12 @@
                     <small class="lgi-text">This feature not implemented yet. Will come soon.</small>
                 </div>
             </div>
-            
+
         </div>
-        
+
         <div class="tab-pane fade" id="sua-notifications">
             <ul class="sua-menu list-inline list-unstyled palette-Orange bg">
-                <li><a href="{% url 'users:notifications' %}"><i class="zmdi zmdi-long-arrow-tab"></i> View all</a></li>
+                <li><a href="#"><i class="zmdi zmdi-long-arrow-tab"></i> View all</a></li>
                 <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Close</a></li>
             </ul>
 
@@ -38,7 +38,7 @@
 		                    <div class="pull-left">
 		                        <i class="ic red zmdi zmdi-alert-circle-o"></i>
 		                    </div>
-					
+
 		                    <div class="media-body">
 		                        <div class="lgi-heading">{{notification.subject}}</div>
 		                        <small class="lgi-text">Only {{notification.product.stock}} item in stock of {{notification.product}} remaining ({{notification.product.shop}}).</small>
@@ -50,7 +50,7 @@
                                 <div class="pull-left">
                                     <i class="ic red zmdi zmdi-alert-circle-o"></i>
                                 </div>
-                        
+
                                 <div class="media-body">
                                     <div class="lgi-heading">{{notification.subject}}</div>
                                     <small class="lgi-text">Hello Wrld</small>
@@ -62,7 +62,7 @@
                                 <div class="pull-left">
                                     <i class="ic red zmdi zmdi-alert-circle-o"></i>
                                 </div>
-                        
+
                                 <div class="media-body">
                                     <div class="lgi-heading">{{notification.subject}}</div>
                                     <small class="lgi-text">New task</small>
@@ -83,7 +83,7 @@
                 {% endif %}
             </div>
         </div>
-        
+
         <div class="tab-pane fade" id="sua-tasks">
             <ul class="sua-menu list-inline list-unstyled palette-Green-400 bg">
                 <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Close</a></li>

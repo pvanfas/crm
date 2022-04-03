@@ -8,7 +8,7 @@ from main.models import Mode
 
 def ajax_required(f):
     def wrap(request, *args, **kwargs):
-        if not request.is_ajax():
+        if not request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             return HttpResponseBadRequest()
         return f(request, *args, **kwargs)
 

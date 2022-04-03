@@ -1,4 +1,3 @@
-from users.models import Notification
 
 
 def main_context(request):
@@ -11,12 +10,6 @@ def main_context(request):
         user_time_zone = "Asia/Kolkata"
 
     current_theme = "cyan-600"
-    if request.user.is_authenticated:
-        recent_notifications = Notification.objects.filter(
-            user=request.user, is_deleted=False
-        )
-    else:
-        recent_notifications = []
 
     active_parent = request.GET.get("active_parent")
     active = request.GET.get("active")
@@ -36,5 +29,4 @@ def main_context(request):
         "is_superuser": is_superuser,
         "active_parent": active_parent,
         "active_menu": active,
-        "recent_notifications": recent_notifications,
     }

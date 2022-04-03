@@ -224,7 +224,7 @@ def delete_selected_customer(request):
         response_data = {
             "status": "true",
             "title": "Successfully Deleted",
-            "message": "Selected Sale(s) Successfully Deleted.",
+            "message": "Selected Customers Successfully Deleted.",
         }
     else:
         response_data = {

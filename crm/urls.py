@@ -16,7 +16,7 @@ urlpatterns = (
         path("app/vendors/", include("vendors.urls", namespace="vendors")),
         path("app/products/", include("products.urls", namespace="products")),
         path("app/sales/", include("sales.urls", namespace="sales")),
-        path("app/accounts/", include("registration.backends.default.urls")),
+        path("app/accounts/", include("registration.backends.simple.urls")),
         path("app/users/", include("users.urls", namespace="users")),
         path(
             "api/v1/customers/",
@@ -31,3 +31,7 @@ urlpatterns = (
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 )
+
+admin.site.site_header = "CRM Admininistration"
+admin.site.site_title = "CRM Admin Portal"
+admin.site.index_title = "Welcome to CRM Researcher Portal"

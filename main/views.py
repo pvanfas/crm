@@ -15,7 +15,6 @@ def app(request):
 @check_mode
 @login_required
 def dashboard(request):
-
     context = {
         "title": "Dashboard",
         "is_dashboard": True,

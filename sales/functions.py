@@ -11,5 +11,3 @@ def update_stock(pk, qty, status):
 
     product.stock = balance_stock
     product.save()
-
-    # Product.objects.filter(pk=pk).update(stock=balance_stock)
