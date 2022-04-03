@@ -35,9 +35,6 @@ class Sale(BaseModel):
     )
 
     class Meta:
-        db_table = "sales_sale"
-        verbose_name = "sale"
-        verbose_name_plural = "sales"
         ordering = ("-date",)
 
     def __str__(self):
@@ -59,9 +56,6 @@ class SaleItem(models.Model):
     )
 
     class Meta:
-        db_table = "sales_sale item"
-        verbose_name = "sale item"
-        verbose_name_plural = "sale items"
         ordering = ("sale",)
 
     def sub_total(self):

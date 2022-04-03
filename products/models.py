@@ -32,9 +32,6 @@ class Product(BaseModel):
     )
 
     class Meta:
-        db_table = "products_product"
-        verbose_name = _("product")
-        verbose_name_plural = _("products")
         ordering = ("-date_added", "name")
 
     def __str__(self):

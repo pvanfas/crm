@@ -23,9 +23,6 @@ class Shop(models.Model):
     logo = VersatileImageField("Logo", blank=True, null=True, upload_to="shop/")
 
     class Meta:
-        db_table = "shops_shop"
-        verbose_name = _("shop")
-        verbose_name_plural = _("shops")
         ordering = ("name",)
 
     def __str__(self):

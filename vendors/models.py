@@ -16,9 +16,6 @@ class Vendor(BaseModel):
     photo = VersatileImageField("Photo", blank=True, null=True, upload_to="vendors/")
 
     class Meta:
-        db_table = "vendors_vendor"
-        verbose_name = _("vendor")
-        verbose_name_plural = _("vendors ")
         ordering = ("-date_added", "name")
 
     def __str__(self):

@@ -15,9 +15,6 @@ class Customer(BaseModel):
     photo = VersatileImageField("Photo", blank=True, null=True, upload_to="customers/")
 
     class Meta:
-        db_table = "customers_customer"
-        verbose_name = _("customer")
-        verbose_name_plural = _("customers ")
         ordering = ("-date_added", "name")
 
     def __str__(self):
