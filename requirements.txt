@@ -1,6 +1,6 @@
 asgiref==3.5.0
 backports.zoneinfo==0.2.1
-Django==4.0.4
+Django==4.0.6
 django-el-pagination==3.3.0
 django-mail-queue==3.2.4
 django-registration-redux==2.9
