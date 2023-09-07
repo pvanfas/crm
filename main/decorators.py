@@ -5,9 +5,13 @@ from django.urls import reverse
 from main.models import Mode
 
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+
 def ajax_required(f):
     def wrap(request, *args, **kwargs):
-        if not request.is_ajax():
+        if not is_ajax(request=request):
             return HttpResponseBadRequest()
         return f(request, *args, **kwargs)
 
@@ -23,11 +27,11 @@ def check_mode(function):
 
         if down:
             message = "Application currently down. Please try again later."
-            return _handle_mode(request, message, is_ajax=request.is_ajax(), is_static_message=True)
+            return _handle_mode(request, message, is_ajax=is_ajax(request=request), is_static_message=True)
 
         if readonly:
             message = "Application now in readonly mode. Please try again later."
-            return _handle_mode(request, message, is_ajax=request.is_ajax(), is_static_message=True)
+            return _handle_mode(request, message, is_ajax=is_ajax(request=request), is_static_message=True)
 
         return function(request, *args, **kwargs)
 

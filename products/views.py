@@ -39,21 +39,7 @@ def create(request):
         return JsonResponse(response_data)
     else:
         form = ProductForm()
-        context = {
-            "form": form,
-            "title": "Create Product",
-            "redirect": True,
-            "url": reverse("products:create"),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
-        }
+        context = {"form": form, "title": "Create Product", "redirect": True, "url": reverse("products:create")}
 
         return render(request, "products/entry.html", context)
 
@@ -90,15 +76,6 @@ def edit(request, pk):
             "title": "Edit Product",
             "redirect": True,
             "url": reverse("products:edit", kwargs={"pk": instance.pk}),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
         }
 
         return render(request, "products/entry.html", context)
@@ -107,19 +84,7 @@ def edit(request, pk):
 @login_required
 def product(request, pk):
     instance = get_object_or_404(Product.objects.filter(pk=pk))
-    context = {
-        "title": "Product : " + instance.name,
-        "instance": instance,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Product : " + instance.name, "instance": instance}
     return render(request, "products/product.html", context)
 
 
@@ -131,19 +96,7 @@ def products(request):
         instances = instances.filter(
             Q(name__icontains=query) | Q(cost__contains=query) | Q(price__contains=query) | Q(stock__contains=query)
         )
-    context = {
-        "title": "Products",
-        "instances": instances,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Products", "instances": instances}
     return render(request, "products/products.html", context)
 
 

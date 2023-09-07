@@ -1,0 +1,1011 @@
+[
+    {
+        "model": "main.mode",
+        "pk": 1,
+        "fields": {
+            "readonly": false,
+            "maintenance": false,
+            "down": false
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "0f637dcc-6c02-4345-abb1-7076d1f8573b",
+        "fields": {
+            "auto_id": 17,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.783Z",
+            "date_updated": "2023-09-07T22:22:25.783Z",
+            "is_deleted": false,
+            "name": "Chloe Hernandez",
+            "phone": "(234) 567-2109",
+            "email": "chloehernandez@email.com",
+            "address": "234 Elm St, Lakeside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "1020a017-1133-44b6-b4e2-56ab5b73273f",
+        "fields": {
+            "auto_id": 1,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:18:42.565Z",
+            "date_updated": "2023-09-07T22:18:42.565Z",
+            "is_deleted": false,
+            "name": "John Doe",
+            "phone": "(123) 456-7890",
+            "email": "johndoe@email.com",
+            "address": "123 Main St, Cityville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "19a4145b-7a54-4296-b625-6363b48f7679",
+        "fields": {
+            "auto_id": 13,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.776Z",
+            "date_updated": "2023-09-07T22:22:25.776Z",
+            "is_deleted": false,
+            "name": "Sophia Turner",
+            "phone": "(678) 345-4321",
+            "email": "sophiaturner@email.com",
+            "address": "678 Cedar St, Seaside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "19e0d5e9-1d7d-4f45-8b49-f4c5f45d2979",
+        "fields": {
+            "auto_id": 3,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.758Z",
+            "date_updated": "2023-09-07T22:22:25.758Z",
+            "is_deleted": false,
+            "name": "Jane Smith",
+            "phone": "(456) 789-0123",
+            "email": "janesmith@email.com",
+            "address": "456 Elm St, Townsville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "1a01bdc6-1970-465d-8b1b-a88f02b907aa",
+        "fields": {
+            "auto_id": 20,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.789Z",
+            "date_updated": "2023-09-07T22:22:25.789Z",
+            "is_deleted": false,
+            "name": "Liam Rodriguez",
+            "phone": "(432) 109-8765",
+            "email": "liamrodriguez@email.com",
+            "address": "432 Cedar St, Cityville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "215e4d20-4cc0-4bff-ae0c-35c17d5f1c63",
+        "fields": {
+            "auto_id": 7,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.765Z",
+            "date_updated": "2023-09-07T22:22:25.765Z",
+            "is_deleted": false,
+            "name": "Sarah Lee",
+            "phone": "(890) 123-4567",
+            "email": "sarahlee@email.com",
+            "address": "890 Cedar St, Metropolis, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "276dbb2a-fcc1-4595-8328-e18788185c26",
+        "fields": {
+            "auto_id": 4,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.760Z",
+            "date_updated": "2023-09-07T22:22:25.760Z",
+            "is_deleted": false,
+            "name": "Robert Johnson",
+            "phone": "(789) 012-3456",
+            "email": "robertjohnson@email.com",
+            "address": "789 Oak St, Villageland, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "3482305a-d093-4ae7-a422-2d3b0533db05",
+        "fields": {
+            "auto_id": 14,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.778Z",
+            "date_updated": "2023-09-07T22:22:25.778Z",
+            "is_deleted": false,
+            "name": "Benjamin Adams",
+            "phone": "(890) 123-9876",
+            "email": "benjaminadams@email.com",
+            "address": "890 Magnolia St, Mountainville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "5e3b423e-1caa-4437-85da-69af86beabda",
+        "fields": {
+            "auto_id": 6,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.763Z",
+            "date_updated": "2023-09-07T22:22:25.763Z",
+            "is_deleted": false,
+            "name": "Michael Wilson",
+            "phone": "(567) 890-1234",
+            "email": "michaelwilson@email.com",
+            "address": "567 Maple St, Suburbia, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "78296228-e982-4a10-9320-b2950cfc65e4",
+        "fields": {
+            "auto_id": 2,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.756Z",
+            "date_updated": "2023-09-07T22:22:25.756Z",
+            "is_deleted": false,
+            "name": "Mia Miller",
+            "phone": "(567) 210-5432",
+            "email": "miamiller@email.com",
+            "address": "567 Redwood St, Suburbia, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "aa3e2059-9484-4ffc-8e89-6819eb5f708d",
+        "fields": {
+            "auto_id": 8,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.767Z",
+            "date_updated": "2023-09-07T22:22:25.767Z",
+            "is_deleted": false,
+            "name": "David Brown",
+            "phone": "(345) 678-9012",
+            "email": "davidbrown@email.com",
+            "address": "345 Birch St, Smalltown, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "aef846b0-c244-4e92-9269-e6fcd1596c59",
+        "fields": {
+            "auto_id": 15,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.780Z",
+            "date_updated": "2023-09-07T22:22:25.780Z",
+            "is_deleted": false,
+            "name": "Ava Walker",
+            "phone": "(345) 678-5432",
+            "email": "avawalker@email.com",
+            "address": "345 Oak St, Hillside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "b1188e51-33a7-4578-ad1e-22cca05355c9",
+        "fields": {
+            "auto_id": 16,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.781Z",
+            "date_updated": "2023-09-07T22:22:25.781Z",
+            "is_deleted": false,
+            "name": "Matthew Evans",
+            "phone": "(901) 234-8765",
+            "email": "matthewevans@email.com",
+            "address": "901 Birch St, Countryside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "bd61b1da-bdba-4fe4-95d9-5a7447ffa7eb",
+        "fields": {
+            "auto_id": 11,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.772Z",
+            "date_updated": "2023-09-07T22:22:25.772Z",
+            "is_deleted": false,
+            "name": "Olivia Hall",
+            "phone": "(432) 543-2109",
+            "email": "oliviahall@email.com",
+            "address": "432 Sycamore St, Riverside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "c6dc03ef-3752-4acc-b484-946500012d4a",
+        "fields": {
+            "auto_id": 18,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.785Z",
+            "date_updated": "2023-09-07T22:22:25.785Z",
+            "is_deleted": false,
+            "name": "Daniel Garcia",
+            "phone": "(543) 210-9876",
+            "email": "danielgarcia@email.com",
+            "address": "543 Maple St, Riverside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "df97d5fc-d1b0-450a-a2c8-27c402f3c6ea",
+        "fields": {
+            "auto_id": 12,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.774Z",
+            "date_updated": "2023-09-07T22:22:25.774Z",
+            "is_deleted": false,
+            "name": "James Taylor",
+            "phone": "(543) 432-1098",
+            "email": "jamestaylor@email.com",
+            "address": "543 Willow St, Lakeside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "f4dddd68-8c69-4636-92aa-535e582233f8",
+        "fields": {
+            "auto_id": 19,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.787Z",
+            "date_updated": "2023-09-07T22:22:25.787Z",
+            "is_deleted": false,
+            "name": "Emma Martinez",
+            "phone": "(678) 543-8765",
+            "email": "emmamartinez@email.com",
+            "address": "678 Pine St, Metropolis, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "f5263574-cd16-4413-8b9f-c323a4ad56cf",
+        "fields": {
+            "auto_id": 5,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.761Z",
+            "date_updated": "2023-09-07T22:22:25.761Z",
+            "is_deleted": false,
+            "name": "Emily Davis",
+            "phone": "(234) 567-8901",
+            "email": "emilydavis@email.com",
+            "address": "234 Pine St, Hamletville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "f5c429ba-4762-4009-a12a-c8bc1fe3cc7b",
+        "fields": {
+            "auto_id": 9,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.768Z",
+            "date_updated": "2023-09-07T22:22:25.768Z",
+            "is_deleted": false,
+            "name": "Jennifer White",
+            "phone": "(678) 901-2345",
+            "email": "jenniferwhite@email.com",
+            "address": "678 Redwood St, Countryside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "customers.customer",
+        "pk": "fe3f4b1f-b25d-41a3-a752-56b55a091e4f",
+        "fields": {
+            "auto_id": 10,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:22:25.770Z",
+            "date_updated": "2023-09-07T22:22:25.770Z",
+            "is_deleted": false,
+            "name": "William Clark",
+            "phone": "(901) 234-5678",
+            "email": "williamclark@email.com",
+            "address": "901 Spruce St, Hometown, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "017e9a37-2eaa-48e7-8e02-d853e0d70352",
+        "fields": {
+            "auto_id": 2,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.929Z",
+            "date_updated": "2023-09-07T22:27:19.929Z",
+            "is_deleted": false,
+            "name": "Emily Johnson",
+            "phone": "(222) 333-4444",
+            "email": "emily.johnson@email.com",
+            "address": "234 Pine St, Hamletville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "0c9f4503-d000-4365-b6f3-4e85523281aa",
+        "fields": {
+            "auto_id": 9,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.942Z",
+            "date_updated": "2023-09-07T22:27:19.942Z",
+            "is_deleted": false,
+            "name": "Matthew Adams",
+            "phone": "(999) 000-1111",
+            "email": "matthew.adams@email.com",
+            "address": "543 Willow St, Lakeside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "20ec8651-15a0-4c2b-8400-47600a885f89",
+        "fields": {
+            "auto_id": 1,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.927Z",
+            "date_updated": "2023-09-07T22:27:19.927Z",
+            "is_deleted": false,
+            "name": "Michael Smith",
+            "phone": "(111) 222-3333",
+            "email": "michael.smith@email.com",
+            "address": "789 Oak St, Villageland, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "2f713d2d-a012-413f-9956-a83b67f2d13f",
+        "fields": {
+            "auto_id": 20,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.961Z",
+            "date_updated": "2023-09-07T22:27:19.961Z",
+            "is_deleted": false,
+            "name": "David Johnson",
+            "phone": "(543) 234-5678",
+            "email": "david.johnson@email.com",
+            "address": "456 Elm St, Townsville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "457cd950-675b-4d8f-82f9-4ab75194f3cc",
+        "fields": {
+            "auto_id": 10,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.943Z",
+            "date_updated": "2023-09-07T22:27:19.943Z",
+            "is_deleted": false,
+            "name": "Chloe Martinez",
+            "phone": "(123) 234-5678",
+            "email": "chloe.martinez@email.com",
+            "address": "678 Cedar St, Seaside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "54f20d99-ea23-49b5-8d88-84096085c532",
+        "fields": {
+            "auto_id": 13,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.949Z",
+            "date_updated": "2023-09-07T22:27:19.949Z",
+            "is_deleted": false,
+            "name": "Mia Evans",
+            "phone": "(456) 567-8901",
+            "email": "mia.evans@email.com",
+            "address": "901 Birch St, Countryside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "638f96af-b8ef-459c-b664-3e6f15659646",
+        "fields": {
+            "auto_id": 12,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.947Z",
+            "date_updated": "2023-09-07T22:27:19.947Z",
+            "is_deleted": false,
+            "name": "Liam Taylor",
+            "phone": "(345) 456-7890",
+            "email": "liam.taylor@email.com",
+            "address": "345 Oak St, Hillside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "68cb1dfd-d16b-42e9-b16e-ddf963bae9e1",
+        "fields": {
+            "auto_id": 19,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.959Z",
+            "date_updated": "2023-09-07T22:27:19.959Z",
+            "is_deleted": false,
+            "name": "Sarah Smith",
+            "phone": "(432) 123-4567",
+            "email": "sarah.smith@email.com",
+            "address": "123 Oak St, Villageville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "7a0a686a-69ac-402d-870a-485a353548df",
+        "fields": {
+            "auto_id": 18,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.958Z",
+            "date_updated": "2023-09-07T22:27:19.958Z",
+            "is_deleted": false,
+            "name": "Michael Martinez",
+            "phone": "(901) 012-3456",
+            "email": "michael.martinez@email.com",
+            "address": "567 Redwood St, Suburbia, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "8364e730-8ebe-4fe9-a807-d0ada0c6d80b",
+        "fields": {
+            "auto_id": 16,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.954Z",
+            "date_updated": "2023-09-07T22:27:19.954Z",
+            "is_deleted": false,
+            "name": "Robert Hernandez",
+            "phone": "(789) 890-1234",
+            "email": "robert.hernandez@email.com",
+            "address": "678 Pine St, Metropolis, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "8aaf0819-3928-4578-a367-1a3ee9b51afd",
+        "fields": {
+            "auto_id": 4,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.933Z",
+            "date_updated": "2023-09-07T22:27:19.933Z",
+            "is_deleted": false,
+            "name": "Olivia Davis",
+            "phone": "(444) 555-6666",
+            "email": "olivia.davis@email.com",
+            "address": "890 Cedar St, Metropolis, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "99cecfb1-14a7-4123-a696-a083cc009c91",
+        "fields": {
+            "auto_id": 11,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.945Z",
+            "date_updated": "2023-09-07T22:27:19.945Z",
+            "is_deleted": false,
+            "name": "Benjamin Hernandez",
+            "phone": "(234) 345-6789",
+            "email": "benjamin.hernandez@email.com",
+            "address": "890 Magnolia St, Mountainville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "a2dd83f3-9d8a-4742-af27-ebe572ff5f85",
+        "fields": {
+            "auto_id": 7,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.938Z",
+            "date_updated": "2023-09-07T22:27:19.938Z",
+            "is_deleted": false,
+            "name": "Daniel Clark",
+            "phone": "(777) 888-9999",
+            "email": "daniel.clark@email.com",
+            "address": "901 Spruce St, Hometown, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "adb9a169-9e20-4388-8f0e-05d39f7930f9",
+        "fields": {
+            "auto_id": 8,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.940Z",
+            "date_updated": "2023-09-07T22:27:19.940Z",
+            "is_deleted": false,
+            "name": "Ava Turner",
+            "phone": "(888) 999-0000",
+            "email": "ava.turner@email.com",
+            "address": "432 Sycamore St, Riverside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "bfb50658-87ce-45c8-9ab1-40e8e0f35929",
+        "fields": {
+            "auto_id": 6,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.936Z",
+            "date_updated": "2023-09-07T22:27:19.936Z",
+            "is_deleted": false,
+            "name": "Sophia Lee",
+            "phone": "(666) 777-8888",
+            "email": "sophia.lee@email.com",
+            "address": "678 Redwood St, Countryside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "c2f92e8b-ddf8-496a-9d3a-4523d1a89500",
+        "fields": {
+            "auto_id": 5,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.934Z",
+            "date_updated": "2023-09-07T22:27:19.934Z",
+            "is_deleted": false,
+            "name": "James Wilson",
+            "phone": "(555) 666-7777",
+            "email": "james.wilson@email.com",
+            "address": "345 Birch St, Smalltown, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "e3eb8996-3361-442e-9981-bbf66846be7e",
+        "fields": {
+            "auto_id": 14,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.950Z",
+            "date_updated": "2023-09-07T22:27:19.950Z",
+            "is_deleted": false,
+            "name": "John Turner",
+            "phone": "(567) 678-9012",
+            "email": "john.turner@email.com",
+            "address": "234 Elm St, Lakeside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "efbf223b-1c4d-4798-a825-4781ff2a900d",
+        "fields": {
+            "auto_id": 15,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.952Z",
+            "date_updated": "2023-09-07T22:27:19.952Z",
+            "is_deleted": false,
+            "name": "Jane Adams",
+            "phone": "(678) 789-0123",
+            "email": "jane.adams@email.com",
+            "address": "543 Maple St, Riverside, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "f60a6c97-c457-45a2-94e2-79fbe974bd46",
+        "fields": {
+            "auto_id": 17,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.956Z",
+            "date_updated": "2023-09-07T22:27:19.956Z",
+            "is_deleted": false,
+            "name": "Emily Garcia",
+            "phone": "(890) 901-2345",
+            "email": "emily.garcia@email.com",
+            "address": "432 Cedar St, Cityville, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "vendors.vendor",
+        "pk": "fcc2579d-b6d8-483f-a1f4-929588648c59",
+        "fields": {
+            "auto_id": 3,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:27:19.931Z",
+            "date_updated": "2023-09-07T22:27:19.931Z",
+            "is_deleted": false,
+            "name": "William Brown",
+            "phone": "(333) 444-5555",
+            "email": "william.brown@email.com",
+            "address": "567 Maple St, Suburbia, USA",
+            "photo": ""
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "0c8f4139-21c9-4075-bfd1-a9c796e817c7",
+        "fields": {
+            "auto_id": 15,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.161Z",
+            "date_updated": "2023-09-07T22:32:15.161Z",
+            "is_deleted": false,
+            "name": "Wireless Charging Pad",
+            "price": "29.99",
+            "cost": "20.00",
+            "stock": "500.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "0d6e9ae0-0e87-4f99-bfe3-e99ae6897247",
+        "fields": {
+            "auto_id": 19,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.168Z",
+            "date_updated": "2023-09-07T22:32:15.168Z",
+            "is_deleted": false,
+            "name": "Portable Power Bank",
+            "price": "39.99",
+            "cost": "25.00",
+            "stock": "300.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "3665f3fe-eb22-43a0-b69e-4837a9cfd10c",
+        "fields": {
+            "auto_id": 16,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.163Z",
+            "date_updated": "2023-09-07T22:32:15.163Z",
+            "is_deleted": false,
+            "name": "Kitchen Blender Master",
+            "price": "89.99",
+            "cost": "70.00",
+            "stock": "100.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "3f64800f-82ac-4ce2-a441-95bfdce99854",
+        "fields": {
+            "auto_id": 18,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.166Z",
+            "date_updated": "2023-09-07T22:32:15.166Z",
+            "is_deleted": false,
+            "name": "Espresso Machine Deluxe",
+            "price": "299.99",
+            "cost": "220.00",
+            "stock": "50.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "3f70d2ad-45b0-459e-bc54-ac489b2ff1ab",
+        "fields": {
+            "auto_id": 3,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.140Z",
+            "date_updated": "2023-09-07T22:32:15.140Z",
+            "is_deleted": false,
+            "name": "Wireless Noise-Canceling Headphones",
+            "price": "249.99",
+            "cost": "150.00",
+            "stock": "200.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "4b0b5f0d-43ca-47a7-8c96-11ee16b5d322",
+        "fields": {
+            "auto_id": 5,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.144Z",
+            "date_updated": "2023-09-07T22:32:15.144Z",
+            "is_deleted": false,
+            "name": "Fitness Tracker 2.0",
+            "price": "149.99",
+            "cost": "80.00",
+            "stock": "300.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "5c8207f6-d7d5-407c-acfe-734248c9b35a",
+        "fields": {
+            "auto_id": 7,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.147Z",
+            "date_updated": "2023-09-07T22:32:15.147Z",
+            "is_deleted": false,
+            "name": "Virtual Reality Headset",
+            "price": "299.99",
+            "cost": "220.00",
+            "stock": "100.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "65197948-6ce4-4cf1-9172-920284b4fc45",
+        "fields": {
+            "auto_id": 13,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.157Z",
+            "date_updated": "2023-09-07T22:32:15.157Z",
+            "is_deleted": false,
+            "name": "Smartwatch Max",
+            "price": "249.99",
+            "cost": "180.00",
+            "stock": "120.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "70d89581-601e-4f70-8873-be9a9c628c64",
+        "fields": {
+            "auto_id": 1,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:28:24.239Z",
+            "date_updated": "2023-09-07T22:28:24.239Z",
+            "is_deleted": false,
+            "name": "Smartphone X",
+            "price": "2200.00",
+            "cost": "2000.00",
+            "stock": "100.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "749fbbcf-bc8b-42ec-9c1a-588cd747ba64",
+        "fields": {
+            "auto_id": 8,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.149Z",
+            "date_updated": "2023-09-07T22:32:15.149Z",
+            "is_deleted": false,
+            "name": "Digital Camera Elite",
+            "price": "899.99",
+            "cost": "700.00",
+            "stock": "50.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "7b4d6daa-cd85-439f-b70b-4a82ce9f89da",
+        "fields": {
+            "auto_id": 12,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.156Z",
+            "date_updated": "2023-09-07T22:32:15.156Z",
+            "is_deleted": false,
+            "name": "Air Purifier Plus",
+            "price": "199.99",
+            "cost": "150.00",
+            "stock": "80.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "93fe3cc8-24ae-439c-a252-ff0f1bb4272d",
+        "fields": {
+            "auto_id": 10,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.152Z",
+            "date_updated": "2023-09-07T22:32:15.152Z",
+            "is_deleted": false,
+            "name": "Electric Toothbrush Pro",
+            "price": "79.99",
+            "cost": "60.00",
+            "stock": "200.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "958474a5-d2e1-4fb9-a100-a0812e84c693",
+        "fields": {
+            "auto_id": 6,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.145Z",
+            "date_updated": "2023-09-07T22:32:15.145Z",
+            "is_deleted": false,
+            "name": "Coffee Maker Deluxe",
+            "price": "79.99",
+            "cost": "50.00",
+            "stock": "150.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "a23261ba-3d70-4dca-8460-5ffaec023b0b",
+        "fields": {
+            "auto_id": 20,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.170Z",
+            "date_updated": "2023-09-07T22:32:15.170Z",
+            "is_deleted": false,
+            "name": "Bluetooth Earbuds Sport",
+            "price": "79.99",
+            "cost": "50.00",
+            "stock": "200.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "b0af6b15-1356-4c2c-a7c1-9fea7a79cd76",
+        "fields": {
+            "auto_id": 9,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.150Z",
+            "date_updated": "2023-09-07T22:32:15.150Z",
+            "is_deleted": false,
+            "name": "Gaming Console X1",
+            "price": "449.99",
+            "cost": "350.00",
+            "stock": "60.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "cb749758-1745-4bf1-a43c-72176bb7f8d1",
+        "fields": {
+            "auto_id": 2,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.138Z",
+            "date_updated": "2023-09-07T22:32:15.138Z",
+            "is_deleted": false,
+            "name": "Ultra HD Television",
+            "price": "999.99",
+            "cost": "800.00",
+            "stock": "50.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "d710b16f-7daf-4562-9d37-f634b2ebfcb0",
+        "fields": {
+            "auto_id": 14,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.159Z",
+            "date_updated": "2023-09-07T22:32:15.159Z",
+            "is_deleted": false,
+            "name": "Drone Explorer 4K",
+            "price": "499.99",
+            "cost": "400.00",
+            "stock": "40.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "d8eec0cd-1dba-40ce-9ef3-bc9b776b4eac",
+        "fields": {
+            "auto_id": 4,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.142Z",
+            "date_updated": "2023-09-07T22:32:15.142Z",
+            "is_deleted": false,
+            "name": "Laptop Pro 15",
+            "price": "1299.99",
+            "cost": "1000.00",
+            "stock": "75.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "e22f5aa8-4bc4-4614-b9b3-9483cf2588d0",
+        "fields": {
+            "auto_id": 17,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.165Z",
+            "date_updated": "2023-09-07T22:32:15.165Z",
+            "is_deleted": false,
+            "name": "Home Security Camera",
+            "price": "149.99",
+            "cost": "120.00",
+            "stock": "80.00"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "fd59f144-b115-4896-bef9-2a6840ad448f",
+        "fields": {
+            "auto_id": 11,
+            "creator": 1,
+            "updater": 1,
+            "date_added": "2023-09-07T22:32:15.154Z",
+            "date_updated": "2023-09-07T22:32:15.154Z",
+            "is_deleted": false,
+            "name": "Bluetooth Speaker Mini",
+            "price": "49.99",
+            "cost": "35.00",
+            "stock": "300.00"
+        }
+    }
+]

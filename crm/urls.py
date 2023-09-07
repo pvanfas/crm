@@ -12,6 +12,8 @@ urlpatterns = (
         path("api-auth/", include("rest_framework.urls")),
         path("", general_views.app, name="app"),
         path("app/", general_views.app, name="app"),
+        path("down/", general_views.down, name="down"),
+        path("read_only/", general_views.read_only, name="read_only"),
         path("app/dashboard/", general_views.dashboard, name="dashboard"),
         path("app/customers/", include("customers.urls", namespace="customers")),
         path("app/vendors/", include("vendors.urls", namespace="vendors")),

@@ -107,15 +107,6 @@ def create(request):
             "redirect": True,
             "url": reverse("sales:create"),
             "is_create_page": True,
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
         }
 
         return render(request, "sales/entry.html", context)
@@ -251,15 +242,6 @@ def edit(request, pk):
             "sale_item_formset": sale_item_formset,
             "redirect": True,
             "url": reverse("sales:edit", kwargs={"pk": instance.pk}),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
         }
 
         return render(request, "sales/entry.html", context)
@@ -269,20 +251,7 @@ def edit(request, pk):
 def sale(request, pk):
     instance = get_object_or_404(Sale.objects.filter(pk=pk))
     sale_items = SaleItem.objects.filter(sale=instance)
-    context = {
-        "title": "Sale : " + str(instance.auto_id),
-        "instance": instance,
-        "sale_items": sale_items,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Sale : " + str(instance.auto_id), "instance": instance, "sale_items": sale_items}
     return render(request, "sales/sale.html", context)
 
 
@@ -298,19 +267,7 @@ def sales(request):
             | Q(customer__address__icontains=query)
         )
 
-    context = {
-        "title": "Sales",
-        "instances": instances,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Sales", "instances": instances}
     return render(request, "sales/sales.html", context)
 
 

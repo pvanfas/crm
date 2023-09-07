@@ -39,21 +39,7 @@ def create(request):
         return JsonResponse(response_data)
     else:
         form = VendorForm()
-        context = {
-            "form": form,
-            "title": "Create Vendor",
-            "redirect": True,
-            "url": reverse("vendors:create"),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
-        }
+        context = {"form": form, "title": "Create Vendor", "redirect": True, "url": reverse("vendors:create")}
 
         return render(request, "vendors/entry.html", context)
 
@@ -90,15 +76,6 @@ def edit(request, pk):
             "title": "Edit Vendor",
             "redirect": True,
             "url": reverse("vendors:edit", kwargs={"pk": instance.pk}),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
         }
 
         return render(request, "vendors/entry.html", context)
@@ -107,19 +84,7 @@ def edit(request, pk):
 @login_required
 def vendor(request, pk):
     instance = get_object_or_404(Vendor.objects.filter(pk=pk))
-    context = {
-        "title": "Vendor : " + instance.name,
-        "instance": instance,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Vendor : " + instance.name, "instance": instance}
     return render(request, "vendors/vendor.html", context)
 
 
@@ -135,19 +100,7 @@ def vendors(request):
             | Q(email__icontains=query)
             | Q(address__icontains=query)
         )
-    context = {
-        "title": "Vendors",
-        "instances": instances,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Vendors", "instances": instances}
     return render(request, "vendors/vendors.html", context)
 
 

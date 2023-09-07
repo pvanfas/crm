@@ -39,21 +39,7 @@ def create(request):
         return JsonResponse(response_data)
     else:
         form = CustomerForm()
-        context = {
-            "form": form,
-            "title": "Create Customer",
-            "redirect": True,
-            "url": reverse("customers:create"),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
-        }
+        context = {"form": form, "title": "Create Customer", "redirect": True, "url": reverse("customers:create")}
 
         return render(request, "customers/entry.html", context)
 
@@ -89,15 +75,6 @@ def edit(request, pk):
             "title": "Edit Customer",
             "redirect": True,
             "url": reverse("customers:edit", kwargs={"pk": instance.pk}),
-            "is_need_select_picker": True,
-            "is_need_popup_box": True,
-            "is_need_custom_scroll_bar": True,
-            "is_need_wave_effect": True,
-            "is_need_bootstrap_growl": True,
-            "is_need_chosen_select": True,
-            "is_need_grid_system": True,
-            "is_need_datetime_picker": True,
-            "is_need_animations": True,
         }
 
         return render(request, "customers/entry.html", context)
@@ -106,19 +83,7 @@ def edit(request, pk):
 @login_required
 def customer(request, pk):
     instance = get_object_or_404(Customer.objects.filter(pk=pk))
-    context = {
-        "title": "Customer : " + instance.name,
-        "instance": instance,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Customer : " + instance.name, "instance": instance}
     return render(request, "customers/customer.html", context)
 
 
@@ -134,19 +99,7 @@ def customers(request):
             | Q(email__icontains=query)
             | Q(address__icontains=query)
         )
-    context = {
-        "title": "Customers",
-        "instances": instances,
-        "is_need_select_picker": True,
-        "is_need_popup_box": True,
-        "is_need_custom_scroll_bar": True,
-        "is_need_wave_effect": True,
-        "is_need_bootstrap_growl": True,
-        "is_need_chosen_select": True,
-        "is_need_grid_system": True,
-        "is_need_datetime_picker": True,
-        "is_need_animations": True,
-    }
+    context = {"title": "Customers", "instances": instances}
     return render(request, "customers/customers.html", context)
 
 
