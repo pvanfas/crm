@@ -4,6 +4,7 @@ from django.template.defaultfilters import stringfilter
 
 register = Library()
 
+
 @register.filter
 def check_default(value):
     result = value

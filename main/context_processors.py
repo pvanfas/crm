@@ -1,5 +1,3 @@
-
-
 def main_context(request):
     is_superuser = False
     if "set_user_timezone" in request.session:
@@ -9,7 +7,7 @@ def main_context(request):
         user_session_ok = False
         user_time_zone = "Asia/Kolkata"
 
-    current_theme = "cyan-600"
+    current_theme = "teal"
 
     active_parent = request.GET.get("active_parent")
     active = request.GET.get("active")

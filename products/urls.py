@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views
 
+
 app_name = "products"
 
 urlpatterns = [
@@ -11,9 +12,5 @@ urlpatterns = [
     path("view/<str:pk>/", views.product, name="product"),
     path("delete/<str:pk>/", views.delete, name="delete"),
     path("get-product/", views.get_product, name="get_product"),
-    path(
-        "delete-selected-products/",
-        views.delete_selected_products,
-        name="delete_selected_products",
-    ),
+    path("delete-selected-products/", views.delete_selected_products, name="delete_selected_products"),
 ]

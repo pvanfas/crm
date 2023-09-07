@@ -1,16 +1,14 @@
-from __future__ import unicode_literals
-
 import datetime
-import json
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http.response import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from django.urls import reverse
-
 from main.decorators import ajax_required
-from main.functions import generate_form_errors, get_auto_id
+from main.functions import generate_form_errors
+from main.functions import get_auto_id
 from products.forms import ProductForm
 from products.models import Product
 
@@ -36,16 +34,9 @@ def create(request):
         else:
             message = generate_form_errors(form, formset=False)
 
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message,
-            }
+            response_data = {"status": "false", "stable": "true", "title": "Form validation error", "message": message}
 
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        return JsonResponse(response_data)
     else:
         form = ProductForm()
         context = {
@@ -88,16 +79,9 @@ def edit(request, pk):
         else:
             message = generate_form_errors(form, formset=False)
 
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message,
-            }
+            response_data = {"status": "false", "stable": "true", "title": "Form validation error", "message": message}
 
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        return JsonResponse(response_data)
     else:
         instance = get_object_or_404(Product.objects.filter(pk=pk))
         form = ProductForm(instance=instance)
@@ -145,10 +129,7 @@ def products(request):
     query = request.GET.get("q")
     if query:
         instances = instances.filter(
-            Q(name__icontains=query)
-            | Q(cost__contains=query)
-            | Q(price__contains=query)
-            | Q(stock__contains=query)
+            Q(name__icontains=query) | Q(cost__contains=query) | Q(price__contains=query) | Q(stock__contains=query)
         )
     context = {
         "title": "Products",
@@ -178,9 +159,7 @@ def delete(request, pk):
         "redirect": "true",
         "redirect_url": reverse("products:products"),
     }
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)
 
 
 @login_required
@@ -194,9 +173,7 @@ def get_product(request):
     else:
         response_data = {"status": "false", "message": "Product not exists."}
 
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)
 
 
 @login_required
@@ -208,9 +185,7 @@ def delete_selected_products(request):
 
         pks = pks.split(",")
         for pk in pks:
-            instance = get_object_or_404(
-                Product.objects.filter(pk=pk, is_deleted=False)
-            )
+            instance = get_object_or_404(Product.objects.filter(pk=pk, is_deleted=False))
             instance.is_deleted = True
             instance.save()
 
@@ -220,12 +195,6 @@ def delete_selected_products(request):
             "message": "Selected Sale(s) Successfully Deleted.",
         }
     else:
-        response_data = {
-            "status": "false",
-            "title": "Nothing selected",
-            "message": "Please select some items first.",
-        }
+        response_data = {"status": "false", "title": "Nothing selected", "message": "Please select some items first."}
 
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)

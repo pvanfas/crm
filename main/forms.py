@@ -1,7 +1,7 @@
 from django import forms
-from django.forms.widgets import Select, TextInput
+from django.forms.widgets import Select
+from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
-
 from main.models import Shop
 
 
@@ -10,34 +10,19 @@ class ShopForm(forms.ModelForm):
         model = Shop
         exclude = ["creator", "updator", "auto_id", "is_deleted"]
         widgets = {
-            "name": TextInput(
-                attrs={"class": "required form-control", "placeholder": "Name"}
-            ),
-            "email": TextInput(
-                attrs={"class": "required form-control", "placeholder": "Email"}
-            ),
-            "phone": TextInput(
-                attrs={"class": "required form-control", "placeholder": "Phone"}
-            ),
-            "address": TextInput(
-                attrs={"class": "required form-control", "placeholder": "Address"}
-            ),
-            "website": TextInput(
-                attrs={"class": "form-control", "placeholder": "Website"}
-            ),
+            "name": TextInput(attrs={"class": "required form-control", "placeholder": "Name"}),
+            "email": TextInput(attrs={"class": "required form-control", "placeholder": "Email"}),
+            "phone": TextInput(attrs={"class": "required form-control", "placeholder": "Phone"}),
+            "address": TextInput(attrs={"class": "required form-control", "placeholder": "Address"}),
+            "website": TextInput(attrs={"class": "form-control", "placeholder": "Website"}),
             "theme": Select(attrs={"class": "required selectpicker"}),
             "state": Select(attrs={"class": "required selectpicker"}),
             "bill_print_type": Select(attrs={"class": "required selectpicker"}),
             "gstin": TextInput(attrs={"class": "form-control", "placeholder": "GSTIN"}),
             "commission_per_packet": TextInput(
-                attrs={
-                    "class": "form-control required number",
-                    "placeholder": "Commission Per Packet",
-                }
+                attrs={"class": "form-control required number", "placeholder": "Commission Per Packet"}
             ),
-            "fssai_number": TextInput(
-                attrs={"class": "form-control", "placeholder": "FSSAI Number"}
-            ),
+            "fssai_number": TextInput(attrs={"class": "form-control", "placeholder": "FSSAI Number"}),
         }
         error_messages = {
             "name": {"required": _("Name field is required.")},
@@ -46,7 +31,5 @@ class ShopForm(forms.ModelForm):
             "address": {"required": _("Address field is required.")},
             "state": {"required": _("State field is required.")},
             "theme": {"required": _("Theme field is required.")},
-            "commission_per_packet": {
-                "required": _("Commission Per Packet field is required.")
-            },
+            "commission_per_packet": {"required": _("Commission Per Packet field is required.")},
         }

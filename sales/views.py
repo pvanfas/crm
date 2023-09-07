@@ -1,23 +1,24 @@
-from __future__ import unicode_literals
-
 import datetime
-import json
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
-from django.forms.widgets import Select, TextInput
-from django.http.response import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.forms.widgets import Select
+from django.forms.widgets import TextInput
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from django.urls import reverse
-
 from main.decorators import ajax_required
-from main.functions import generate_form_errors, get_auto_id
+from main.functions import generate_form_errors
+from main.functions import get_auto_id
 from products.models import Product
-from sales.forms import SaleForm, SaleItemForm
+from sales.forms import SaleForm
+from sales.forms import SaleItemForm
 from sales.functions import update_stock
-from sales.models import Sale, SaleItem
+from sales.models import Sale
+from sales.models import SaleItem
 
 
 @login_required
@@ -27,7 +28,6 @@ def create(request):
         form = SaleForm(request.POST)
         sale_item_formset = SaleItemFormset(request.POST, prefix="sale_item_formset")
         if form.is_valid() and sale_item_formset.is_valid():
-
             # Creating Sale Item Objects for finding duplicate product entry
             items = {}
             for f in sale_item_formset:
@@ -90,25 +90,13 @@ def create(request):
                     "redirect_url": reverse("sales:sale", kwargs={"pk": data.pk}),
                 }
             else:
-                response_data = {
-                    "status": "false",
-                    "stable": "true",
-                    "title": "Out of Stock",
-                    "message": error_message,
-                }
+                response_data = {"status": "false", "stable": "true", "title": "Out of Stock", "message": error_message}
         else:
             message = generate_form_errors(form, formset=False)
             message += generate_form_errors(sale_item_formset, formset=True)
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message,
-            }
+            response_data = {"status": "false", "stable": "true", "title": "Form validation error", "message": message}
 
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        return JsonResponse(response_data)
     else:
         form = SaleForm()
         sale_item_formset = SaleItemFormset(prefix="sale_item_formset")
@@ -149,25 +137,15 @@ def edit(request, pk):
         extra=extra,
         exclude=["creator", "updater", "auto_id", "is_deleted", "sale"],
         widgets={
-            "product": Select(
-                attrs={"class": "required form-control", "data-placeholder": "Product"}
-            ),
-            "qty": TextInput(
-                attrs={
-                    "class": "required number form-control",
-                    "placeholder": "Quantity",
-                }
-            ),
+            "product": Select(attrs={"class": "required form-control", "data-placeholder": "Product"}),
+            "qty": TextInput(attrs={"class": "required number form-control", "placeholder": "Quantity"}),
         },
     )
     if request.method == "POST":
         form = SaleForm(request.POST, instance=instance)
-        sale_item_formset = SaleItemFormset(
-            request.POST, prefix="sale_item_formset", instance=instance
-        )
+        sale_item_formset = SaleItemFormset(request.POST, prefix="sale_item_formset", instance=instance)
 
         if form.is_valid() and sale_item_formset.is_valid():
-
             items = {}
             for f in sale_item_formset:
                 if f not in sale_item_formset.deleted_forms:
@@ -211,13 +189,9 @@ def edit(request, pk):
                 product_qty = value["qty"]
                 if product_qty > stock:
                     stock_ok = False
-                    error_message += "%s has only %s in stock, " % (
-                        product.name,
-                        str(stock),
-                    )
+                    error_message += "%s has only %s in stock, " % (product.name, str(stock))
 
             if stock_ok:
-
                 # update sale
                 discount = form.cleaned_data["discount"]
 
@@ -260,30 +234,16 @@ def edit(request, pk):
                     "redirect_url": reverse("sales:sale", kwargs={"pk": data.pk}),
                 }
             else:
-                response_data = {
-                    "status": "false",
-                    "stable": "true",
-                    "title": "Out of Stock",
-                    "message": error_message,
-                }
+                response_data = {"status": "false", "stable": "true", "title": "Out of Stock", "message": error_message}
         else:
             message = generate_form_errors(form, formset=False)
             message += generate_form_errors(sale_item_formset, formset=True)
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message,
-            }
+            response_data = {"status": "false", "stable": "true", "title": "Form validation error", "message": message}
 
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        return JsonResponse(response_data)
     else:
         form = SaleForm(instance=instance)
-        sale_item_formset = SaleItemFormset(
-            prefix="sale_item_formset", instance=instance
-        )
+        sale_item_formset = SaleItemFormset(prefix="sale_item_formset", instance=instance)
         context = {
             "form": form,
             "title": "Edit Sale #: " + str(instance.auto_id),
@@ -375,9 +335,7 @@ def delete(request, pk):
         "redirect": "true",
         "redirect_url": reverse("sales:sales"),
     }
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)
 
 
 @login_required
@@ -399,12 +357,6 @@ def delete_selected_sale(request):
             "message": "Selected Sale(s) Successfully Deleted.",
         }
     else:
-        response_data = {
-            "status": "false",
-            "title": "Nothing selected",
-            "message": "Please select some items first.",
-        }
+        response_data = {"status": "false", "title": "Nothing selected", "message": "Please select some items first."}
 
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)

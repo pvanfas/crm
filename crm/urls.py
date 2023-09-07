@@ -1,9 +1,10 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
-
+from django.urls import include
+from django.urls import path
 from main import views as general_views
+
 
 urlpatterns = (
     [
@@ -18,15 +19,9 @@ urlpatterns = (
         path("app/sales/", include("sales.urls", namespace="sales")),
         path("app/accounts/", include("registration.backends.simple.urls")),
         path("app/users/", include("users.urls", namespace="users")),
-        path(
-            "api/v1/customers/",
-            include("api.v1.customers.urls", namespace="api_v1_customers"),
-        ),
+        path("api/v1/customers/", include("api.v1.customers.urls", namespace="api_v1_customers")),
         path("api/v1/sales/", include("api.v1.sales.urls", namespace="api_v1_sales")),
-        path(
-            "api/v1/auth/",
-            include("api.v1.authentication.urls", namespace="api_v1_authentication"),
-        ),
+        path("api/v1/auth/", include("api.v1.authentication.urls", namespace="api_v1_authentication")),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

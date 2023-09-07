@@ -1,6 +1,6 @@
 from rest_framework import serializers
-
-from sales.models import Sale, SaleItem
+from sales.models import Sale
+from sales.models import SaleItem
 
 
 class SaleSerializer(serializers.ModelSerializer):
@@ -9,16 +9,7 @@ class SaleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sale
-        fields = [
-            "id",
-            "customer",
-            "customer_name",
-            "date",
-            "sub_total",
-            "discount",
-            "total",
-            "sale_items",
-        ]
+        fields = ["id", "customer", "customer_name", "date", "sub_total", "discount", "total", "sale_items"]
 
     def get_customer_name(self, instance):
         if instance.customer:

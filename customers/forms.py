@@ -1,8 +1,8 @@
-from django import forms
-from django.forms.widgets import Textarea, TextInput
-from django.utils.translation import gettext_lazy as _
-
 from customers.models import Customer
+from django import forms
+from django.forms.widgets import Textarea
+from django.forms.widgets import TextInput
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomerForm(forms.ModelForm):
@@ -10,18 +10,10 @@ class CustomerForm(forms.ModelForm):
         model = Customer
         exclude = ["creator", "updater", "auto_id", "is_deleted"]
         widgets = {
-            "name": TextInput(
-                attrs={"class": "required form-control", "placeholder": "Name"}
-            ),
-            "email": TextInput(
-                attrs={"class": "required form-control email", "placeholder": "Email"}
-            ),
-            "phone": TextInput(
-                attrs={"class": "required form-control", "placeholder": "Phone"}
-            ),
-            "address": Textarea(
-                attrs={"class": "required form-control", "placeholder": "Address"}
-            ),
+            "name": TextInput(attrs={"class": "required form-control", "placeholder": "Name"}),
+            "email": TextInput(attrs={"class": "required form-control email", "placeholder": "Email"}),
+            "phone": TextInput(attrs={"class": "required form-control", "placeholder": "Phone"}),
+            "address": Textarea(attrs={"class": "required form-control", "placeholder": "Address"}),
         }
         error_messages = {
             "name": {"required": _("Name field is required.")},

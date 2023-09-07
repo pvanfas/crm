@@ -1,13 +1,21 @@
-from django.contrib.auth.models import User
+import re
+
+from django.contrib.auth import get_user_model
+from django.dispatch import receiver
 from registration.signals import user_registered
 
 
+User = get_user_model()
+
+
 class EmailOrUsernameModelBackend(object):
-    def authenticate(self, username=None, password=None):
-        if "@" in username:
+    def authenticate(self, request, username=None, password=None):
+        # Check if the username is an email address
+        if re.match(r"[^@]+@[^@]+\.[^@]+", username):
             kwargs = {"email": username}
         else:
             kwargs = {"username": username}
+
         try:
             user = User.objects.get(**kwargs)
             if user.check_password(password):
@@ -22,15 +30,11 @@ class EmailOrUsernameModelBackend(object):
             return None
 
 
-class AttemptCount(object):
-    pass
-
-
+@receiver(user_registered)
 def user_created(sender, user, request, **kwargs):
-
+    # Generate a unique identifier for the user (e.g., 'f3_user_idab')
     f3 = user.username[:3]
     user_id = str(user.id)
-    f3 + user_id + "ab"
-
-
-user_registered.connect(user_created)
+    unique_identifier = f3 + user_id + "ab"
+    user.profile.unique_identifier = unique_identifier
+    user.profile.save()

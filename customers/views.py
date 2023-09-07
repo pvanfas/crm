@@ -1,18 +1,16 @@
-from __future__ import unicode_literals
-
 import datetime
-import json
-
-from django.contrib.auth.decorators import login_required
-from django.db.models import Q
-from django.http.response import HttpResponse
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
 
 from customers.forms import CustomerForm
 from customers.models import Customer
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+from django.urls import reverse
 from main.decorators import ajax_required
-from main.functions import generate_form_errors, get_auto_id
+from main.functions import generate_form_errors
+from main.functions import get_auto_id
 
 
 @login_required
@@ -36,16 +34,9 @@ def create(request):
         else:
             message = generate_form_errors(form, formset=False)
 
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message,
-            }
+            response_data = {"status": "false", "stable": "true", "title": "Form validation error", "message": message}
 
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        return JsonResponse(response_data)
     else:
         form = CustomerForm()
         context = {
@@ -87,17 +78,9 @@ def edit(request, pk):
             }
         else:
             message = generate_form_errors(form, formset=False)
+            response_data = {"status": "false", "stable": "true", "title": "Form validation error", "message": message}
 
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message,
-            }
-
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        return JsonResponse(response_data)
     else:
         instance = get_object_or_404(Customer.objects.filter(pk=pk))
         form = CustomerForm(instance=instance)
@@ -179,9 +162,7 @@ def delete(request, pk):
         "redirect": "true",
         "redirect_url": reverse("customers:customers"),
     }
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)
 
 
 @login_required
@@ -201,9 +182,7 @@ def get_customer(request):
     else:
         response_data = {"status": "false", "message": "Customer not exists."}
 
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)
 
 
 @login_required
@@ -215,9 +194,7 @@ def delete_selected_customer(request):
 
         pks = pks.split(",")
         for pk in pks:
-            instance = get_object_or_404(
-                Customer.objects.filter(pk=pk, is_deleted=False)
-            )
+            instance = get_object_or_404(Customer.objects.filter(pk=pk, is_deleted=False))
             instance.is_deleted = True
             instance.save()
 
@@ -227,12 +204,6 @@ def delete_selected_customer(request):
             "message": "Selected Customers Successfully Deleted.",
         }
     else:
-        response_data = {
-            "status": "false",
-            "title": "Nothing selected",
-            "message": "Please select some items first.",
-        }
+        response_data = {"status": "false", "title": "Nothing selected", "message": "Please select some items first."}
 
-    return HttpResponse(
-        json.dumps(response_data), content_type="application/javascript"
-    )
+    return JsonResponse(response_data)

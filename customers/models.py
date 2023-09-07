@@ -1,10 +1,6 @@
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.translation import gettext_lazy as _
-from versatileimagefield.fields import VersatileImageField
-
 from main.models import BaseModel
+from versatileimagefield.fields import VersatileImageField
 
 
 class Customer(BaseModel):

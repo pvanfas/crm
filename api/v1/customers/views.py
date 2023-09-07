@@ -1,17 +1,15 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.db.models import Q
-from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes, renderer_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.renderers import JSONRenderer
-from rest_framework.response import Response
-
 from api.v1.customers.serializers import CustomerSerializer
 from api.v1.general.functions import generate_serializer_errors
 from customers.models import Customer
+from django.db.models import Q
 from main.functions import get_auto_id
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.decorators import permission_classes
+from rest_framework.decorators import renderer_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
 
 
 # create customer
@@ -27,10 +25,7 @@ def create_customer(request):
         response_data = {"StatusCodes": 6000, "data": serialized.data}
         return Response(response_data, status=status.HTTP_200_OK)
     else:
-        response_data = {
-            "StatusCodes": 6001,
-            "message": generate_serializer_errors(serialized._errors),
-        }
+        response_data = {"StatusCodes": 6001, "message": generate_serializer_errors(serialized._errors)}
         return Response(response_data, status=status.HTTP_200_OK)
 
 
@@ -49,10 +44,7 @@ def edit_customer(request, pk):
 
             response_data = {"StatusCodes": 6000, "data": serialized.data}
         else:
-            response_data = {
-                "StatusCodes": 6001,
-                "message": generate_serializer_errors(serialized._errors),
-            }
+            response_data = {"StatusCodes": 6001, "message": generate_serializer_errors(serialized._errors)}
 
         return Response(response_data, status=status.HTTP_200_OK)
 

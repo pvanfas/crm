@@ -1,7 +1,7 @@
-from __future__ import unicode_literals
-from .models import Sale
-from import_export.admin import ImportExportActionModelAdmin
 from django.contrib import admin
+from import_export.admin import ImportExportActionModelAdmin
+
+from .models import Sale
 
 
 @admin.register(Sale)
