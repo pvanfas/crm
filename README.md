@@ -33,3 +33,7 @@ To start using CRM and harness its powerful features, follow these steps:
 3. **Authentication Setup:** Ensure secure access to CRM by configuring authentication methods. Refer to the [Authentication Guide](#) for more information.
 
 4. **Usage:** Explore the CRM dashboard and begin managing customers, products, and sales efficiently.
+
+## Documentation
+
+For in-depth information on using CRM effectively, please consult our comprehensive [Documentation](#).
