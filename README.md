@@ -7,20 +7,23 @@ Welcome to CRM, your all-in-one solution for managing customers, products, and s
 ### Features
 
 1. **Customer Management**
-   - Easily manage customer data, track interactions, and build strong relationships.
-   - View customer profiles, purchase history, and communication history in one place.
+
+    - Easily manage customer data, track interactions, and build strong relationships.
+    - View customer profiles, purchase history, and communication history in one place.
 
 2. **Product Management**
-   - Effortlessly organize and catalog your products and services.
-   - Monitor stock levels, pricing, and product details for better sales management.
+
+    - Effortlessly organize and catalog your products and services.
+    - Monitor stock levels, pricing, and product details for better sales management.
 
 3. **Sales**
-   - Streamline your sales process from lead generation to closing deals.
-   - Prioritize tasks, set reminders, and never miss an opportunity to engage with prospects.
+
+    - Streamline your sales process from lead generation to closing deals.
+    - Prioritize tasks, set reminders, and never miss an opportunity to engage with prospects.
 
 4. **Authentication**
-   - Securely access your CRM with robust authentication protocols.
-   - Protect sensitive customer and sales data with state-of-the-art security measures.
+    - Securely access your CRM with robust authentication protocols.
+    - Protect sensitive customer and sales data with state-of-the-art security measures.
 
 ## Getting Started
 
