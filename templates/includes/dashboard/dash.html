@@ -1,5 +1,4 @@
-{% load i18n %}
-{% load static %}
+{% load i18n static %}
 
 <div>
     <section id="content">
@@ -13,7 +12,7 @@
                     {% for customer in recent_customers %}
                     <div class="col-md-3 col-sm-4 m-b-15">
                         <div class="card {% if forloop.counter|divisibleby:4 %}one{% else %}three{% endif %}">
-                            <img src="{% static 'img/user.jpeg' %}" title="{{customer.name}}" class="img-responsive img-circle img-lg" />
+                            <img src="{% static 'app/img/user.jpeg' %}" title="{{customer.name}}" class="img-responsive img-circle img-lg" />
                             <small class="f-18 d-b first">{{customer.name}}</small>
                             <small class="f-14 d-i-b second">{{customer.email}}</small>
                             <small class="f-30 d-b third">{{customer.phone}}</small>
@@ -289,22 +288,22 @@
             background-color: #263238 !important;
         }
         .bg-image-1 {
-            background-image: url({% static 'img/cards/image1.jpg' %});
+            background-image: url({% static 'app/img/cards/image1.jpg' %});
             width: 100%;
             background-size: cover;
         }
         .bg-image-2 {
-            background-image: url({% static 'img/cards/image2.jpg' %});
+            background-image: url({% static 'app/img/cards/image2.jpg' %});
             width: 100%;
             background-size: cover;
         }
         .bg-image-3 {
-            background-image: url({% static 'img/cards/image3.jpg' %});
+            background-image: url({% static 'app/img/cards/image3.jpg' %});
             width: 100%;
             background-size: cover;
         }
         .bg-image-4 {
-            background-image: url({% static 'img/cards/image4.jpg' %});
+            background-image: url({% static 'app/img/cards/image4.jpg' %});
             width: 100%;
             background-size: cover;
         }

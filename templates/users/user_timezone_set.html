@@ -1,6 +1,6 @@
 {% load static %}
 {% if not user_session_ok %}
-	<script type="text/javascript" src="{% static 'js/jstz.js' %}"></script>
+	<script type="text/javascript" src="{% static 'app/js/jstz.js' %}"></script>
 	<script>
 		$(document).ready(function(){
 			 var timezone = jstz.determine();

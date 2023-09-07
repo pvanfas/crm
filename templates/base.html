@@ -9,28 +9,28 @@
     {% load static %}
     <!-- Vendor CSS -->
 
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'app/img/favicon.ico' %}" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="{% static 'vendors/bower_components/chosen/chosen.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/animate.css/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendors/bower_components/google-material-color/dist/palette.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/chosen/chosen.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendors/bower_components/google-material-color/dist/palette.css' %}" rel="stylesheet">
     <!-- CSS -->
-    <link href="{% static 'css/app.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'app/css/app.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/css/custom.css' %}" rel="stylesheet">
 </head>
 
 <body data-ma-header="{{current_theme}}">
     <header id="header" class="media">
         <div class="pull-left h-logo">
-            <a href="{% url 'app' %}" class="hidden-xs">
-                CRM
+            <a href="{% url 'app' %}" class="hidden-xs logo_container">
+                <img src="{% static 'app/img/logo.png' %}" alt="" class="w-100">
             </a>
 
             <div class="menu-collapse" data-ma-action="sidebar-open" data-ma-target="main-menu">
